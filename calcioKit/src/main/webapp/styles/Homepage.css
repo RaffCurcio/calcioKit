@@ -18,45 +18,9 @@ header {
   margin-bottom: 20px;
 }
 
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #000000;
-  padding: 10px;
-}
 
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
 
-nav li {
-  display: inline-block;
-  margin-right: 20px;
-}
 
-#ricerca {
-  display: flex;
-  align-items: center;
-}
-
-#ricerca input[type="text"] {
-  padding: 5px;
-  border: none;
-  border-radius: 5px;
-}
-
-#ricerca button {
-  padding: 5px 10px;
-  border: none;
-  background-color: #4CAF50;
-  color: white;
-  border-radius: 5px;
-  margin-left: 10px;
-  cursor: pointer;
-}
 
 
 

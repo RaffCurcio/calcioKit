@@ -3,6 +3,11 @@
 <head>
 <title>Maglie da calcio - Sito di vendita</title>
 <link rel="stylesheet" type="text/css" href="styles/Homepage.css">
+<link rel="stylesheet" type="text/css" href="styles/Navbar.css">
+
+<script src='https://kit.fontawesome.com/a076d05399.js'
+	crossorigin='anonymous'></script>
+
 </head>
 <body>
 
@@ -16,11 +21,24 @@
 			<li><a href="#">Home</a></li>
 			<li><a href="#">Prodotti</a></li>
 			<li><a href="#">Contatti</a></li>
+			<li style = "float:right">
+				<div id="user-cart">
+					<i class='fas fa-user-circle' style='font-size: 24px; color: white'></i>
+					<i class='fas fa-shopping-cart'
+						style='font-size: 24px; color: white'></i>
+				</div>
+			</li>
+			<li style = "float:right">
+				<div id="search">
+					<form>
+						<input type="text" name="search" placeholder="Cerca prodotti">
+						<button type="submit">Cerca</button>
+					</form>
+				</div>
+			</li>
+
 		</ul>
-		<form id="ricerca">
-			<input type="text" name="search" placeholder="Cerca prodotti">
-			<button type="submit">Cerca</button>
-		</form>
+
 	</nav>
 
 
