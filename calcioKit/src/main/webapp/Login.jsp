@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +11,7 @@
 
 </head>
 <body>
-<header>
+	<header>
 		<div id="logo">
 			<img src="img/logo.jpg" alt="Logo del sito" id="ciao">
 		</div>
@@ -21,20 +21,25 @@
 
 	<form action="loginProcess.jsp" method="post">
 		<div class="form-group">
-			<label for="username">Username:</label>
-			<input type="text" id="username" name="username" required>
+			<label for="username">Username:</label> <input type="text"
+				placeholder="Inserire username" id="username" name="username"
+				required>
 		</div>
 		<div class="form-group">
-			<label for="password">Password:</label>
-			<input type="password" id="password" name="password" required>
+			<label for="password">Password:</label> <input type="password"
+				placeholder="Inserire password" id="password" name="password"
+				required>
 		</div>
 		<div class="form-group">
 			<input type="submit" value="Login">
 		</div>
 		<div class="form-group">
-			<p>Se non sei registrato, <a href="registrazione.html">clicca qui</a> per registrarti.</p>
+			<p>
+				Se non sei registrato, <a href="registrazione.html">clicca qui</a>
+				per registrarti.
+			</p>
 		</div>
-		
+
 	</form>
 
 
