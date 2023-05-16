@@ -17,29 +17,37 @@
 		</div>
 	</header>
 	<nav>
-		<ul>
+		<ul class="menu">
 			<li><a href="#">Home</a></li>
 			<li><a href="#">Prodotti</a></li>
 			<li><a href="#">Contatti</a></li>
-			<li style = "float:right">
-				<div id="user-cart">
-					<i class='fas fa-user-circle' style='font-size: 24px; color: white'></i>
-					<i class='fas fa-shopping-cart'
-						style='font-size: 24px; color: white'></i>
-				</div>
+			<li style="float:right">
+			<div>
+				<a href="#"><img src="./img/avatar.png" class="avatar"></a>
+				<ul>
+				<li><a href="Login.jsp">Login</a></li>
+				</ul>
+				<ul>
+				<li><a href="Registrazione.jsp">Register</a></li>
+				</ul>
+			</div>
 			</li>
-			<li style = "float:right">
-				<div id="search">
+			<li style="float:right">
+			<div>
+				<a href="ProdottiCarrello.jsp"><img src="./img/cart.png" class="cart"></a>
+			</div>
+			</li>
+			<li style="float:right">
+				<div>
 					<form>
-						<input type="text" name="search" placeholder="Cerca prodotti">
-						<button type="submit">Cerca</button>
+						<input type="text" name="search" placeholder="Cerca prodotti" class="searchBar">
+						<a href="Cerca.jsp"><img src="./img/search.png" class="searchIcon"></a>
 					</form>
 				</div>
 			</li>
-
 		</ul>
-
 	</nav>
+	
 
 
 	<section>

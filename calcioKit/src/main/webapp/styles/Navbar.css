@@ -1,51 +1,61 @@
 @charset "ISO-8859-1";
-ul {
-	
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
+
+nav{
+	background-color: #404040;
+	color: white;
 }
 
-li {
- 
-  float: left;
+nav ul{
+	list-style-type: none;
+	margin: 0px;
+	padding: 0;
 }
 
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+nav li a{
+	text-decoration: none;
+	color: white;
+	padding: 20px;
 }
 
-li a:hover:not(.active) {
-  background-color: #111;
+nav li{
+	display: inline-block;
+	padding: 10px;
 }
+
+nav li:hover{
+	background-color: #737373; 
+}
+
 
 .active {
   background-color: #04AA6D;
 }
 
-#ricerca {
-  display: flex;
-  align-items: center;
+.cart{
+	widht: 15px;
+	height: 15px;
 }
 
-#ricerca input[type="text"] {
-  padding: 5px;
-  border: none;
-  border-radius: 5px;
+.searchIcon{
+	widht: 15px;
+	height: 15px;
+}
+.searchBar{
+  width: 190px;
+  height: 30px;
+  border: 0;
+  border-bottom: 2px solid grey;
+  outline: 0;
+  font-size: 1.1rem;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+  margin-right: 10px;
+  margin-top: -5px;
 }
 
-#ricerca button {
-  padding: 5px 10px;
-  border: none;
-  background-color: #4CAF50;
-  color: white;
-  border-radius: 5px;
-  margin-left: 10px;
-  cursor: pointer;
+.avatar{
+	widht: 15px;
+	height: 15px;
 }
+
