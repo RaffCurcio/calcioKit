@@ -32,7 +32,7 @@
 			<input type="submit" value="Login">
 		</div>
 		<div class="form-group">
-			<p>Se non sei registrato, <a href="registrazione.html">clicca qui</a> per registrarti.</p>
+			<p>Se non sei registrato, <a href="registrazione.html">clicca qui</a> per registrartia.</p>
 		</div>
 		
 	</form>
