@@ -5,8 +5,14 @@
 <head>
   <title>Registrazione - Sito di vendita maglie da calcio</title>
   <link rel="stylesheet" type="text/css" href="styles/Registrazione.css">
+  <link rel="stylesheet" type="text/css" href="styles/Homepage.css">
 </head>
 <body>
+	<header>
+		<div id="logo">
+			<img src="img/logo.jpg" alt="Logo del sito" id="ciao">
+		</div>
+	</header>
   <h1>Registrazione</h1>
   
   <form action="registrazione.jsp" method="post">
