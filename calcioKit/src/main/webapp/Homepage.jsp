@@ -4,7 +4,6 @@
 <title>Maglie da calcio - Sito di vendita</title>
 <link rel="stylesheet" type="text/css" href="styles/Homepage.css">
 <link rel="stylesheet" type="text/css" href="styles/Navbar.css">
-
 <script src='https://kit.fontawesome.com/a076d05399.js'
 	crossorigin='anonymous'></script>
 
@@ -83,20 +82,7 @@
 			</ul>
 		</div>
 	</section>
-	<script type="text/javascript">
-		var slideshow = document.getElementById('slideshow');
-		var images = slideshow.getElementsByTagName('img');
-		var currentImageIndex = 0;
-		var intervalTime = 5000;
-
-		function nextImage() {
-			images[currentImageIndex].classList.remove('active');
-			currentImageIndex = (currentImageIndex + 1) % images.length;
-			images[currentImageIndex].classList.add('active');
-		}
-
-		images[currentImageIndex].classList.add('active');
-		setInterval(nextImage, intervalTime);
-	</script>
+<script type="text/javascript" src="script/slideshow.js"></script>
+	
 </body>
 </html>

@@ -43,5 +43,8 @@
     Registrazione completata con successo per l'utente <%= username %>.
   </div>
   <% } %>
+
+<script type="text/javascript" src="script/registrazione.js"></script>
+
 </body>
 </html>
