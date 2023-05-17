@@ -8,11 +8,7 @@
   <link rel="stylesheet" type="text/css" href="styles/Homepage.css">
 </head>
 <body>
-	<header>
-		<div id="logo">
-			<img src="img/logo.jpg" alt="Logo del sito" id="ciao">
-		</div>
-	</header>
+	<jsp:include page="fragments/Header.jsp"/>
   <h1>Registrazione</h1>
   
   <form action="registrazione.jsp" method="post">
@@ -45,6 +41,6 @@
   <% } %>
 
 <script type="text/javascript" src="script/registrazione.js"></script>
-
+<jsp:include page="fragments/Footer.jsp"/>
 </body>
 </html>

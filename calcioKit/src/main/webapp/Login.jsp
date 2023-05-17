@@ -11,11 +11,7 @@
 
 </head>
 <body>
-	<header>
-		<div id="logo">
-			<img src="img/logo.jpg" alt="Logo del sito" id="ciao">
-		</div>
-	</header>
+	<jsp:include page="fragments/Header.jsp"/>
 
 	<h1>Login</h1>
 
@@ -41,7 +37,7 @@
 		</div>
 
 	</form>
-
+<jsp:include page="fragments/Footer.jsp"/>
 
 </body>
 </html>

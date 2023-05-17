@@ -7,6 +7,7 @@
 <link rel="stylesheet" type="text/css" href="styles/Catalogo.css">
 </head>
 <body>
+<jsp:include page="fragments/Header.jsp"/>
 	<h1>Catalogo</h1>
 
 	<table>
@@ -27,5 +28,6 @@
 		</tr>
 		<% } %>
 	</table>
+	<jsp:include page="fragments/Footer.jsp"/>
 </body>
 </html>
