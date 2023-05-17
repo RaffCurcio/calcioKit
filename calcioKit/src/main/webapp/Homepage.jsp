@@ -4,17 +4,15 @@
 <title>Maglie da calcio - Sito di vendita</title>
 <link rel="stylesheet" type="text/css" href="styles/Homepage.css">
 <link rel="stylesheet" type="text/css" href="styles/Navbar.css">
+<link rel="stylesheet" type="text/css" href="styles/Footer.css">
+
 <script src='https://kit.fontawesome.com/a076d05399.js'
 	crossorigin='anonymous'></script>
 
 </head>
 <body>
 
-	<header>
-		<div id="logo">
-			<img src="img/logo.jpg" alt="Logo del sito" id="ciao">
-		</div>
-	</header>
+	<jsp:include page="fragments/Header.jsp"/>
 	<nav>
 		<ul class="menu">
 			<li><a href="#">Home</a></li>
@@ -83,6 +81,7 @@
 		</div>
 	</section>
 <script type="text/javascript" src="script/slideshow.js"></script>
-	
+<jsp:include page="fragments/Footer.jsp"/>
+
 </body>
 </html>
