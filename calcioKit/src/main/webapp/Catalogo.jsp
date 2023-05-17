@@ -5,6 +5,7 @@
     <title>Catalogo Prodotti</title>
 </head>
 <body>
+	 <jsp:include page="fragments/Header.jsp"/>
     <h1>Catalogo Prodotti</h1>
     
     <%-- Importa le classi necessarie --%>
