@@ -2,7 +2,7 @@ CREATE SCHEMA calciokitdb;
 USE calciokitdb;
 
 CREATE TABLE Cliente (
-  username VARCHAR(50) NOT NULL,
+  username VARCHAR(50) NOT NULL UNIQUE,
   email VARCHAR(100) NOT NULL,
   pwd VARCHAR(50) NOT NULL,
   nome VARCHAR(50) NOT NULL,
@@ -83,6 +83,7 @@ CREATE TABLE Prodotto (
   prezzo DECIMAL(10, 2) NOT NULL,
   descrizione TEXT,
   iva_p DECIMAL(5, 2) NOT NULL,
+  path_immagine VARCHAR(255),
   nome_c VARCHAR(100) NOT NULL,
   FOREIGN KEY (nome_c) REFERENCES Catalogo (nome_catalogo)
   ON DELETE CASCADE ON UPDATE CASCADE 
