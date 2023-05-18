@@ -11,13 +11,6 @@
 
 
 
-
-
-
-
-
-
-
 /* Stili per la sezione principale */
 section {
   display: flex;
@@ -57,7 +50,7 @@ section a {
 
 /*CSS Slideshow*/ 
 #slideshow {
-  position: relative;
+  position: absolute;
   height: 500px;
   width: 100%;
   overflow: hidden;
@@ -77,3 +70,42 @@ section a {
   opacity: 1;
 }
 /*Fine CSS Slideshow*/
+
+#BestSeller{
+	position: absolute;
+	top: 870px;
+	left: 150px;
+	width: 380px;
+	box-shadow: 10px 10px 10px 10px #dedede;
+}
+#BestSeller_Text{
+	position: absolute;
+	right: 490px;
+	top: 1100px;
+}
+#OfferteDellaSettimana{
+	position: absolute;
+	width: 400px;
+	box-shadow: 10px 10px 10px 10px #dedede;
+	right: 150px;
+	top: 870px;
+}
+#OfferteDellaSettimana_Text{
+	position: absolute;
+	right: 70px;
+	top: 1100px;
+	font-family: Helvetica, Arial, sans-serif;
+}
+#UltimiArrivi{
+	position: absolute;
+	width: 400px;
+	box-shadow: 10px 10px 10px 10px #dedede;
+	right: 370px;
+	top: 1170px;
+}
+#UltimiArrivi_Text{
+	position: absolute;
+	right: 255px;
+	top: 1400px;
+	font-family: Arial, Verdana, sans-serif;
+}

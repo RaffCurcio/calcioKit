@@ -55,29 +55,23 @@
 				src="img/image5.jpg">
 		</div>
 
-		<div>
-			<h2>Best seller</h2>
-			<ul>
-				<li><a href="#">Maglia squadra X</a></li>
-				<li><a href="#">Maglia squadra Y</a></li>
-				<li><a href="#">Maglia squadra Z</a></li>
-			</ul>
+		<div id="BestSeller">
+			<a href=""><img src="./img/BestSeller.png"></a>
 		</div>
-		<div>
-			<h2>Offerte della settimana</h2>
-			<ul>
-				<li><a href="#">Maglia squadra X</a></li>
-				<li><a href="#">Maglia squadra Y</a></li>
-				<li><a href="#">Maglia squadra Z</a></li>
-			</ul>
+		<div id="BestSeller_Text">
+			<p>Best seller</p>
 		</div>
-		<div>
-			<h2>Ultimi arrivi</h2>
-			<ul>
-				<li><a href="#">Maglia squadra A</a></li>
-				<li><a href="#">Maglia squadra B</a></li>
-				<li><a href="#">Maglia squadra C</a></li>
-			</ul>
+		<div id="OfferteDellaSettimana">
+			<a href=""><img src="./img/OfferteDellaSettimana.jpg"></a>
+		</div>
+		<div id="OfferteDellaSettimana_Text">
+				<p>Offerte della settimana</p>
+		</div>
+		<div id="UltimiArrivi">
+			<a href=""><img src="./img/UltimiArrivi.jpg"></a>
+		</div>
+		<div id="UltimiArrivi_Text">
+			<p>ULTIMI ARRIVI</p>
 		</div>
 	</section>
 <script type="text/javascript" src="script/slideshow.js"></script>
