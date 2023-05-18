@@ -36,7 +36,7 @@ public class ServletProdotti extends HttpServlet {
 
         	// Passa i prodotti alla pagina catalogo.jsp
         	request.setAttribute("prodotti", prodotti);
-        	request.getRequestDispatcher("Catalogo.jsp").forward(request, response);
+        	request.getRequestDispatcher("/Catalogo.jsp").forward(request, response);
 
         } catch (SQLException e) {
             e.printStackTrace();

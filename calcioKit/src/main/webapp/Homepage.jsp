@@ -4,7 +4,7 @@
 <title>Maglie da calcio - Sito di vendita</title>
 <link rel="stylesheet" type="text/css" href="styles/Homepage.css">
 <link rel="stylesheet" type="text/css" href="styles/Navbar.css">
-<link rel="stylesheet" type="text/css" href="styles/Footer.css">
+
 
 <script src='https://kit.fontawesome.com/a076d05399.js'
 	crossorigin='anonymous'></script>

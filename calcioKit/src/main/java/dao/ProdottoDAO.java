@@ -34,8 +34,10 @@ public class ProdottoDAO {
                 prodotto.setDescrizione(resultSet.getString("descrizione"));
                 prodotto.setIva(resultSet.getDouble("iva_p"));
                 prodotto.setPrezzo(resultSet.getDouble("prezzo"));
+                prodotto.setPath_immagine(resultSet.getString("path_immagine"));
                 prodotto.setNomeCatalogo(resultSet.getString("nome_c"));
                 prodotti.add(prodotto);
+                
             }
             return prodotti;
         }

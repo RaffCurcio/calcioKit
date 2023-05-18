@@ -4,7 +4,7 @@ import javax.sql.DataSource;
 import com.mysql.cj.jdbc.MysqlDataSource;
 
 public class DBConnection {
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/CalcioKit";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/calciokitdb";
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "root";
 
