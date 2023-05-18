@@ -12,9 +12,13 @@
 		<!-- Includi il tuo header personalizzato qui -->
 		<%@ include file="fragments/Header.jsp"%>
 	</div>
+	
 	<h1>Catalogo Prodotti</h1>
-	<div id="catalogoContainer">
-		<%-- Recupera la lista dei prodotti dalla richiesta --%>
+	<!-- ... codice precedente ... -->
+	
+
+<div id="catalogoContainer">
+<%-- Recupera la lista dei prodotti dalla richiesta --%>
 		<%@ page import="java.util.List"%>
 		<%@ page import="model.Prodotto"%>
 		<%
@@ -29,28 +33,22 @@
 		<%
 		} else {
 		%>
-		<%
-		for (Prodotto prodotto : prodotti) {
-		%>
-		<div class="prodotto">
-			<img src="<%=prodotto.getPath_immagine()%>"
-				alt="<%=prodotto.getNomeProdotto()%>">
-			<h2><%=prodotto.getNomeProdotto()%></h2>
-			<p>
-				Prezzo:
-				<%=prodotto.getPrezzo()%></p>
-			<p>
-				Descrizione:
-				<%=prodotto.getDescrizione()%></p>
-			<button onclick="aggiungiAlCarrello(<%=prodotto.getIdProdotto()%>)">Aggiungi
-				al carrello</button>
-		</div>
-		<%
-		}
-		%>
-		<%
-		}
-		%>
+  <% for (Prodotto prodotto : prodotti) { %>
+    <div class="prodotto">
+      <a href="ProductDetailsServlet?id=<%= prodotto.getIdProdotto() %>">
+        <script type="text/javascript" src="script/imageZoom.js"></script>
+    	<img onmouseover="bigImg(this)" onmouseout="normalImg(this)" border="0" src="<%= prodotto.getPath_immagine() %>" height="180" width="180">
+      </a>
+      <h2><%= prodotto.getNomeProdotto() %></h2>
+      <p>Prezzo: <%= prodotto.getPrezzo() %></p>
+      <p>Descrizione: <%= prodotto.getDescrizione() %></p>
+      <button onclick="aggiungiAlCarrello(<%= prodotto.getIdProdotto() %>)">Aggiungi al carrello</button>
+    </div>
+  <% }} %>
+</div>
+
+<!-- ... codice successivo ... -->
+
 	</div>
 	<div class="footer">
 		<!-- Includi il tuo footer personalizzato qui -->
