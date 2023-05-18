@@ -7,7 +7,7 @@
 	</header>
 	<nav>
 		<ul class="menu">
-			<li><a href="#">Home</a></li>
+			<li><a href="Homepage.jsp">Home</a></li>
 			<li><a href="Catalogo">Prodotti</a></li>
 			<li><a href="#">Contatti</a></li>
 			<li style="float:right">
