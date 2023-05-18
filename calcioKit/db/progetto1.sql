@@ -287,24 +287,24 @@ INSERT INTO catalogo (nome_catalogo, descrizione_cat)
 VALUES ('Catalogo E', 'Descrizione del Catalogo E');
 
 -- Inserimento di un prodotto
-INSERT INTO prodotto (ID_prodotto, nome_prodotto, prezzo, descrizione, iva_p, nome_c)
-VALUES (1, 'Prodotto 1', 10.99, 'Descrizione del prodotto 1', 22.00, 'Catalogo A');
+INSERT INTO prodotto (ID_prodotto, nome_prodotto, prezzo, descrizione, iva_p, path_immagine , nome_c)
+VALUES (1, 'Maglia Maradona', 10.99, 'Maglia Maradona Vintage', 22.00, 'img/magliaMaradona.jpg ' , 'Catalogo A');
 
 -- Inserimento di un altro prodotto
-INSERT INTO prodotto (ID_prodotto, nome_prodotto, prezzo, descrizione, iva_p, nome_c)
-VALUES (2, 'Prodotto 2', 19.99, 'Descrizione del prodotto 2', 15.50, 'Catalogo A');
+INSERT INTO prodotto (ID_prodotto, nome_prodotto, prezzo, descrizione, iva_p, path_immagine , nome_c)
+VALUES (2, 'Maglia Milan', 19.99, 'Maglia Milan 2022/2023', 15.50, 'img/magliaMilan.jpg ' , 'Catalogo A');
 
 -- Inserimento di un altro prodotto
-INSERT INTO prodotto (ID_prodotto, nome_prodotto, prezzo, descrizione, iva_p, nome_c)
-VALUES (3, 'Prodotto 3', 7.50, 'Descrizione del prodotto 3', 20.00, 'Catalogo B');
+INSERT INTO prodotto (ID_prodotto, nome_prodotto, prezzo, descrizione, iva_p, path_immagine , nome_c)
+VALUES (3, 'Maglia Napoli', 7.50, 'Maglia Napoli 2022/2023', 20.00, 'img/magliaNapoli.jpg ' ,'Catalogo B');
 
 -- Inserimento di un altro prodotto
-INSERT INTO prodotto (ID_prodotto, nome_prodotto, prezzo, descrizione, iva_p, nome_c)
-VALUES (4, 'Prodotto 4', 24.99, 'Descrizione del prodotto 4', 12.80, 'Catalogo C');
+INSERT INTO prodotto (ID_prodotto, nome_prodotto, prezzo, descrizione, iva_p, path_immagine , nome_c)
+VALUES (4, 'Maglia Napoli San Valentino', 24.99, 'Maglia Napoli San Valentino', 12.80,'img/magliaNapoliSanValentino.jpg ' , 'Catalogo C');
 
 -- Inserimento di un altro prodotto
-INSERT INTO prodotto (ID_prodotto, nome_prodotto, prezzo, descrizione, iva_p, nome_c)
-VALUES (5, 'Prodotto 5', 15.00, 'Descrizione del prodotto 5', 18.20, 'Catalogo C');
+INSERT INTO prodotto (ID_prodotto, nome_prodotto, prezzo, descrizione, iva_p, path_immagine , nome_c)
+VALUES (5, 'Maglia Roma', 15.00, 'Maglia Roma 2022/2023', 18.20, 'img/magliaRoma.jpg ' , 'Catalogo C');
 
 -- Inserimento del primo magazzino
 INSERT INTO magazzino (nome_magazzino, indirizzo, città)
