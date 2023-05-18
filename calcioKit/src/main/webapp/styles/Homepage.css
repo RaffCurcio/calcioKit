@@ -5,6 +5,21 @@
   box-sizing: border-box;
 }
 
+.row::after{
+	content: "";
+	clear: both;
+	display: block;
+}
+
+
+@media screen and (max-width: 1200px){
+	body{
+		width: 1000px;
+		margin: 0 auto;
+	}
+}
+
+
 /* Stili per l'intestazione */
 
 
