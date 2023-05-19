@@ -31,22 +31,19 @@
 
 		<div id="BestSeller">
 			<a href=""><img src="./img/BestSeller.png"></a>
-		</div>
-		<div id="BestSeller_Text">
 			<p>Best seller</p>
 		</div>
+		
 		<div id="OfferteDellaSettimana">
 			<a href=""><img src="./img/OfferteDellaSettimana.jpg"></a>
+			<p>Offerte della settimana</p>
 		</div>
-		<div id="OfferteDellaSettimana_Text">
-				<p>Offerte della settimana</p>
-		</div>
+		
 		<div id="UltimiArrivi">
 			<a href=""><img src="./img/UltimiArrivi.jpg"></a>
-		</div>
-		<div id="UltimiArrivi_Text">
 			<p>ULTIMI ARRIVI</p>
 		</div>
+		
 	</section>
 <script type="text/javascript" src="script/slideshow.js"></script>
 <jsp:include page="fragments/Footer.jsp"/>
