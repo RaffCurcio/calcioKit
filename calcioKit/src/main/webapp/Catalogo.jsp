@@ -42,7 +42,12 @@
       <h2><%= prodotto.getNomeProdotto() %></h2>
       <p>Prezzo: <%= prodotto.getPrezzo() %></p>
       <p>Descrizione: <%= prodotto.getDescrizione() %></p>
-      <button onclick="aggiungiAlCarrello(<%= prodotto.getIdProdotto() %>)" action>Aggiungi al carrello</button>
+      <form action="AggiungiAlCarrello" method="POST">
+							<input type="hidden" name="idProdotto"
+								value="<%=prodotto.getIdProdotto()%>"> <input
+								type="number" name="quantita" value="1" min="1"> <input
+								type="submit" value="Add to Cart">
+						</form>
     </div>
   <% }} %>
 </div>

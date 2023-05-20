@@ -4,18 +4,14 @@ public class Composizione {
     private int idProdotto;
     private int idOrdine;
     private double prezzo_vendita;
+    private int quantita_prodotto;
     private String username;
     private String email;
 
     public Composizione() {
     }
 
-    public Composizione(int idProdotto, int idOrdine, double prezzo_vendita) {
-        this.idProdotto = idProdotto;
-        this.idOrdine = idOrdine;
-        this.prezzo_vendita = prezzo_vendita;
-        
-    }
+   
 
     // Metodi getter e setter
 
@@ -57,6 +53,18 @@ public class Composizione {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+
+
+	public int getQuantita_prodotto() {
+		return quantita_prodotto;
+	}
+
+
+
+	public void setQuantita_prodotto(int quantita_prodotto) {
+		this.quantita_prodotto = quantita_prodotto;
 	}
     
     
