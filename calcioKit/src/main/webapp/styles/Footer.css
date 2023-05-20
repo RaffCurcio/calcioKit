@@ -1,6 +1,7 @@
 footer{
+	position: absolute;
+	display: inline;
 	font-size: 100%;
 	text-align: center;
-	line-height: normal;
-	margin-top: 30px;
+	bottom: 0px;
 }

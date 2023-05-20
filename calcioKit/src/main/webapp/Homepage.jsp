@@ -16,40 +16,46 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"> 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+
+<script type="text/javascript" src="script/slideshow.js"></script>
 </head>
 <body>
 
 	<jsp:include page="fragments/Header.jsp"/>	
-	
-	<section>
-		<!--<img src="immagine-sito.jpg" alt="Immagine del sito" />-->
-		<div id="slideshow">
-			<img src="img/image1.jpg"> <img src="img/image2.jpg"> <img
-				src="img/image3.jpg"> <img src="img/image4.jpg"> <img
-				src="img/image5.jpg">
+ 
+		<div id="slider">
+			<div id="img_slider">
+				<img src="img/Slider1.jpg">
+			</div>
 		</div>
-
+  
+	<div id="categorie">
 		<div id="BestSeller">
 			<a href=""><img src="./img/BestSeller.png"></a>
-		</div>
-		<div id="BestSeller_Text">
+			
+			<div id="BestSeller_Text">
 			<p>Best seller</p>
+		</div>
+		</div>
+		
+		<div id="UltimiArrivi" allign="bottom">
+			<a href=""><img src="./img/UltimiArrivi.jpg"></a>
+			
+			<div id="UltimiArrivi_Text">
+			<p>ULTIMI ARRIVI</p>
+			</div>
 		</div>
 		<div id="OfferteDellaSettimana">
 			<a href=""><img src="./img/OfferteDellaSettimana.jpg"></a>
-		</div>
-		<div id="OfferteDellaSettimana_Text">
+			
+			<div id="OfferteDellaSettimana_Text">
 				<p>Offerte della settimana</p>
 		</div>
-		<div id="UltimiArrivi">
-			<a href=""><img src="./img/UltimiArrivi.jpg"></a>
 		</div>
-		<div id="UltimiArrivi_Text">
-			<p>ULTIMI ARRIVI</p>
-		</div>
-	</section>
-<script type="text/javascript" src="script/slideshow.js"></script>
-<jsp:include page="fragments/Footer.jsp"/>
 
+		</div>
+		
+		
+		<jsp:include page="fragments/Footer.jsp"/>
 </body>
 </html>

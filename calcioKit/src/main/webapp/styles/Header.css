@@ -1,17 +1,10 @@
-header {
-	position: fixed;
-	width: 100%;
-	top:0;
-	right: 0;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	background: transparent;
-	padding: 28px 12%;
-	transition: all .50s ease;
+
+header .top{
+	height: auto;
+	background: #737373;
+	margin: 10px 10px 0px 10px
 }
 
-.logo {
-	display: flex;
-	align-items: center;
+header .top img#logo {
+	float: right;
 }

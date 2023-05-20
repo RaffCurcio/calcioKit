@@ -1,8 +1,7 @@
 /* Reset CSS */
-* {
+*{
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 .row::after{
@@ -10,119 +9,133 @@
 	clear: both;
 	display: block;
 }
+body{
+	display:flex;
+	align-items: center;
+	justify-content: center;
+}
 
+
+
+
+/*CSS Slideshow*/ 
+#slider{
+	position: absolute;
+	top: 200px;
+	width: 100%;
+	height: 100%;
+	display:block;
+	overflow: hidden;
+	z-index: -1;
+	align-items: center;
+	justify-content: center;
+}
+
+#img_slider{
+	width: 100%;
+	height: 20%;
+}
+
+#img_slider img{
+	width: 100%;
+	display: none;
+}
+
+#img_slider img:nth-child(1){
+	display:block;
+}
+
+
+
+#categorie{
+ 	position: absolute;
+ 	display: flex;
+ 	width: 70%;
+ 	height: 60%;
+	top: 160%;
+	left: 50%;
+	z-index: -1;
+	justify-content: space-around;
+	transform: translate(-50%, -50%);
+	min-height: 100vh;
+}
+
+#BestSeller{
+	position: relative;
+	width: 400px;
+	height: 250px;
+	margin-top: 0px;
+	diaplay: block;
+	float: left;
+	padding: 0px;
+	z-index: -1;
+	box-shadow: 10px 10px 10px 10px #dedede;
+}
+#BestSeller img{
+	heght: 100px;
+	width: 100%;
+}
+#BestSeller_Text{
+	position: relative;
+	margin-top: 10px;
+	font-size: 20px;
+	text-transform: uppercase;
+	font-family: Helvetica, Arial, sans-serif;
+}
+#OfferteDellaSettimana{
+	position: relative;
+	float: right;
+	width: 400px;
+	height: 250px;
+	margin-top: 0px;
+	diaplay: block;
+	padding: 0px;
+	z-index: -1;
+	box-shadow: 10px 10px 10px 10px #dedede;
+}
+#OfferteDellaSettimana img{
+	heght: 100px;
+	width: 100%;
+}
+#OfferteDellaSettimana_Text{
+	position: relative;
+	margin-top: 10px;
+	font-size: 20px;
+	text-transform: uppercase;
+	font-family: Helvetica, Arial, sans-serif;
+}
+#UltimiArrivi{
+	position: absolute;
+	width: 400px;
+	height: 250px;
+	bottom: 0;
+	padding: 0px;
+	z-index: -1;
+	box-shadow: 10px 10px 10px 10px #dedede;
+}
+#UltimiArrivi img{
+	heght: 100px;
+	width: 100%;
+}
+#UltimiArrivi_Text{
+	position: relative;
+	align-items: center;
+	margin-top: -10px;
+	font-size: 20px;
+	text-transform: uppercase;
+	font-family: Helvetica, Arial, sans-serif;
+}
 
 @media screen and (max-width: 1200px){
 	body{
 		width: 1000px;
 		margin: 0 auto;
 	}
-}
-
-
-/* Stili per l'intestazione */
-
-
-
-
-
-/* Stili per la sezione principale */
-section {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 20px;
-}
-
-section img {
-  width: 100%;
-  margin-bottom: 20px;
-}
-
-section div {
-  width: calc(33.33% - 20px);
-  margin-bottom: 20px;
-}
-
-section h2 {
-  margin-bottom: 10px;
-}
-
-section ul {
-  list-style: none;
-}
-
-section li {
-  margin-bottom: 10px;
-}
-
-section a {
-  color: #333;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-
-/*CSS Slideshow*/ 
-#slideshow {
-  position: relative;
-  height: 500px;
-  align-items: center;
-  width: 100%;
-  overflow: hidden;
-  margin-top: 280px;
-}
-
-#slideshow img {
-  position: absolute;;
-  top: 100;
-  left: 100;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-
-#slideshow img.active {
-  opacity: 1;
-}
-/*Fine CSS Slideshow*/
-
-#BestSeller{
-	position: absolute;
-	top: 870px;
-	left: 150px;
-	width: 380px;
-	box-shadow: 10px 10px 10px 10px #dedede;
-}
-#BestSeller_Text{
-	position: absolute;
-	right: 490px;
-	top: 1100px;
-}
-#OfferteDellaSettimana{
-	position: absolute;
-	width: 400px;
-	box-shadow: 10px 10px 10px 10px #dedede;
-	right: 150px;
-	top: 870px;
-}
-#OfferteDellaSettimana_Text{
-	position: absolute;
-	right: 70px;
-	top: 1100px;
-	font-family: Helvetica, Arial, sans-serif;
-}
-#UltimiArrivi{
-	position: absolute;
-	width: 400px;
-	box-shadow: 10px 10px 10px 10px #dedede;
-	right: 370px;
-	top: 1170px;
-}
-#UltimiArrivi_Text{
-	position: absolute;
-	right: 255px;
-	top: 1400px;
-	font-family: Arial, Verdana, sans-serif;
+	#categorie{
+	
+		position: absolute;
+		display: block;
+		width: width: 70%;
+		height: auto;
+	}
 }

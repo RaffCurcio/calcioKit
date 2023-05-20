@@ -14,12 +14,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"> 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
-<header>
-		<div id="logo">
-			<img src="img/logo.jpg" alt="Logo del sito" id="ciao">
+<header class="top">
+		<div id="headerLogo">
+			<img id="logo" src="img/logo.jpg" alt="Logo del sito">
 		</div>
 	</header>
-	
 	<nav>
 		<ul class="navbar">
 			<li><a href="Homepage.jsp" class="active">Home</a></li>
