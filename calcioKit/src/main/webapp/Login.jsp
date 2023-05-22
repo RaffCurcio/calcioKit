@@ -15,7 +15,7 @@
 
 	<h1>Login</h1>
 
-	<form action="loginProcess.jsp" method="post">
+	<form action="login" method="post">
 		<div class="form-group">
 			<label for="username">Username:</label> <input type="text"
 				placeholder="Inserire username" id="username" name="username"

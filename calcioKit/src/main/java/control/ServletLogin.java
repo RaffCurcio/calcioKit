@@ -37,7 +37,8 @@ public class ServletLogin extends HttpServlet {
 		List<Composizione> composizioni = null;
 
 		try {
-			cliente = clienteDAO.getClienteByUsernameAndPassword(username, password);
+			cliente = clienteDAO.getClienteByUsernamePassword(username, password);
+			System.out.println(cliente.getEmail());
 		} catch (SQLException e) {
 			response.sendRedirect("error.jsp");
 			
@@ -47,7 +48,7 @@ public class ServletLogin extends HttpServlet {
 			try {
 				
 				composizioni = composizioneDAO.getComposizioniByUsernameAndEmail(cliente.getUsername(),cliente.getEmail());
-
+				
 			} catch (SQLException e) {
 				response.sendRedirect("error.jsp");
 			}

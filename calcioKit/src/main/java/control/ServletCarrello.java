@@ -14,7 +14,7 @@ package control;
 	import model.Composizione;
 	import model.Cliente;
 
-	@WebServlet("/AddToCart")
+	@WebServlet("/AggiungiAlCarrello")
 	public class ServletCarrello extends HttpServlet {
 
 		private static final long serialVersionUID = 6L;
@@ -22,11 +22,11 @@ package control;
 		@Override
 		protected void doPost(HttpServletRequest request, HttpServletResponse response)
 				throws ServletException, IOException {
-			// Get the product ID and quantity from the request parameters
+			// Get the product ID and quantita from the request parameters
 			String referer = request.getHeader("referer");
 
-			int productId = Integer.parseInt(request.getParameter("productId"));
-			int quantity = Integer.parseInt(request.getParameter("quantity"));
+			int idProdotto = Integer.parseInt(request.getParameter("idProdotto"));
+			int quantita = Integer.parseInt(request.getParameter("quantita"));
 
 			// Get the current cliente from the session
 			HttpSession session = request.getSession();
@@ -41,9 +41,9 @@ package control;
 			boolean productExists = false;
 			for (Composizione composizione : carrello) {
 				
-				if (composizione.getIdProdotto() == productId) {
-					// Update the quantity of the existing carrello item
-					//composizione.setQuantity(composizione.getQuantity() + quantity);
+				if (composizione.getIdProdotto() == idProdotto) {
+					// Update the quantita of the existing carrello item
+					composizione.setQuantita_prodotto(composizione.getQuantita_prodotto() + quantita);
 					productExists = true;
 					
 					break;
@@ -52,12 +52,12 @@ package control;
 
 			// If the product does not exist in the carrello, create a new carrello item
 			if (!productExists) {
-				// Create a new carrello item with the specified product and quantity
+				// Create a new carrello item with the specified product and quantita
 				Composizione newComposizione = new Composizione();
-				newComposizione.setIdProdotto(productId);
+				newComposizione.setIdProdotto(idProdotto);
 				newComposizione.setUsername(cliente.getUsername());
 				newComposizione.setEmail(cliente.getEmail());
-				//newComposizione.setQuantity(quantity);
+				newComposizione.setQuantita_prodotto(quantita);
 				carrello.add(newComposizione);
 
 			}

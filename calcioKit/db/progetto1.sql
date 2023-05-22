@@ -91,27 +91,21 @@ CREATE TABLE Prodotto (
 
 CREATE TABLE composizione (
   id_prodotto INT NOT NULL,
-  id_ordine INT NOT NULL,
-  prezzo_prodotto DECIMAL(10,2) NOT NULL,
+  id_ordine INT ,
+  prezzo_prodotto DECIMAL(10,2) ,
+  quantita INT NOT NULL,
   username_cli VARCHAR(50) NOT NULL,
   email_cli VARCHAR(100) NOT NULL,
   FOREIGN KEY (id_prodotto) REFERENCES Prodotto (ID_prodotto),
   FOREIGN KEY (id_ordine) REFERENCES Ordine (ID_ordine),
-  FOREIGN KEY (username_cli, email_cli) REFERENCES Cliente (username, email)
-  ON DELETE CASCADE
+  FOREIGN KEY (username_cli, email_cli) REFERENCES Cliente (username, email) ON DELETE CASCADE,
+  CONSTRAINT uk_product_user UNIQUE (username_cli, email_cli , id_prodotto)
+ 
   );
 
-);
 
-ALTER TABLE composizione
-ADD FOREIGN KEY (id_prodotto) REFERENCES Prodotto (ID_prodotto)
-ON UPDATE CASCADE
-ON DELETE CASCADE;
 
-ALTER TABLE composizione
-ADD FOREIGN KEY (id_ordine) REFERENCES Ordine (ID_ordine)
-ON UPDATE CASCADE
-ON DELETE CASCADE;
+
 
 CREATE TABLE Magazzino (
   nome_magazzino VARCHAR(100) NOT NULL,
@@ -336,5 +330,4 @@ VALUES ('Magazzino E', 'Via Garibaldi 11', 'Firenze');
 INSERT INTO locazione (Id_prod, nome_m, indirizzo_m, città_m)
 VALUES (1, 'Magazzino A', 'Via Roma 123', 'Milano');
 
-INSERT INTO composizione (id_prodotto, id_ordine , prezzo_prodotto , username_cli , email_cli)
-VALUES (1, 1 , 50 , 'john.doe', 'john.doe@example.com');
+

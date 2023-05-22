@@ -59,20 +59,34 @@ public class ClienteDAO {
         return cliente;
     }
     
-    public Cliente getClienteByUsernameAndPassword(String username, String password) throws SQLException {
-        String query = "SELECT * FROM Cliente WHERE username = ? AND password = ?";
-        try (Connection conn = dataSource.getConnection();
-             PreparedStatement statement = conn.prepareStatement(query)) {
-            statement.setString(1, username);
-            statement.setString(2, password);
-            try (ResultSet resultSet = statement.executeQuery()) {
-                if (resultSet.next()) {
-                    return extractClienteFromResultSet(resultSet);
-                }
-            }
-        }
-        return null;
-    }
+    public Cliente getClienteByUsernamePassword(String Username, String Password) throws SQLException {
+		String query = "SELECT * FROM Cliente WHERE username = ? AND pwd = ?";
+
+		try (Connection connection = dataSource.getConnection();
+				PreparedStatement statement = connection.prepareStatement(query)) {
+			statement.setString(1, Username);
+			statement.setString(2, Password);
+
+			try (ResultSet resultSet = statement.executeQuery()) {
+				if (resultSet.next()) {
+					Cliente cliente = new Cliente();
+					cliente.setUsername(resultSet.getString("username"));
+					cliente.setPassword(resultSet.getString("pwd"));
+					cliente.setEmail(resultSet.getString("email"));
+					cliente.setCap(resultSet.getString("cap"));
+					cliente.setCittà(resultSet.getString("città"));
+					cliente.setCognome(resultSet.getString("cognome"));
+					cliente.setNome(resultSet.getString("nome"));
+					cliente.setIndirizzo(resultSet.getString("indirizzo"));
+					cliente.setProvincia(resultSet.getString("provincia"));
+					
+					return cliente;
+				}
+			}
+		}
+
+		return null;
+	}
 
 }
 
