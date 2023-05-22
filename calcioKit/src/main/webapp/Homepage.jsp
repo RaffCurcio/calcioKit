@@ -22,12 +22,19 @@
 
 	<jsp:include page="fragments/Header.jsp"/>	
 	
+	<!-- NAVBAR -->
 		<nav>
+		
+		<!-- ELEMENTI DI NAVIGAZIONE -->
+			
 		<ul class="navbar">
 			<li><a href="Homepage.jsp" class="active">Home</a></li>
 			<li><a href="Catalogo">Prodotti</a></li>
 			<li><a href="#">Contatti</a></li>
 		</ul>
+		
+		<!-- ELEMENTI PER L'UTENTE -->
+		
 			<div class="main">
 			<li>
 			<form class="input-box">
@@ -43,14 +50,18 @@
 				<a href="Registrazione.jsp">Register</a><li>
 			</div>
 			
+			<!-- BOTTONE MENU -->
+			
 			<div class="toggle-btn">
 				<a href=""><i class="ri-menu-line"></i></a>
 			</div>
 			
 	</nav>
+	
+	<!-- FINE NAVBAR -->
  
  
- 
+ <!-- CONTENUTO PAGINA -->
 		<div id="slider">
 			<div id="img_slider">
 				<img src="img/Slider1.jpg">
@@ -59,22 +70,14 @@
   
 	<div id="categorie">
 		<div id="BestSeller">
-			<a href=""><img src="./img/BestSeller.jpg"></a>
-			
-			<div id="BestSeller_Text">
-			<p>Best seller</p>
-		</div>
+			<a href=""><img src="./img/BestSeller2.png"></a>
 		</div>
 		
 		<div id="UltimiArrivi">
-			<a href=""><img src="./img/UltimiArrivi.jpg"></a>
-			
-			<div id="UltimiArrivi_Text">
-			<p>ULTIMI ARRIVI</p>
-			</div>
+			<a href=""><img src="./img/UltimiArrivi.png"></a>
 		</div>
 		<div id="OfferteDellaSettimana">
-			<a href=""><img src="./img/OfferteDellaSettimana.jpg"></a>
+			<a href=""><img src="./img/OfferteDellaSettimana.png"></a>
 			
 			<div id="OfferteDellaSettimana_Text">
 				<p>Offerte della settimana</p>
@@ -82,6 +85,7 @@
 
 		</div>
 	</div>
+	 <!-- FINE CONTENUTO PAGINA -->
 	<!-- 
 		<jsp:include page="fragments/Footer.jsp"/>
 		
@@ -101,5 +105,6 @@
 			: 'ri-menu-line'
 		</script>
 		-->
+		
 </body>
 </html>

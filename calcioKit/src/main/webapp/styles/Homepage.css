@@ -10,6 +10,7 @@
 	display: block;
 }
 body{
+	background-image: url("../img/background.jpg");
 	display:flex;
 	align-items: center;
 	justify-content: center;
@@ -18,7 +19,7 @@ body{
 
 
 
-/*CSS Slideshow*/ 
+/*CSS SLIDESHOW*/ 
 #slider{
 	position: absolute;
 	top: 200px;
@@ -46,8 +47,10 @@ body{
 	display:block;
 }
 
+/*	FINE CSS SLIDESHOW*/
 
 
+/*CSS CATEGORIE*/
 #categorie{
  	position: absolute;
  	display: flex;
@@ -67,67 +70,50 @@ body{
 	height: 350px;
 	overflow: hidden;
 	margin-top: 0px;
-	diaplay: block;
+	display: block;
 	float: left;
 	padding: 0px;
 	z-index: -1;
-	box-shadow: 10px 10px 10px 10px #dedede;
+	box-shadow: 10px 10px 10px 10px #386a40;
 }
 #BestSeller img{
-	heght: 100px;
+	hieght: 100%;
 	width: 100%;
-}
-#BestSeller_Text{
-	background-color: transparent;
-	position: relative;
-	margin-top: 10px;
-	font-size: 20px;
-	text-transform: uppercase;
-	font-family: Helvetica, Arial, sans-serif;
 }
 #OfferteDellaSettimana{
 	position: relative;
+	overflow: hidden;
 	float: right;
 	width: 500px;
 	height: 350px;
 	margin-top: 0px;
-	diaplay: block;
+	display: block;
 	padding: 0px;
 	z-index: -1;
-	box-shadow: 10px 10px 10px 10px #dedede;
+	box-shadow: 10px 10px 10px 10px #386a40;
 }
 #OfferteDellaSettimana img{
-	heght: 100px;
+	hieght: 100%;
 	width: 100%;
 }
-#OfferteDellaSettimana_Text{
-	position: relative;
-	margin-top: 10px;
-	font-size: 20px;
-	text-transform: uppercase;
-	font-family: Helvetica, Arial, sans-serif;
-}
 #UltimiArrivi{
-	position: ;
+	position: relative;
 	width: 500px;
 	height: 350px;
+	overflow: hidden;
 	bottom: 0;
 	padding: 0px;
 	z-index: -1;
-	box-shadow: 10px 10px 10px 10px #dedede;
+	box-shadow: 10px 10px 10px 10px #386a40;
 }
 #UltimiArrivi img{
-	heght: 100px;
+	heght: 100%;
 	width: 100%;
 }
-#UltimiArrivi_Text{
-	position: absoplute;
-	align-items: center;
-	margin-top: -10px;
-	font-size: 20px;
-	text-transform: uppercase;
-	font-family: Helvetica, Arial, sans-serif;
-}
+
+/*FINE CSS CATEGORIE*/
+
+/*CSS PER CONTENUTO RESPONSIVE*/
 
 @media screen and (max-width: 1200px){
 	body{
@@ -148,6 +134,30 @@ body{
 	#UltimiArrivi{
 		margin-top: 10%;
 	}
+}
+	
+	@media screen and (max-width: 1700px){
+	body{
+		width: 1000px;
+		margin: 0 auto;
+	}
+	#categorie{
+		padding: 20px;
+		top: 140%;
+		
+	}
+	#BestSeller{
+		margin-top: 10%;
+	}
+	#OfferteDellaSettimana{
+		margin-top: 10%;
+	}
+	#UltimiArrivi{
+		margin-top: 10%;
+	}
+}
+
+/*FINE CSS CONTENUTO RESPONSIVE*/
 	
 	
 	
