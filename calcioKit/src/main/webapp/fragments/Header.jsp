@@ -35,12 +35,27 @@
 			</form>
 			
 				<li><a href="Cart.jsp" class="cart"><i class="ri-shopping-cart-2-line"></i></a></li>
+				
+				<%
+				if (session.getAttribute("cliente") == null) {
+				%>
 				<a href="#" class="user"><i class="ri-user-fill"></i></a>
 				<a href="Login.jsp">Login</a>
 				<a href="Registrazione.jsp">Register</a>
+				<%
+				} else {
+				%>
+				<a href="#" class="user"><i class="ri-user-fill" style = "color:green"></i></a>
 				<a href="logout">Logout</a>
+				<%
+				}
+				%>
 				
 				<div class="bx bx-menu" id="menu-icon"></div>
 			</div>
 		
 	</nav>
+	
+	
+	
+	
