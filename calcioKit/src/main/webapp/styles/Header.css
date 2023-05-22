@@ -1,8 +1,15 @@
 
 header .top{
-	height: auto;
 	background: #737373;
-	margin: 10px 10px 0px 10px
+	margin: 10px 10px 0px 10px;
+}
+header {
+	display: inline-block;
+	align-items: center;
+	justify-content: space-between;
+	background: transparent;
+	padding: 50px 20%;
+	transition: all .50s ease;
 }
 
 header .top img#logo {

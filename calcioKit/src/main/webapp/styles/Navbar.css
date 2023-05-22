@@ -55,8 +55,7 @@ nav{
 	font-weigth: 500;
 	transition: all .50s ease;
 }
-.input-box
-{
+.input-box{
 	position: relative;
 	height: 30px;
   max-width: 200px;
@@ -94,7 +93,6 @@ nav{
 .input-box .button:active {
   transform: translateY(-50%) scale(0.98);
 }
-
 .user{
 	display: flex;
 	align-items: center;
@@ -105,38 +103,67 @@ nav{
 	margin-right: 7px;
 }
 .main a:hover{
-	color: #45412e;
+	color: var(--main-color);
 }
 .cart{
 	display: flex;
 	align-items: center;
 }
-#menu-icon{
-	font-size: 35px;
-	color: var(--text-color);
-	cursor: pointer;
-	z-index: 1000;
+.cart2{
 	display: none;
 }
-@media screen and (max-width: 1000px) {
-  .input-box{
-  	display: none;
-    height: 66px;
-    margin: 0 8px;
-  }
-}
 
-  .input-box i {
+.input-box i {
     left: 12px;
     font-size: 25px;
-  }
-  .input-box input {
+}
+.input-box input {
     padding: 0 112px 0 50px;
-  }
-  .input-box .button {
+}
+.input-box .button {
     right: 12px;
     font-size: 14px;
     padding: 8px 18px;
+}
+
+.ri-menu-line{
+	color: black;
+	display: none;
+}
+@media screen and (max-width: 1000px) {
+  .nav{
+	padding: 0 50px;
+	}
+  .user{
+  display: none;
+  }
+  .cart{
+  	display: none;
+  }
+  .cart2{
+  	display: flex;
+  }
+  .main{
+  	justify-content: space-evenly;
+  	height: 250px;
+  	position: absolute;
+  	top: 60px;
+  	left: 0;
+  	right: 0;
+  	width: 100vw;
+  	background: #434343;
+  	transition: 0.2s;
+  	flex-direction: column;
+  }
+  .main li{
+  	position: relative;
+  	display: flex;
+  	 width: max-content;
+  	padding: 5px;
+  }
+  
+  .ri-menu-line{
+  	display: inline;
   }
 }
 

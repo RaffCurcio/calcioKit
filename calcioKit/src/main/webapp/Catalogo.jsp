@@ -42,7 +42,7 @@
       <h2><%= prodotto.getNomeProdotto() %></h2>
       <p>Prezzo: <%= prodotto.getPrezzo() %></p>
       <p>Descrizione: <%= prodotto.getDescrizione() %></p>
-      <button onclick="aggiungiAlCarrello(<%= prodotto.getIdProdotto() %>)">Aggiungi al carrello</button>
+      <button onclick="aggiungiAlCarrello(<%= prodotto.getIdProdotto() %>)" action>Aggiungi al carrello</button>
     </div>
   <% }} %>
 </div>

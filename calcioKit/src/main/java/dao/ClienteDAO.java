@@ -58,5 +58,21 @@ public class ClienteDAO {
         cliente.setCap(resultSet.getString("cap"));
         return cliente;
     }
+    
+    public Cliente getClienteByUsernameAndPassword(String username, String password) throws SQLException {
+        String query = "SELECT * FROM Cliente WHERE username = ? AND password = ?";
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement statement = conn.prepareStatement(query)) {
+            statement.setString(1, username);
+            statement.setString(2, password);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    return extractClienteFromResultSet(resultSet);
+                }
+            }
+        }
+        return null;
+    }
+
 }
 

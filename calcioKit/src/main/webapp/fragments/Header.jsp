@@ -16,28 +16,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
 <header class="top">
 		<div id="headerLogo">
-			<img id="logo" src="img/logo.jpg" alt="Logo del sito">
+			<img id="logo" src="img/logo.png" alt="Logo del sito">
 		</div>
 	</header>
-	<nav>
-		<ul class="navbar">
-			<li><a href="Homepage.jsp" class="active">Home</a></li>
-			<li><a href="Catalogo">Prodotti</a></li>
-			<li><a href="#">Contatti</a></li>
-		</ul>
-			
-			<div class="main">
-			<form class="input-box">
-					<input type="text" placeholder="search" class="searchBar">
-					<a href="Cerca.jsp" class="button"><i class="ri-search-line"></i></a>
-			</form>
-			
-				<li><a href="#" class="cart"><i class="ri-shopping-cart-2-line"></i></a></li>
-				<a href="#" class="user"><i class="ri-user-fill"></i></a>
-				<a href="Login.jsp">Login</a>
-				<a href="Registrazione.jsp">Register</a>
-				
-				<div class="bx bx-menu" id="menu-icon"></div>
-			</div>
-		
-	</nav>
