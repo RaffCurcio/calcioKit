@@ -11,8 +11,9 @@ h1 {
 }
 
 form {
+  margin-top:300px;
   width: 300px;
-  margin: 0 auto;
+  /*margin: 0 auto;*/
   background-color: #fff;
   padding: 20px;
   border-radius: 5px;

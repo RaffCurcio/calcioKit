@@ -5,12 +5,13 @@ CREATE TABLE Cliente (
   username VARCHAR(50) NOT NULL UNIQUE,
   email VARCHAR(100) NOT NULL,
   pwd VARCHAR(50) NOT NULL,
-  nome VARCHAR(50) NOT NULL,
-  cognome VARCHAR(50)NOT NULL,
-  indirizzo VARCHAR(100) NOT NULL,
-  città VARCHAR(50) NOT NULL,
-  provincia VARCHAR(50) NOT NULL,
-  cap VARCHAR(10) NOT NULL,
+  nome VARCHAR(50) ,
+  cognome VARCHAR(50),
+  indirizzo VARCHAR(100) ,
+  citta VARCHAR(50) ,
+  provincia VARCHAR(50) ,
+  ruolo_cliente VARCHAR(50) ,
+  cap VARCHAR(10),
   PRIMARY KEY (username, email)
 ); 
 
@@ -110,17 +111,17 @@ CREATE TABLE composizione (
 CREATE TABLE Magazzino (
   nome_magazzino VARCHAR(100) NOT NULL,
   indirizzo VARCHAR(100) NOT NULL,
-  città VARCHAR(100) NOT NULL,
-  PRIMARY KEY (nome_magazzino, indirizzo, città)
+  citta VARCHAR(100) NOT NULL,
+  PRIMARY KEY (nome_magazzino, indirizzo, citta)
 );
 
 CREATE TABLE Locazione (
   Id_prod INT NOT NULL,
   nome_m VARCHAR(100) NOT NULL,
   indirizzo_m VARCHAR(100) NOT NULL,
-  città_m VARCHAR(100) NOT NULL,
+  citta_m VARCHAR(100) NOT NULL,
   FOREIGN KEY (Id_prod) REFERENCES Prodotto (ID_prodotto),
-  FOREIGN KEY (nome_m, indirizzo_m, città_m) REFERENCES Magazzino (nome_magazzino, indirizzo, città)
+  FOREIGN KEY (nome_m, indirizzo_m, citta_m) REFERENCES Magazzino (nome_magazzino, indirizzo, citta)
 );
 
 -- Aggiungi la clausola ON UPDATE CASCADE alla chiave esterna Id_prodotto
@@ -135,16 +136,16 @@ ADD CONSTRAINT fk_locazione_prodotto2
 FOREIGN KEY (Id_prod) REFERENCES Prodotto (ID_prodotto)
 ON DELETE CASCADE;
 
--- Aggiungi la clausola ON UPDATE CASCADE alla chiave esterna nome_magazzino, indirizzo_m, città_m
+-- Aggiungi la clausola ON UPDATE CASCADE alla chiave esterna nome_magazzino, indirizzo_m, citta_m
 ALTER TABLE locazione
 ADD CONSTRAINT fk_locazione_magazzino1
-FOREIGN KEY (nome_m, indirizzo_m, città_m) REFERENCES Magazzino (nome_magazzino, indirizzo, città)
+FOREIGN KEY (nome_m, indirizzo_m, citta_m) REFERENCES Magazzino (nome_magazzino, indirizzo, citta)
 ON UPDATE CASCADE;
 
--- Aggiungi la clausola ON DELETE CASCADE alla chiave esterna nome_magazzino, indirizzo_m, città_m
+-- Aggiungi la clausola ON DELETE CASCADE alla chiave esterna nome_magazzino, indirizzo_m, citta_m
 ALTER TABLE locazione
 ADD CONSTRAINT fk_locazione_magazzino2
-FOREIGN KEY (nome_m, indirizzo_m, città_m) REFERENCES Magazzino (nome_magazzino, indirizzo, città)
+FOREIGN KEY (nome_m, indirizzo_m, citta_m) REFERENCES Magazzino (nome_magazzino, indirizzo, citta)
 ON DELETE CASCADE;
 
 
@@ -164,20 +165,20 @@ ON DELETE CASCADE;
 
 
 
-INSERT INTO cliente (username, email, pwd, nome, cognome, indirizzo, città, provincia, cap)
-VALUES ('john.doe', 'john.doe@example.com', 'password', 'John', 'Doe', 'Via Roma 123', 'Milano', 'MI', '20100');
+INSERT INTO cliente (username, email, pwd, nome, cognome, indirizzo, citta, provincia, cap, ruolo_cliente)
+VALUES ('john.doe', 'john.doe@example.com', 'password', 'John', 'Doe', 'Via Roma 123', 'Milano', 'MI', '20100', 'admin');
 
-INSERT INTO cliente (username, email, pwd, nome, cognome, indirizzo, città, provincia, cap)
-VALUES ('jane.smith', 'jane.smith@example.com', 'password', 'Jane', 'Smith', 'Via Verdi 456', 'Roma', 'RM', '00100');
+INSERT INTO cliente (username, email, pwd, nome, cognome, indirizzo, citta, provincia, cap, ruolo_cliente)
+VALUES ('jane.smith', 'jane.smith@example.com', 'password', 'Jane', 'Smith', 'Via Verdi 456', 'Roma', 'RM', '00100' , 'cliente');
 
-INSERT INTO cliente (username, email, pwd, nome, cognome, indirizzo, città, provincia, cap)
-VALUES ('mark.williams', 'mark.williams@example.com', 'password', 'Mark', 'Williams', 'Via Italia 789', 'Torino', 'TO', '10100');
+INSERT INTO cliente (username, email, pwd, nome, cognome, indirizzo, citta, provincia, cap, ruolo_cliente)
+VALUES ('mark.williams', 'mark.williams@example.com', 'password', 'Mark', 'Williams', 'Via Italia 789', 'Torino', 'TO', '10100', 'cliente');
 
-INSERT INTO cliente (username, email, pwd, nome, cognome, indirizzo, città, provincia, cap)
-VALUES ('amy.johnson', 'amy.johnson@example.com', 'password', 'Amy', 'Johnson', 'Via Europa 10', 'Firenze', 'FI', '50100');
+INSERT INTO cliente (username, email, pwd, nome, cognome, indirizzo, citta, provincia, cap, ruolo_cliente)
+VALUES ('amy.johnson', 'amy.johnson@example.com', 'password', 'Amy', 'Johnson', 'Via Europa 10', 'Firenze', 'FI', '50100','cliente' );
 
-INSERT INTO cliente (username, email, pwd, nome, cognome, indirizzo, città, provincia, cap)
-VALUES ('peter.davis', 'peter.davis@example.com', 'password', 'Peter', 'Davis', 'Via Leonardo 23', 'Napoli', 'NA', '80100');
+INSERT INTO cliente (username, email, pwd, nome, cognome, indirizzo, citta, provincia, cap, ruolo_cliente)
+VALUES ('peter.davis', 'peter.davis@example.com', 'password', 'Peter', 'Davis', 'Via Leonardo 23', 'Napoli', 'NA', '80100' ,'cliente');
 
 INSERT INTO Ordine (ID_ordine, data_inserimento, prezzo_vendita, iva_cout, stato_ordine, username_cli, email_cli)
 VALUES
@@ -308,26 +309,26 @@ INSERT INTO prodotto (ID_prodotto, nome_prodotto, prezzo, descrizione, iva_p, pa
 VALUES (5, 'Maglia Roma', 15.00, 'Maglia Roma 2022/2023', 18.20, 'img/magliaRoma.jpg ' , 'Catalogo C');
 
 -- Inserimento del primo magazzino
-INSERT INTO magazzino (nome_magazzino, indirizzo, città)
+INSERT INTO magazzino (nome_magazzino, indirizzo, citta)
 VALUES ('Magazzino A', 'Via Roma 123', 'Milano');
 
 -- Inserimento del secondo magazzino
-INSERT INTO magazzino (nome_magazzino, indirizzo, città)
+INSERT INTO magazzino (nome_magazzino, indirizzo, citta)
 VALUES ('Magazzino B', 'Via Verdi 456', 'Roma');
 
 -- Inserimento del terzo magazzino
-INSERT INTO magazzino (nome_magazzino, indirizzo, città)
+INSERT INTO magazzino (nome_magazzino, indirizzo, citta)
 VALUES ('Magazzino C', 'Via Dante 789', 'Napoli');
 
 -- Inserimento del quarto magazzino
-INSERT INTO magazzino (nome_magazzino, indirizzo, città)
+INSERT INTO magazzino (nome_magazzino, indirizzo, citta)
 VALUES ('Magazzino D', 'Via Mazzini 10', 'Torino');
 
 -- Inserimento del quinto magazzino
-INSERT INTO magazzino (nome_magazzino, indirizzo, città)
+INSERT INTO magazzino (nome_magazzino, indirizzo, citta)
 VALUES ('Magazzino E', 'Via Garibaldi 11', 'Firenze');
 
-INSERT INTO locazione (Id_prod, nome_m, indirizzo_m, città_m)
+INSERT INTO locazione (Id_prod, nome_m, indirizzo_m, citta_m)
 VALUES (1, 'Magazzino A', 'Via Roma 123', 'Milano');
 
 

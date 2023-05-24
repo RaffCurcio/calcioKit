@@ -44,7 +44,7 @@
 				<%
 				} else {
 				%>
-				<a href="#" class="user"><i class="ri-user-fill" style = "color:green"></i></a>
+				<a href="ProfiloUtente.jsp" class="user"><i class="ri-user-fill" style = "color:green"></i></a>
 				<a href="logout">Logout</a>
 				<%
 				}

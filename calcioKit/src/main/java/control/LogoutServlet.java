@@ -37,8 +37,8 @@ public class LogoutServlet extends HttpServlet {
 					// Assuming you have a method in ComposizioneDAO to save multiple carrello items at once
 					composizioneDAO.saveAllComposizione(composizioni);
 				} catch (SQLException e) {
-				response.sendRedirect("error.jsp");
-
+				//response.sendRedirect("error.jsp");
+					System.out.println(e);
 				}
 			}
 

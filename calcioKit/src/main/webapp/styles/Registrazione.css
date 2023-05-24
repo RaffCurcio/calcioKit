@@ -18,6 +18,7 @@ h1 {
 }
 
 form {
+	margin-top:300px;
 	display: flex;
 	flex-direction: column;
 }

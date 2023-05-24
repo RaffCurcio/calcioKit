@@ -38,7 +38,7 @@ public class ServletLogin extends HttpServlet {
 
 		try {
 			cliente = clienteDAO.getClienteByUsernamePassword(username, password);
-			System.out.println(cliente.getEmail());
+			
 		} catch (SQLException e) {
 			response.sendRedirect("error.jsp");
 			

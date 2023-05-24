@@ -5,7 +5,7 @@
 <head>
 <title>Catalogo</title>
 <link rel="stylesheet" type="text/css" href="styles/Catalogo.css">
-<script src="scripts/catalogo.js"></script>
+
 </head>
 <body>
 	<div class="header">
