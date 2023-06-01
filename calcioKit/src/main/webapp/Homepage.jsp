@@ -23,42 +23,9 @@
 	<jsp:include page="fragments/Header.jsp"/>	
 	
 	<!-- NAVBAR -->
-		<nav>
-		
-		<!-- ELEMENTI DI NAVIGAZIONE -->
-			
-		<ul class="navbar">
-			<li><a href="Homepage.jsp" class="active">Home</a></li>
-			<li><a href="Catalogo">Prodotti</a></li>
-			<li><a href="#">Contatti</a></li>
-		</ul>
-		
-		<!-- ELEMENTI PER L'UTENTE -->
-		
-			<div class="main">
-			<li>
-			<form class="input-box">
-					<input type="text" placeholder="search" class="searchBar">
-					<a href="Cerca.jsp" class="button"><i class="ri-search-line"></i></a>
-			</form>
-			</li>
-				<li><a href="#" class="cart"><i class="ri-shopping-cart-2-line"></i></a></li>
-				<li><a href="#" class="cart2">Carrello</a></li>
-         
-				<a href="#" class="user"><i class="ri-user-fill"></i></a>
-				<li><a href="Login.jsp">Login</a>
-				<a href="Registrazione.jsp">Register</a><li>
-			</div>
-			
-			<!-- BOTTONE MENU -->
-			
-			<div class="toggle-btn">
-				<a href=""><i class="ri-menu-line"></i></a>
-			</div>
-			
-	</nav>
 	
-	<!-- FINE NAVBAR -->
+	
+			<!-- BOTTONE MENU -->
  
  
  <!-- CONTENUTO PAGINA -->

@@ -50,8 +50,10 @@
 				}
 				%>
 				
-				<div class="bx bx-menu" id="menu-icon"></div>
 			</div>
-		
+			
+		<div class="toggle-btn">
+				<a href=""><i class="ri-menu-line"></i></a>
+				</div>
 	</nav>
 	
