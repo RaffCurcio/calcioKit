@@ -4,63 +4,63 @@ import java.math.BigDecimal;
 import java.sql.Date;
 
 public class Spedizione {
-    private int idSpedizione;
-    private Date dataSpedizione;
-    private BigDecimal costiSpedizione;
-    private BigDecimal costiExtra;
-    private int idOrdine;
+	private int idSpedizione;
+	private Date dataSpedizione;
+	private BigDecimal costiSpedizione;
+	private BigDecimal costiExtra;
+	private int idOrdine;
 
-    public Spedizione() {
-    }
+	public Spedizione() {
+	}
 
-    public Spedizione(int idSpedizione, Date dataSpedizione, BigDecimal costiSpedizione, BigDecimal costiExtra, int idOrdine) {
-        this.idSpedizione = idSpedizione;
-        this.dataSpedizione = dataSpedizione;
-        this.costiSpedizione = costiSpedizione;
-        this.costiExtra = costiExtra;
-        this.idOrdine = idOrdine;
-    }
+	public Spedizione(int idSpedizione, Date dataSpedizione, BigDecimal costiSpedizione, BigDecimal costiExtra,
+			int idOrdine) {
+		this.idSpedizione = idSpedizione;
+		this.dataSpedizione = dataSpedizione;
+		this.costiSpedizione = costiSpedizione;
+		this.costiExtra = costiExtra;
+		this.idOrdine = idOrdine;
+	}
 
-    // Metodi getter e setter
+	// Metodi getter e setter
 
-    public int getIdSpedizione() {
-        return idSpedizione;
-    }
+	public BigDecimal getCostiExtra() {
+		return costiExtra;
+	}
 
-    public void setIdSpedizione(int idSpedizione) {
-        this.idSpedizione = idSpedizione;
-    }
+	public BigDecimal getCostiSpedizione() {
+		return costiSpedizione;
+	}
 
-    public Date getDataSpedizione() {
-        return dataSpedizione;
-    }
+	public Date getDataSpedizione() {
+		return dataSpedizione;
+	}
 
-    public void setDataSpedizione(Date dataSpedizione) {
-        this.dataSpedizione = dataSpedizione;
-    }
+	public int getIdOrdine() {
+		return idOrdine;
+	}
 
-    public BigDecimal getCostiSpedizione() {
-        return costiSpedizione;
-    }
+	public int getIdSpedizione() {
+		return idSpedizione;
+	}
 
-    public void setCostiSpedizione(BigDecimal costiSpedizione) {
-        this.costiSpedizione = costiSpedizione;
-    }
+	public void setCostiExtra(BigDecimal costiExtra) {
+		this.costiExtra = costiExtra;
+	}
 
-    public BigDecimal getCostiExtra() {
-        return costiExtra;
-    }
+	public void setCostiSpedizione(BigDecimal costiSpedizione) {
+		this.costiSpedizione = costiSpedizione;
+	}
 
-    public void setCostiExtra(BigDecimal costiExtra) {
-        this.costiExtra = costiExtra;
-    }
+	public void setDataSpedizione(Date dataSpedizione) {
+		this.dataSpedizione = dataSpedizione;
+	}
 
-    public int getIdOrdine() {
-        return idOrdine;
-    }
+	public void setIdOrdine(int idOrdine) {
+		this.idOrdine = idOrdine;
+	}
 
-    public void setIdOrdine(int idOrdine) {
-        this.idOrdine = idOrdine;
-    }
+	public void setIdSpedizione(int idSpedizione) {
+		this.idSpedizione = idSpedizione;
+	}
 }
-

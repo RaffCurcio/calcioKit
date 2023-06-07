@@ -10,6 +10,15 @@
 </head>
 <body>
 	<jsp:include page="fragments/Header.jsp"/>
+	<%
+	if (request.getAttribute("errorMessage") != null) {
+	%>
+	<div class="error">
+		<%=request.getAttribute("errorMessage")%>
+	</div>
+	<%
+	}
+	%>
 <form action="registrazione" method="post">
     <label for="username">Username:</label>
     <input type="text" placeholder="Inserire username" id="username" name="username" required>
@@ -37,9 +46,7 @@
       
       // Esempio di messaggio di conferma
   %>
-  <div class="message">
-    Registrazione completata con successo per l'utente <%= username %>.
-  </div>
+  
   <% } %>
 
 <script type="text/javascript" src="script/registrazione.js"></script>

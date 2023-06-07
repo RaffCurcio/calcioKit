@@ -10,7 +10,7 @@
 	display: block;
 }
 body{
-	background-image: url("../img/background.jpg");
+	/*background-image: url("../img/background.jpg");*/
 	display:flex;
 	align-items: center;
 	justify-content: center;

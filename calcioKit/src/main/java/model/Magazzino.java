@@ -1,43 +1,42 @@
 package model;
 
 public class Magazzino {
-    private String nomeMagazzino;
-    private String indirizzo;
-    private String città;
+	private String nomeMagazzino;
+	private String indirizzo;
+	private String città;
 
-    public Magazzino() {
-    }
+	public Magazzino() {
+	}
 
-    public Magazzino(String nomeMagazzino, String indirizzo, String città) {
-        this.nomeMagazzino = nomeMagazzino;
-        this.indirizzo = indirizzo;
-        this.città = città;
-    }
+	public Magazzino(String nomeMagazzino, String indirizzo, String città) {
+		this.nomeMagazzino = nomeMagazzino;
+		this.indirizzo = indirizzo;
+		this.città = città;
+	}
 
-    // Metodi getter e setter
+	// Metodi getter e setter
 
-    public String getNomeMagazzino() {
-        return nomeMagazzino;
-    }
+	public String getCittà() {
+		return città;
+	}
 
-    public void setNomeMagazzino(String nomeMagazzino) {
-        this.nomeMagazzino = nomeMagazzino;
-    }
+	public String getIndirizzo() {
+		return indirizzo;
+	}
 
-    public String getIndirizzo() {
-        return indirizzo;
-    }
+	public String getNomeMagazzino() {
+		return nomeMagazzino;
+	}
 
-    public void setIndirizzo(String indirizzo) {
-        this.indirizzo = indirizzo;
-    }
+	public void setCittà(String città) {
+		this.città = città;
+	}
 
-    public String getCittà() {
-        return città;
-    }
+	public void setIndirizzo(String indirizzo) {
+		this.indirizzo = indirizzo;
+	}
 
-    public void setCittà(String città) {
-        this.città = città;
-    }
+	public void setNomeMagazzino(String nomeMagazzino) {
+		this.nomeMagazzino = nomeMagazzino;
+	}
 }
-

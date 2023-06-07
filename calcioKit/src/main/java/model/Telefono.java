@@ -1,53 +1,52 @@
 package model;
 
 public class Telefono {
-    private String numeroTelefono;
-    private String prefisso;
-    private String usernameCliente;
-    private String emailCliente;
+	private String numeroTelefono;
+	private String prefisso;
+	private String usernameCliente;
+	private String emailCliente;
 
-    public Telefono() {
-    }
+	public Telefono() {
+	}
 
-    public Telefono(String numeroTelefono, String prefisso, String usernameCliente, String emailCliente) {
-        this.numeroTelefono = numeroTelefono;
-        this.prefisso = prefisso;
-        this.usernameCliente = usernameCliente;
-        this.emailCliente = emailCliente;
-    }
+	public Telefono(String numeroTelefono, String prefisso, String usernameCliente, String emailCliente) {
+		this.numeroTelefono = numeroTelefono;
+		this.prefisso = prefisso;
+		this.usernameCliente = usernameCliente;
+		this.emailCliente = emailCliente;
+	}
 
-    // Metodi getter e setter
+	// Metodi getter e setter
 
-    public String getNumeroTelefono() {
-        return numeroTelefono;
-    }
+	public String getEmailCliente() {
+		return emailCliente;
+	}
 
-    public void setNumeroTelefono(String numeroTelefono) {
-        this.numeroTelefono = numeroTelefono;
-    }
+	public String getNumeroTelefono() {
+		return numeroTelefono;
+	}
 
-    public String getPrefisso() {
-        return prefisso;
-    }
+	public String getPrefisso() {
+		return prefisso;
+	}
 
-    public void setPrefisso(String prefisso) {
-        this.prefisso = prefisso;
-    }
+	public String getUsernameCliente() {
+		return usernameCliente;
+	}
 
-    public String getUsernameCliente() {
-        return usernameCliente;
-    }
+	public void setEmailCliente(String emailCliente) {
+		this.emailCliente = emailCliente;
+	}
 
-    public void setUsernameCliente(String usernameCliente) {
-        this.usernameCliente = usernameCliente;
-    }
+	public void setNumeroTelefono(String numeroTelefono) {
+		this.numeroTelefono = numeroTelefono;
+	}
 
-    public String getEmailCliente() {
-        return emailCliente;
-    }
+	public void setPrefisso(String prefisso) {
+		this.prefisso = prefisso;
+	}
 
-    public void setEmailCliente(String emailCliente) {
-        this.emailCliente = emailCliente;
-    }
+	public void setUsernameCliente(String usernameCliente) {
+		this.usernameCliente = usernameCliente;
+	}
 }
-

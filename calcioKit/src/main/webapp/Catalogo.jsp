@@ -40,7 +40,7 @@
     	<img onmouseover="bigImg(this)" onmouseout="normalImg(this)" border="0" src="<%= prodotto.getPath_immagine() %>" height="180" width="180">
       </a>
       <h2><%= prodotto.getNomeProdotto() %></h2>
-      <p>Prezzo: <%= prodotto.getPrezzo() %></p>
+      <p>Prezzo: <%=prodotto.getPrezzo() %></p>
       <p>Descrizione: <%= prodotto.getDescrizione() %></p>
       <form action="AggiungiAlCarrello" method="POST">
 							<input type="hidden" name="idProdotto"

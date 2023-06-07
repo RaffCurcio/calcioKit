@@ -6,6 +6,10 @@ table {
   border-collapse: collapse;
   margin-bottom: 20px;
 }
+.prodotto-image {
+	width: 25%;
+	margin-right: 20px;
+}
 
 th {
   background-color: #f2f2f2;

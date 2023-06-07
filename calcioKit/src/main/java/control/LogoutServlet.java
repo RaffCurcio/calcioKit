@@ -15,7 +15,7 @@ import dao.ComposizioneDAO;
 import dao.DBConnection;
 import model.Composizione;
 
-@WebServlet("/logout")
+@WebServlet({ "/logout", "/forceLogout" })
 public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 4L;
 	private ComposizioneDAO composizioneDAO;
@@ -24,28 +24,40 @@ public class LogoutServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession(false); // Retrieve the session (if it exists)
+		String servletPath = request.getServletPath();
 
-		if (session != null) {
-			// Get the composizioni from the session
-			@SuppressWarnings("unchecked")
-			List<Composizione> composizioni = (List<Composizione>) session.getAttribute("carrello");
-			
-			
-			// Save the composizioni to the database
-			if (composizioni != null && !composizioni.isEmpty()) {
-				try {
-					// Assuming you have a method in ComposizioneDAO to save multiple carrello items at once
-					composizioneDAO.saveAllComposizione(composizioni);
-				} catch (SQLException e) {
-				//response.sendRedirect("error.jsp");
-					System.out.println(e);
+		if (servletPath.equals("/logout")) {
+			if (session != null) {
+				// Get the composiziones from the session
+				@SuppressWarnings("unchecked")
+				List<Composizione> composiziones = (List<Composizione>) session.getAttribute("carrello");
+
+				// Save the composiziones to the database
+				if (composiziones != null && !composiziones.isEmpty()) {
+					try {
+						// Assuming you have a method in ComposizioneDAO to save multiple cart items at once
+						composizioneDAO.saveAllComposizioni(composiziones);
+					} catch (SQLException e) {
+						String errorMessage = "There was an error during the logout, your items in the cart didn't make it to the database\n"
+								+ e;
+						response.sendError(500, errorMessage);
+						return;
+
+					}
 				}
+
 			}
 
-			session.invalidate(); // Invalidate the session
-		}
+		} else if (servletPath.equals("forceLogout")) {
+			session.invalidate();
+			response.sendRedirect("Homepage.jsp");
 
-		response.sendRedirect("Homepage.jsp"); // Redirect to the desired page after logout
+			return;
+		}
+		session.invalidate(); // Invalidate the session
+
+		response.sendRedirect("Homepage.jsp");
+
 	}
 
 	@Override
