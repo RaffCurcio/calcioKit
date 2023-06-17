@@ -1,11 +1,12 @@
 package dao;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.sql.DataSource;
 
@@ -13,66 +14,48 @@ import model.Composizione;
 import model.Composizione;
 
 public class ComposizioneDAO {
-    private DataSource dataSource;
+	private DataSource dataSource;
 
-    public ComposizioneDAO(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
+	public ComposizioneDAO(DataSource dataSource) {
+		this.dataSource = dataSource;
+	}
 
-    public void insertComposizione(Composizione composizione) throws SQLException {
-        String query = "INSERT INTO composizione (id_prodotto, id_ordine) VALUES (?, ?)";
-        try (Connection conn = dataSource.getConnection();
-             PreparedStatement statement = conn.prepareStatement(query)) {
-            statement.setInt(1, composizione.getIdProdotto());
-            statement.setInt(2, composizione.getIdOrdine());
-            statement.executeUpdate();
-        }
-    }
+	public List<Composizione> getComposizioniByUsernameAndEmail(String username, String email) throws SQLException {
+		List<Composizione> composizioni = new ArrayList<>();
+		String query = "SELECT * FROM composizione WHERE username_cli = ? AND email_cli = ?";
+		try (Connection conn = dataSource.getConnection(); PreparedStatement statement = conn.prepareStatement(query)) {
+			statement.setString(1, username);
+			statement.setString(2, email);
+			try (ResultSet resultSet = statement.executeQuery()) {
+				while (resultSet.next()) {
+					int quantita = resultSet.getInt("quantita");
+					int idProdotto = resultSet.getInt("ID_prodotto");
+					String username_cli = resultSet.getString("username_cli");
+					String email_cli = resultSet.getString("email_cli");
+					// Altri campi da recuperare se necessario
 
-    public List<Composizione> getComposizioniByUsernameAndEmail(String username, String email) throws SQLException {
-        List<Composizione> composizioni = new ArrayList<>();
-        String query = "SELECT * FROM composizione WHERE username_cli = ? AND email_cli = ?";
-        try (Connection conn = dataSource.getConnection();
-             PreparedStatement statement = conn.prepareStatement(query)) {
-            statement.setString(1, username);
-            statement.setString(2, email);
-            try (ResultSet resultSet = statement.executeQuery()) {
-                while (resultSet.next()) {
-                	int quantita = resultSet.getInt("quantita");
-                	int idProdotto = resultSet.getInt("ID_prodotto");
-                	String username_cli = resultSet.getString("username_cli");
-                	String email_cli = resultSet.getString("email_cli");
-                    // Altri campi da recuperare se necessario
-                    
-                    Composizione composizione = new Composizione();
-                    composizione.setIdProdotto(idProdotto);
-                    composizione.setQuantita_prodotto(quantita);
-                    composizione.setUsername(username_cli);
-                    composizione.setEmail(email_cli);
-                    composizioni.add(composizione);
-                }
-            }
-        }
-        return composizioni;
-    }
-    
-    public void saveAllComposizione(List<Composizione> composizioni) throws SQLException {
-
-		String query = "INSERT INTO composizione (username_cli, email_cli, quantita , id_prodotto) VALUES (?, ?, ?, ?) ON DUPLICATE KEY UPDATE quantita =VALUES(quantita);";
-		
-		for (Composizione composizione : composizioni) {
-			try (Connection connection = dataSource.getConnection();
-					PreparedStatement statement = connection.prepareStatement(query)) {
-				statement.setString(1, composizione.getUsername());
-				statement.setString(2, composizione.getEmail());
-				statement.setInt(3, composizione.getQuantita_prodotto());
-				statement.setInt(4, composizione.getIdProdotto());
-				statement.executeUpdate();
+					Composizione composizione = new Composizione();
+					composizione.setIdProdotto(idProdotto);
+					composizione.setQuantita_prodotto(quantita);
+					composizione.setUsername(username_cli);
+					composizione.setEmail(email_cli);
+					composizioni.add(composizione);
+				}
 			}
 		}
+		return composizioni;
 	}
-    
-    public void removeComposizione(String username, String email , int idProdotto) throws SQLException {
+
+	public void insertComposizione(Composizione composizione) throws SQLException {
+		String query = "INSERT INTO composizione (id_prodotto, id_ordine) VALUES (?, ?)";
+		try (Connection conn = dataSource.getConnection(); PreparedStatement statement = conn.prepareStatement(query)) {
+			statement.setInt(1, composizione.getIdProdotto());
+			statement.setInt(2, composizione.getIdOrdine());
+			statement.executeUpdate();
+		}
+	}
+
+	public void removeComposizione(String username, String email, int idProdotto) throws SQLException {
 		String query = "DELETE FROM composizione WHERE username_cli = ? AND email_cli = ? AND id_prodotto = ?";
 		try (Connection connection = dataSource.getConnection();
 				PreparedStatement statement = connection.prepareStatement(query)) {
@@ -82,6 +65,73 @@ public class ComposizioneDAO {
 			statement.executeUpdate();
 		}
 	}
-    // Altre operazioni CRUD per Composizione
-}
+	// Altre operazioni CRUD per Composizione
 
+	public void saveAllComposizioni(List<Composizione> cartItems) throws SQLException {
+		try (Connection connection = dataSource.getConnection()) {
+			for (Composizione cartItem : cartItems) {
+				String user_email= cartItem.getEmail();
+				String user_username = cartItem.getUsername();
+
+				int productId = cartItem.getIdProdotto();
+				int quantity = cartItem.getQuantita_prodotto();
+				// Check if the productId and user_id exist in the table.
+				String sql = "SELECT * FROM composizione WHERE username_cli = ? AND email_cli = ? AND id_ordine IS NULL";
+				PreparedStatement statement = connection.prepareStatement(sql);
+				statement.setString(1, user_username);
+				statement.setString(2, user_email);
+				ResultSet resultSet = statement.executeQuery();
+
+				boolean productIdExists = false;
+
+				// Iterate over the result set
+				while (resultSet.next()) {
+					int fetchedProductId = resultSet.getInt("id_prodotto");
+					int fetchedOrderId = resultSet.getInt("id_ordine");
+
+					if (fetchedOrderId == 0 && fetchedProductId == productId) {
+
+						// Update quantity
+						productIdExists = true;
+						sql = "UPDATE Composizione SET quantita = ? WHERE id_prodotto = ? AND username_cli = ? AND email_cli = ? AND id_ordine IS NULL";
+						statement = connection.prepareStatement(sql);
+						statement.setInt(1, quantity);
+						statement.setInt(2, productId);
+						statement.setString(3, user_username);
+						statement.setString(4, user_email);
+						statement.executeUpdate();
+					}
+				}
+
+				if (!productIdExists) {
+					// Insert a new row since productId is different from every row
+					// Perform the insert operation here
+					sql = "INSERT INTO Composizione (id_prodotto, quantita, id_ordine, username_cli, email_cli) VALUES (?, ?, NULL, ?, ?)";
+					statement = connection.prepareStatement(sql);
+					statement.setInt(1, productId);
+					statement.setInt(2, quantity);
+					statement.setString(3, user_username);
+					statement.setString(4, user_email);
+					statement.executeUpdate();
+
+				}
+
+				resultSet.close();
+				statement.close();
+			}
+		}
+	}
+
+	public void updateComposizione(int orderId, String username, String email, BigDecimal price, int productId) throws SQLException {
+		String query = "UPDATE Composizione SET id_ordine = ?, prezzo_prodotto = ? WHERE username_cli = ? AND email_cli = ? AND id_ordine IS NULL AND id_prodotto = ?";
+		try (Connection connection = dataSource.getConnection();
+				PreparedStatement statement = connection.prepareStatement(query)) {
+			statement.setInt(1, orderId);
+			statement.setBigDecimal(2, price);
+			statement.setString(3, username);
+			statement.setString(4, email);
+			statement.setInt(5, productId);
+			statement.executeUpdate();
+		}
+	}
+}

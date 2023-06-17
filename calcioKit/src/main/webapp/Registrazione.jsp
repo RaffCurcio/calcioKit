@@ -13,6 +13,16 @@
 	
 <form class="register_form" action="registrazione" method="post">
 	<h1>CREA UN ACCOUNT</h1>
+	<%
+	if (request.getAttribute("errorMessage") != null) {
+	%>
+	<div class="error">
+		<%=request.getAttribute("errorMessage")%>
+	</div>
+	<%
+	}
+	%>
+<form action="registrazione" method="post">
     <label for="username">Username:</label>
     <input type="text" placeholder="Inserire username" id="username" name="username" required>
     
@@ -41,9 +51,7 @@
       
       // Esempio di messaggio di conferma
   %>
-  <div class="message">
-    Registrazione completata con successo per l'utente <%= username %>.
-  </div>
+  
   <% } %>
 
 <script type="text/javascript" src="script/registrazione.js"></script>

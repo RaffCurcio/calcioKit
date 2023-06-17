@@ -33,7 +33,7 @@
 					<a href="Cerca.jsp" class="button"><i class="ri-search-line"></i></a>
 			</form>
 			
-				<li><a href="Cart.jsp" class="cart"><i class="ri-shopping-cart-2-line"></i></a></li>
+				<li><a href="Cart" class="cart"><i class="ri-shopping-cart-2-line"></i></a></li>
 				
 				<%
 				if (session.getAttribute("cliente") == null) {

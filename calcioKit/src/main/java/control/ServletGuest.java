@@ -13,82 +13,84 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/ServletGuest")
 public class ServletGuest extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String action = request.getParameter("action");
+	private void addToCart(HttpServletRequest request, HttpServletResponse response, String productId) {
+		// Ottenere il carrello corrente dal cookie
+		List<String> cart = getCartFromCookie(request);
 
-        if (action != null && action.equals("add")) {
-            String productId = request.getParameter("productId");
-            if (productId != null && !productId.isEmpty()) {
-                addToCart(request, response, productId);
-            }
-        } else if (action != null && action.equals("remove")) {
-            String productId = request.getParameter("productId");
-            if (productId != null && !productId.isEmpty()) {
-                removeFromCart(request, response, productId);
-            }
-        }
+		// Aggiungere l'ID del prodotto al carrello
+		cart.add(productId);
 
-        // Redirect alla pagina del carrello
-        //response.sendRedirect("carrello.jsp");
-    }
+		// Salvare il carrello nel cookie
+		saveCartToCookie(response, cart);
+	}
 
-    private void addToCart(HttpServletRequest request, HttpServletResponse response, String productId) {
-        // Ottenere il carrello corrente dal cookie
-        List<String> cart = getCartFromCookie(request);
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String action = request.getParameter("action");
 
-        // Aggiungere l'ID del prodotto al carrello
-        cart.add(productId);
+		if (action != null && action.equals("add")) {
+			String productId = request.getParameter("productId");
+			if (productId != null && !productId.isEmpty()) {
+				addToCart(request, response, productId);
+			}
+		} else if (action != null && action.equals("remove")) {
+			String productId = request.getParameter("productId");
+			if (productId != null && !productId.isEmpty()) {
+				removeFromCart(request, response, productId);
+			}
+		}
 
-        // Salvare il carrello nel cookie
-        saveCartToCookie(response, cart);
-    }
+		// Redirect alla pagina del carrello
+		// response.sendRedirect("carrello.jsp");
+	}
 
-    private void removeFromCart(HttpServletRequest request, HttpServletResponse response, String productId) {
-        // Ottenere il carrello corrente dal cookie
-        List<String> cart = getCartFromCookie(request);
+	private List<String> getCartFromCookie(HttpServletRequest request) {
+		List<String> cart = new ArrayList<>();
 
-        // Rimuovere l'ID del prodotto dal carrello
-        cart.remove(productId);
+		Cookie[] cookies = request.getCookies();
+		if (cookies != null) {
+			for (Cookie cookie : cookies) {
+				if (cookie.getName().equals("cart")) {
+					// Se il cookie "cart" esiste, recuperare il valore (ID dei prodotti nel
+					// carrello)
+					String[] productIds = cookie.getValue().split(",");
+					for (String productId : productIds) {
+						cart.add(productId);
+					}
+					break;
+				}
+			}
+		}
 
-        // Salvare il carrello nel cookie
-        saveCartToCookie(response, cart);
-    }
+		return cart;
+	}
 
-    private List<String> getCartFromCookie(HttpServletRequest request) {
-        List<String> cart = new ArrayList<>();
+	private void removeFromCart(HttpServletRequest request, HttpServletResponse response, String productId) {
+		// Ottenere il carrello corrente dal cookie
+		List<String> cart = getCartFromCookie(request);
 
-        Cookie[] cookies = request.getCookies();
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("cart")) {
-                    // Se il cookie "cart" esiste, recuperare il valore (ID dei prodotti nel carrello)
-                    String[] productIds = cookie.getValue().split(",");
-                    for (String productId : productIds) {
-                        cart.add(productId);
-                    }
-                    break;
-                }
-            }
-        }
+		// Rimuovere l'ID del prodotto dal carrello
+		cart.remove(productId);
 
-        return cart;
-    }
+		// Salvare il carrello nel cookie
+		saveCartToCookie(response, cart);
+	}
 
-    private void saveCartToCookie(HttpServletResponse response, List<String> cart) {
-        StringBuilder cartValue = new StringBuilder();
-        for (String productId : cart) {
-            cartValue.append(productId).append(",");
-        }
+	private void saveCartToCookie(HttpServletResponse response, List<String> cart) {
+		StringBuilder cartValue = new StringBuilder();
+		for (String productId : cart) {
+			cartValue.append(productId).append(",");
+		}
 
-        // Creare un cookie "cart" con il valore del carrello
-        Cookie cookie = new Cookie("cart", cartValue.toString());
-        cookie.setMaxAge(3600); // Impostare la durata del cookie (in secondi)
-        cookie.setPath("/"); // Impostare il percorso del cookie
+		// Creare un cookie "cart" con il valore del carrello
+		Cookie cookie = new Cookie("cart", cartValue.toString());
+		cookie.setMaxAge(3600); // Impostare la durata del cookie (in secondi)
+		cookie.setPath("/"); // Impostare il percorso del cookie
 
-        // Aggiungere il cookie alla risposta
-        response.addCookie(cookie);
-    }
+		// Aggiungere il cookie alla risposta
+		response.addCookie(cookie);
+	}
 }

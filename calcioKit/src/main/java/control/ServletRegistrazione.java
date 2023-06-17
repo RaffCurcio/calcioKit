@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.DBConnection;
 import dao.ClienteDAO;
+import dao.DBConnection;
 import model.Cliente;
 
 @WebServlet("/registrazione")
@@ -29,31 +29,30 @@ public class ServletRegistrazione extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String email = request.getParameter("email");
-		
 
-        // Validate username
-        if (!username.matches("^[a-zA-Z0-9_]{5,20}$")) {
-            String errorMessage = "Invalid username (5-20 characters, alphanumeric and underscore only)";
-            request.setAttribute("errorMessage", errorMessage);
-            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            return;
-        }
+		// Validate username
+		if (!username.matches("^[a-zA-Z0-9_]{5,20}$")) {
+			String errorMessage = "Invalid username (5-20 characters, alphanumeric and underscore only)";
+			request.setAttribute("errorMessage", errorMessage);
+			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+			return;
+		}
 
-        // Validate email
-        if (!email.matches("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$")) {
-            String errorMessage = "Invalid email address";
-            request.setAttribute("errorMessage", errorMessage);
-            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            return;
-        }
+		// Validate email
+		if (!email.matches("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$")) {
+			String errorMessage = "Invalid email address";
+			request.setAttribute("errorMessage", errorMessage);
+			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+			return;
+		}
 
-        // Validate password
-        if (!password.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$")) {
-            String errorMessage = "Invalid password (minimum 8 characters, at least one letter and one number)";
-            request.setAttribute("errorMessage", errorMessage);
-            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            return;
-        }
+		// Validate password
+		if (!password.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$")) {
+			String errorMessage = "Invalid password (minimum 8 characters, at least one letter and one number)";
+			request.setAttribute("errorMessage", errorMessage);
+			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+			return;
+		}
 		// Create a new Cliente object
 		Cliente cliente = new Cliente();
 		cliente.setUsername(username);
@@ -64,8 +63,6 @@ public class ServletRegistrazione extends HttpServlet {
 		try {
 			// Save the cliente to the database
 			clienteDAO.addCliente(cliente);
-			
-			
 
 			// Redirect to a success page or display a success message
 			request.getRequestDispatcher("login").forward(request, response);
@@ -74,7 +71,8 @@ public class ServletRegistrazione extends HttpServlet {
 				// Handle duplicate entry error
 				String errorMessage = "Username or email already exists";
 				request.setAttribute("errorMessage", errorMessage);
-                response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+				response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+				request.getRequestDispatcher("/Registrazione.jsp").forward(request, response);
 			} else {
 				// Redirect to an error page or display a generic error message
 				response.sendRedirect("error.jsp");
@@ -86,7 +84,6 @@ public class ServletRegistrazione extends HttpServlet {
 	public void init() {
 		// Initialize the ClienteDAO instance
 		clienteDAO = new ClienteDAO(DBConnection.getDataSource()); // Replace 'dataSource' with your actual data source
-		
 
 	}
 

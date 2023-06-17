@@ -4,145 +4,144 @@ import java.math.BigDecimal;
 import java.sql.Date;
 
 public class Pagamento {
-    private int idPagamento;
-    private Date dataPagamento;
-    private BigDecimal importoPagamento;
-    private String tipoPagamento;
-    private String numeroCarta;
-    private Date dataScadenza;
-    private String cvc;
-    private String titolareConto;
-    private String iban;
-    private String bic;
-    private String emailPayPal;
-    private String passwordPayPal;
-    private int idOrdine;
+	private int idPagamento;
+	private Date dataPagamento;
+	private BigDecimal importoPagamento;
+	private String tipoPagamento;
+	private String numeroCarta;
+	private Date dataScadenza;
+	private String cvc;
+	private String titolareConto;
+	private String iban;
+	private String bic;
+	private String emailPayPal;
+	private String passwordPayPal;
+	private int idOrdine;
 
-    public Pagamento() {
-    }
+	public Pagamento() {
+	}
 
-    public Pagamento(int idPagamento, Date dataPagamento, BigDecimal importoPagamento, String tipoPagamento,
-                     String numeroCarta, Date dataScadenza, String cvc, String titolareConto, String iban, String bic,
-                     String emailPayPal, String passwordPayPal, int idOrdine) {
-        this.idPagamento = idPagamento;
-        this.dataPagamento = dataPagamento;
-        this.importoPagamento = importoPagamento;
-        this.tipoPagamento = tipoPagamento;
-        this.numeroCarta = numeroCarta;
-        this.dataScadenza = dataScadenza;
-        this.cvc = cvc;
-        this.titolareConto = titolareConto;
-        this.iban = iban;
-        this.bic = bic;
-        this.emailPayPal = emailPayPal;
-        this.passwordPayPal = passwordPayPal;
-        this.idOrdine = idOrdine;
-    }
+	public Pagamento(int idPagamento, Date dataPagamento, BigDecimal importoPagamento, String tipoPagamento,
+			String numeroCarta, Date dataScadenza, String cvc, String titolareConto, String iban, String bic,
+			String emailPayPal, String passwordPayPal, int idOrdine) {
+		this.idPagamento = idPagamento;
+		this.dataPagamento = dataPagamento;
+		this.importoPagamento = importoPagamento;
+		this.tipoPagamento = tipoPagamento;
+		this.numeroCarta = numeroCarta;
+		this.dataScadenza = dataScadenza;
+		this.cvc = cvc;
+		this.titolareConto = titolareConto;
+		this.iban = iban;
+		this.bic = bic;
+		this.emailPayPal = emailPayPal;
+		this.passwordPayPal = passwordPayPal;
+		this.idOrdine = idOrdine;
+	}
 
-    // Metodi getter e setter
+	// Metodi getter e setter
 
-    public int getIdPagamento() {
-        return idPagamento;
-    }
+	public String getBic() {
+		return bic;
+	}
 
-    public void setIdPagamento(int idPagamento) {
-        this.idPagamento = idPagamento;
-    }
+	public String getCvc() {
+		return cvc;
+	}
 
-    public Date getDataPagamento() {
-        return dataPagamento;
-    }
+	public Date getDataPagamento() {
+		return dataPagamento;
+	}
 
-    public void setDataPagamento(Date dataPagamento) {
-        this.dataPagamento = dataPagamento;
-    }
+	public Date getDataScadenza() {
+		return dataScadenza;
+	}
 
-    public BigDecimal getImportoPagamento() {
-        return importoPagamento;
-    }
+	public String getEmailPayPal() {
+		return emailPayPal;
+	}
 
-    public void setImportoPagamento(BigDecimal importoPagamento) {
-        this.importoPagamento = importoPagamento;
-    }
+	public String getIban() {
+		return iban;
+	}
 
-    public String getTipoPagamento() {
-        return tipoPagamento;
-    }
+	public int getIdOrdine() {
+		return idOrdine;
+	}
 
-    public void setTipoPagamento(String tipoPagamento) {
-        this.tipoPagamento = tipoPagamento;
-    }
+	public int getIdPagamento() {
+		return idPagamento;
+	}
 
-    public String getNumeroCarta() {
-        return numeroCarta;
-    }
+	public BigDecimal getImportoPagamento() {
+		return importoPagamento;
+	}
 
-    public void setNumeroCarta(String numeroCarta) {
-        this.numeroCarta = numeroCarta;
-    }
+	public String getNumeroCarta() {
+		return numeroCarta;
+	}
 
-    public Date getDataScadenza() {
-        return dataScadenza;
-    }
+	public String getPasswordPayPal() {
+		return passwordPayPal;
+	}
 
-    public void setDataScadenza(Date dataScadenza) {
-        this.dataScadenza = dataScadenza;
-    }
+	public String getTipoPagamento() {
+		return tipoPagamento;
+	}
 
-    public String getCvc() {
-        return cvc;
-    }
+	public String getTitolareConto() {
+		return titolareConto;
+	}
 
-    public void setCvc(String cvc) {
-        this.cvc = cvc;
-    }
+	public void setBic(String bic) {
+		this.bic = bic;
+	}
 
-    public String getTitolareConto() {
-        return titolareConto;
-    }
+	public void setCvc(String cvc) {
+		this.cvc = cvc;
+	}
 
-    public void setTitolareConto(String titolareConto) {
-        this.titolareConto = titolareConto;
-    }
+	public void setDataPagamento(Date dataPagamento) {
+		this.dataPagamento = dataPagamento;
+	}
 
-    public String getIban() {
-        return iban;
-    }
+	public void setDataScadenza(Date dataScadenza) {
+		this.dataScadenza = dataScadenza;
+	}
 
-    public void setIban(String iban) {
-        this.iban = iban;
-    }
+	public void setEmailPayPal(String emailPayPal) {
+		this.emailPayPal = emailPayPal;
+	}
 
-    public String getBic() {
-        return bic;
-    }
+	public void setIban(String iban) {
+		this.iban = iban;
+	}
 
-    public void setBic(String bic) {
-        this.bic = bic;
-    }
+	public void setIdOrdine(int idOrdine) {
+		this.idOrdine = idOrdine;
+	}
 
-    public String getEmailPayPal() {
-        return emailPayPal;
-    }
+	public void setIdPagamento(int idPagamento) {
+		this.idPagamento = idPagamento;
+	}
 
-    public void setEmailPayPal(String emailPayPal) {
-        this.emailPayPal = emailPayPal;
-    }
+	public void setImportoPagamento(BigDecimal importoPagamento) {
+		this.importoPagamento = importoPagamento;
+	}
 
-    public String getPasswordPayPal() {
-        return passwordPayPal;
-    }
+	public void setNumeroCarta(String numeroCarta) {
+		this.numeroCarta = numeroCarta;
+	}
 
-    public void setPasswordPayPal(String passwordPayPal) {
-        this.passwordPayPal = passwordPayPal;
-    }
+	public void setPasswordPayPal(String passwordPayPal) {
+		this.passwordPayPal = passwordPayPal;
+	}
 
-    public int getIdOrdine() {
-        return idOrdine;
-    }
+	public void setTipoPagamento(String tipoPagamento) {
+		this.tipoPagamento = tipoPagamento;
+	}
 
-    public void setIdOrdine(int idOrdine) {
-        this.idOrdine = idOrdine;
-    }
+	public void setTitolareConto(String titolareConto) {
+		this.titolareConto = titolareConto;
+	}
 }
-

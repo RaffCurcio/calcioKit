@@ -16,7 +16,7 @@ CREATE TABLE Cliente (
 ); 
 
 CREATE TABLE Ordine (
-  ID_ordine INT PRIMARY KEY NOT NULL,
+  ID_ordine INT  PRIMARY KEY NOT NULL AUTO_INCREMENT,
   data_inserimento DATE NOT NULL,
   prezzo_vendita DECIMAL(10, 2) NOT NULL,
   iva_cout DECIMAL(5, 2) NOT NULL,
@@ -85,12 +85,15 @@ CREATE TABLE Prodotto (
   descrizione TEXT,
   iva_p DECIMAL(5, 2) NOT NULL,
   path_immagine VARCHAR(255),
+  cancellato boolean default false,
   nome_c VARCHAR(100) NOT NULL,
   FOREIGN KEY (nome_c) REFERENCES Catalogo (nome_catalogo)
   ON DELETE CASCADE ON UPDATE CASCADE 
 );
 
 CREATE TABLE composizione (
+  composizione_id INT PRIMARY KEY AUTO_INCREMENT,
+
   id_prodotto INT NOT NULL,
   id_ordine INT ,
   prezzo_prodotto DECIMAL(10,2) ,
@@ -99,8 +102,7 @@ CREATE TABLE composizione (
   email_cli VARCHAR(100) NOT NULL,
   FOREIGN KEY (id_prodotto) REFERENCES Prodotto (ID_prodotto),
   FOREIGN KEY (id_ordine) REFERENCES Ordine (ID_ordine),
-  FOREIGN KEY (username_cli, email_cli) REFERENCES Cliente (username, email) ON DELETE CASCADE,
-  CONSTRAINT uk_product_user UNIQUE (username_cli, email_cli , id_prodotto)
+  FOREIGN KEY (username_cli, email_cli) REFERENCES Cliente (username, email) ON DELETE CASCADE
  
   );
 
