@@ -6,16 +6,15 @@
 <meta charset="ISO-8859-1">
 
 <title>Login - CalcioKit</title>
-<link rel="stylesheet" type="text/css" href="styles/Login.css">
-<link rel="stylesheet" type="text/css" href="styles/Homepage.css">
+<link rel="stylesheet" type="text/css" href="styles/Login.css?ts=<?=time()?>&quot"">
+
 
 </head>
 <body>
 	<jsp:include page="fragments/Header.jsp"/>
 
-	<h1>Login</h1>
-
-	<form action="login" method="post">
+	<form class="login_form" action="login" method="post">
+	<h1>LOGIN</h1>
 		<div class="form-group">
 			<label for="username">Username:</label> <input type="text"
 				placeholder="Inserire username" id="username" name="username"
@@ -30,7 +29,7 @@
 			<input type="submit" value="Login">
 		</div>
 		<div class="form-group">
-			<p>
+			<p class="Login_text">
 				Se non sei registrato, <a href="registrazione.html">clicca qui</a>
 				per registrarti.
 			</p>

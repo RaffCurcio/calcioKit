@@ -22,10 +22,6 @@
 
 	<jsp:include page="fragments/Header.jsp"/>	
 	
-	<!-- NAVBAR -->
-	
-	
-			<!-- BOTTONE MENU -->
  
  
  <!-- CONTENUTO PAGINA -->
@@ -52,26 +48,5 @@
 
 		</div>
 	</div>
-	 <!-- FINE CONTENUTO PAGINA -->
-	<!-- 
-		<jsp:include page="fragments/Footer.jsp"/>
-		
-		
-		<script>
-			const toggle_btn = document.querySelector('.toggle_btn');
-			const toggle_BtnIcon = document.querySelector('.toggle_btn i');
-			const dropDownMenu = document.querySelector('.main');
-			
-			toggle_btn.onclick() = function()
-			{
-				main.classList.toggle('open');
-			}
-			
-			toggle_BtnIcon.classList = IsOpen
-			? 'ri-menu-xmark'
-			: 'ri-menu-line'
-		</script>
-		-->
-		
 </body>
 </html>

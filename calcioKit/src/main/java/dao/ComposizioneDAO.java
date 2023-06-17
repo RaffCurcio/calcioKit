@@ -40,11 +40,15 @@ public class ComposizioneDAO {
                 while (resultSet.next()) {
                 	int quantita = resultSet.getInt("quantita");
                 	int idProdotto = resultSet.getInt("ID_prodotto");
+                	String username_cli = resultSet.getString("username_cli");
+                	String email_cli = resultSet.getString("email_cli");
                     // Altri campi da recuperare se necessario
                     
                     Composizione composizione = new Composizione();
                     composizione.setIdProdotto(idProdotto);
                     composizione.setQuantita_prodotto(quantita);
+                    composizione.setUsername(username_cli);
+                    composizione.setEmail(email_cli);
                     composizioni.add(composizione);
                 }
             }
@@ -54,8 +58,8 @@ public class ComposizioneDAO {
     
     public void saveAllComposizione(List<Composizione> composizioni) throws SQLException {
 
-		String query = "INSERT INTO composizione (username_cli, email_cli, quantita , id_prodotto) VALUES (?, ?, ?, ?);";
-
+		String query = "INSERT INTO composizione (username_cli, email_cli, quantita , id_prodotto) VALUES (?, ?, ?, ?) ON DUPLICATE KEY UPDATE quantita =VALUES(quantita);";
+		
 		for (Composizione composizione : composizioni) {
 			try (Connection connection = dataSource.getConnection();
 					PreparedStatement statement = connection.prepareStatement(query)) {

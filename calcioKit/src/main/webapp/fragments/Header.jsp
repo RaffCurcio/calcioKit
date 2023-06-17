@@ -38,13 +38,13 @@
 				<%
 				if (session.getAttribute("cliente") == null) {
 				%>
-				<a href="#" class="user"><i class="ri-user-fill"></i></a>
+				<a href="" class="user"><i class="ri-user-fill"></i></a>
 				<a href="Login.jsp">Login</a>
 				<a href="Registrazione.jsp">Register</a>
 				<%
 				} else {
 				%>
-				<a href="#" class="user"><i class="ri-user-fill" style = "color:green"></i></a>
+				<a href="ProfiloUtente.jsp" class="user"><i class="ri-user-fill" style = "color:green"></i></a>
 				<a href="logout">Logout</a>
 				<%
 				}
@@ -56,4 +56,11 @@
 				<a href=""><i class="ri-menu-line"></i></a>
 				</div>
 	</nav>
+	<script>
+        ri-menu-line = document.querySelector(".ri-meniu-line");
+        nav = document.querySelector("nav");
+        ri-menu-line.onclick = function() {
+            nav.classList.toggle("active");
+        }
+    </script>
 	

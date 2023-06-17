@@ -4,14 +4,15 @@
 <html>
 <head>
   <title>Registrazione - Sito di vendita maglie da calcio</title>
-  <link rel="stylesheet" type="text/css" href="styles/Registrazione.css">
-  <link rel="stylesheet" type="text/css" href="styles/Homepage.css">
+  <link rel="stylesheet" type="text/css" href="styles/Registrazione.css?ts=<?=time()?>&quot">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 <body>
 	<jsp:include page="fragments/Header.jsp"/>
-  <h1>Registrazione</h1>
-  
-  <form action="registrazione.jsp" method="post">
+	
+<form class="register_form" action="registrazione" method="post">
+	<h1>CREA UN ACCOUNT</h1>
     <label for="username">Username:</label>
     <input type="text" placeholder="Inserire username" id="username" name="username" required>
     
@@ -21,7 +22,11 @@
     <label for="email">Email:</label>
     <input type="email" placeholder="Inserire e-mail" id="email" name="email" required>
     
+    
+    
     <input type="submit" value="Registrati">
+    
+    <p id="Login_text">Hai gia un account? <a href="Login.jsp">Login</a></p>
   </form>
   
   <%-- Verifica se sono presenti parametri POST per la registrazione --%>
@@ -30,6 +35,7 @@
       String username = request.getParameter("username");
       String password = request.getParameter("password");
       String email = request.getParameter("email");
+    
       
       // Esegui il codice per la registrazione nel database
       

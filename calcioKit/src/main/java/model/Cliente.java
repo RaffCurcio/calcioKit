@@ -7,23 +7,25 @@ public class Cliente {
     private String nome;
     private String cognome;
     private String indirizzo;
-    private String città;
+    private String citta;
     private String provincia;
     private String cap;
-
+    private String ruolo_cliente;
+     
     public Cliente() {
     }
 
-    public Cliente(String username, String email, String password, String nome, String cognome, String indirizzo, String città, String provincia, String cap) {
+    public Cliente(String username, String email, String password, String nome, String cognome, String indirizzo, String citta, String provincia, String cap, String ruolo_cliente) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.nome = nome;
         this.cognome = cognome;
         this.indirizzo = indirizzo;
-        this.città = città;
+        this.citta = citta;
         this.provincia = provincia;
         this.cap = cap;
+        this.ruolo_cliente = ruolo_cliente;
     }
 
     // Metodi getter e setter
@@ -76,12 +78,12 @@ public class Cliente {
         this.indirizzo = indirizzo;
     }
 
-    public String getCittà() {
-        return città;
+    public String getCitta() {
+        return citta;
     }
 
-    public void setCittà(String città) {
-        this.città = città;
+    public void setCitta(String citta) {
+        this.citta = citta;
     }
 
     public String getProvincia() {
@@ -99,5 +101,16 @@ public class Cliente {
     public void setCap(String cap) {
         this.cap = cap;
     }
+
+	public String getRuolo_cliente() {
+		return ruolo_cliente;
+	}
+
+	public void setRuolo_cliente(String ruolo_cliente) {
+		this.ruolo_cliente = ruolo_cliente;
+	}
+    
+    
+    
 }
 
