@@ -20,10 +20,10 @@ public class OrdineDAO {
 	}
 
 	// Delete Ordine
-	public void deleteOrdine(int idOrdine) throws SQLException {
+	public void deleteOrdine(int ID_ordine) throws SQLException {
 		String query = "DELETE FROM Ordine WHERE ID_ordine = ?";
 		try (Connection conn = dataSource.getConnection(); PreparedStatement statement = conn.prepareStatement(query)) {
-			statement.setInt(1, idOrdine);
+			statement.setInt(1, ID_ordine);
 			statement.executeUpdate();
 		}
 	}
@@ -40,10 +40,10 @@ public class OrdineDAO {
 		return ordine;
 	}
 
-	public Ordine getOrdineByID(int idOrdine) throws SQLException {
+	public Ordine getOrdineByID(int ID_ordine) throws SQLException {
 		String query = "SELECT * FROM Ordine WHERE ID_ordine = ?";
 		try (Connection conn = dataSource.getConnection(); PreparedStatement statement = conn.prepareStatement(query)) {
-			statement.setInt(1, idOrdine);
+			statement.setInt(1, ID_ordine);
 			try (ResultSet resultSet = statement.executeQuery()) {
 				if (resultSet.next()) {
 					return extractOrdineFromResultSet(resultSet);
@@ -55,7 +55,7 @@ public class OrdineDAO {
 
 	// Get all Ordine for a specific user
 	public List<Ordine> getOrdineForUser(String username, String email) throws SQLException {
-		String query = "SELECT * FROM Ordine WHERE usernameCliente = ? AND emailCliente = ?";
+		String query = "SELECT * FROM Ordine WHERE username_cli = ? AND email_cli = ?";
 		try (Connection conn = dataSource.getConnection(); PreparedStatement statement = conn.prepareStatement(query)) {
 			statement.setString(1, username);
 			statement.setString(2, email);
@@ -63,13 +63,13 @@ public class OrdineDAO {
 				List<Ordine> ordini = new ArrayList<>();
 				while (resultSet.next()) {
 					Ordine ordine = new Ordine();
-					ordine.setIdOrdine(resultSet.getInt("idOrdine"));
-					ordine.setUsernameCliente(resultSet.getString("usernameCliente"));
-					ordine.setEmailCliente(resultSet.getString("emailCliente"));
-					ordine.setPrezzoVendita(resultSet.getBigDecimal("prezzoVendita"));
-					ordine.setDataInserimento(resultSet.getDate("dataInserimento"));
-					ordine.setIvaCout(resultSet.getDouble("ivaCout"));
-					ordine.setStatoOrdine(resultSet.getString("statoOrdine"));
+					ordine.setIdOrdine(resultSet.getInt("ID_ordine"));
+					ordine.setUsernameCliente(resultSet.getString("username_cli"));
+					ordine.setEmailCliente(resultSet.getString("email_cli"));
+					ordine.setPrezzoVendita(resultSet.getBigDecimal("prezzo_vendita"));
+					ordine.setDataInserimento(resultSet.getDate("data_inserimento"));
+					ordine.setIvaCout(resultSet.getDouble("iva_cout"));
+					ordine.setStatoOrdine(resultSet.getString("stato_ordine"));
 					ordini.add(ordine);
 				}
 				return ordini;

@@ -3,6 +3,7 @@ package model;
 import java.math.BigDecimal;
 
 public class Composizione {
+	private int idComposizione;
 	private int idProdotto;
 	private int idOrdine;
 	private BigDecimal prezzo_vendita;
@@ -14,9 +15,18 @@ public class Composizione {
 	}
 
 	// Metodi getter e setter
+	
 
 	public String getEmail() {
 		return email;
+	}
+
+	public int getIdComposizione() {
+		return idComposizione;
+	}
+
+	public void setIdComposizione(int idComposizione) {
+		this.idComposizione = idComposizione;
 	}
 
 	public int getIdOrdine() {

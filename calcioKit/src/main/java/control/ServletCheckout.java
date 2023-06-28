@@ -88,7 +88,7 @@ public class ServletCheckout extends HttpServlet {
 			response.sendError(500, errorMessage);
 			return;
 		}
-		response.sendRedirect("Ordines.jsp");
+		response.sendRedirect("Ordini.jsp");
 	}
 
 	@Override

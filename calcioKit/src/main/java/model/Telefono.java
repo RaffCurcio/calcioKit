@@ -3,23 +3,23 @@ package model;
 public class Telefono {
 	private String numeroTelefono;
 	private String prefisso;
-	private String usernameCliente;
-	private String emailCliente;
+	private String username_cli;
+	private String email_cli;
 
 	public Telefono() {
 	}
 
-	public Telefono(String numeroTelefono, String prefisso, String usernameCliente, String emailCliente) {
+	public Telefono(String numeroTelefono, String prefisso, String username_cli, String email_cli) {
 		this.numeroTelefono = numeroTelefono;
 		this.prefisso = prefisso;
-		this.usernameCliente = usernameCliente;
-		this.emailCliente = emailCliente;
+		this.username_cli = username_cli;
+		this.email_cli = email_cli;
 	}
 
 	// Metodi getter e setter
 
 	public String getEmailCliente() {
-		return emailCliente;
+		return email_cli;
 	}
 
 	public String getNumeroTelefono() {
@@ -31,11 +31,11 @@ public class Telefono {
 	}
 
 	public String getUsernameCliente() {
-		return usernameCliente;
+		return username_cli;
 	}
 
-	public void setEmailCliente(String emailCliente) {
-		this.emailCliente = emailCliente;
+	public void setEmailCliente(String email_cli) {
+		this.email_cli = email_cli;
 	}
 
 	public void setNumeroTelefono(String numeroTelefono) {
@@ -46,7 +46,7 @@ public class Telefono {
 		this.prefisso = prefisso;
 	}
 
-	public void setUsernameCliente(String usernameCliente) {
-		this.usernameCliente = usernameCliente;
+	public void setUsernameCliente(String username_cli) {
+		this.username_cli = username_cli;
 	}
 }

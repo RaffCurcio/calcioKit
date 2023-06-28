@@ -3,7 +3,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="styles/Homepage.css">
+<!--  <link rel="stylesheet" type="text/css" href="styles/Homepage.css"> negro vedi di non rimetterlo-->
 
 <link rel="stylesheet" type="text/css" href="styles/Navbar.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
@@ -29,8 +29,8 @@
 			
 			<div class="main">
 			<form class="input-box">
-					<input type="text" placeholder="search" class="searchBar">
-					<a href="Cerca.jsp" class="button"><i class="ri-search-line"></i></a>
+					<input type="text" placeholder="search" class="searchBar" action="ServletRicerca" name="ricerca">
+					
 			</form>
 			
 				<li><a href="Cart" class="cart"><i class="ri-shopping-cart-2-line"></i></a></li>
@@ -45,6 +45,8 @@
 				} else {
 				%>
 				<a href="ProfiloUtente.jsp" class="user"><i class="ri-user-fill" style = "color:green"></i></a>
+								<a href="Ordini.jsp">Ordini</a>
+				
 				<a href="logout">Logout</a>
 				<%
 				}
@@ -56,11 +58,12 @@
 				<a href=""><i class="ri-menu-line"></i></a>
 				</div>
 	</nav>
-	<script>
+	<!--
+	 <script>
         ri-menu-line = document.querySelector(".ri-meniu-line");
         nav = document.querySelector("nav");
         ri-menu-line.onclick = function() {
             nav.classList.toggle("active");
         }
     </script>
-	
+	-->

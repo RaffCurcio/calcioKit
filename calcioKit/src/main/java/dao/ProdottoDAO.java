@@ -105,4 +105,25 @@ public class ProdottoDAO {
 		}
 	}
 
+	public Prodotto getProdottoByName(String name) throws SQLException {
+		String query = "SELECT * FROM prodotto WHERE nome_prodotto = ? AND cancellato = FALSE";
+		try (Connection conn = dataSource.getConnection(); PreparedStatement statement = conn.prepareStatement(query)) {
+			statement.setString(1, name);
+			try (ResultSet resultSet = statement.executeQuery()) {
+				if (resultSet.next()) {
+					Prodotto prodotto = new Prodotto();
+					prodotto.setIdProdotto(resultSet.getInt("ID_prodotto"));
+					prodotto.setNomeProdotto(resultSet.getString("nome_prodotto"));
+					prodotto.setDescrizione(resultSet.getString("descrizione"));
+					prodotto.setIva(resultSet.getDouble("iva_p"));
+					prodotto.setPrezzo(resultSet.getBigDecimal("prezzo"));
+					prodotto.setPath_immagine(resultSet.getString("path_immagine"));
+					prodotto.setNomeCatalogo(resultSet.getString("nome_c"));
+					return prodotto;
+				}
+			}
+		}
+		return null; // Prodotto non trovato
+	}
+
 }

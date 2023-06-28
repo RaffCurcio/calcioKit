@@ -9,21 +9,21 @@ public class Ordine {
 	private BigDecimal prezzoVendita;
 	private double ivaCout;
 	private String statoOrdine;
-	private String usernameCliente;
-	private String emailCliente;
+	private String username_cli;
+	private String email_cli;
 
 	public Ordine() {
 	}
 
 	public Ordine(int idOrdine, Date dataInserimento, BigDecimal prezzoVendita, double ivaCout, String statoOrdine,
-			String usernameCliente, String emailCliente) {
+			String username_cli, String email_cli) {
 		this.idOrdine = idOrdine;
 		this.dataInserimento = dataInserimento;
 		this.prezzoVendita = prezzoVendita;
 		this.ivaCout = ivaCout;
 		this.statoOrdine = statoOrdine;
-		this.usernameCliente = usernameCliente;
-		this.emailCliente = emailCliente;
+		this.username_cli = username_cli;
+		this.email_cli = email_cli;
 	}
 
 	// Metodi getter e setter
@@ -33,7 +33,7 @@ public class Ordine {
 	}
 
 	public String getEmailCliente() {
-		return emailCliente;
+		return email_cli;
 	}
 
 	public int getIdOrdine() {
@@ -53,15 +53,15 @@ public class Ordine {
 	}
 
 	public String getUsernameCliente() {
-		return usernameCliente;
+		return username_cli;
 	}
 
 	public void setDataInserimento(Date dataInserimento) {
 		this.dataInserimento = dataInserimento;
 	}
 
-	public void setEmailCliente(String emailCliente) {
-		this.emailCliente = emailCliente;
+	public void setEmailCliente(String email_cli) {
+		this.email_cli = email_cli;
 	}
 
 	public void setIdOrdine(int idOrdine) {
@@ -80,7 +80,7 @@ public class Ordine {
 		this.statoOrdine = statoOrdine;
 	}
 
-	public void setUsernameCliente(String usernameCliente) {
-		this.usernameCliente = usernameCliente;
+	public void setUsernameCliente(String username_cli) {
+		this.username_cli = username_cli;
 	}
 }

@@ -12,6 +12,7 @@ import javax.sql.DataSource;
 
 import model.Composizione;
 import model.Composizione;
+import model.Composizione;
 
 public class ComposizioneDAO {
 	private DataSource dataSource;
@@ -22,7 +23,7 @@ public class ComposizioneDAO {
 
 	public List<Composizione> getComposizioniByUsernameAndEmail(String username, String email) throws SQLException {
 		List<Composizione> composizioni = new ArrayList<>();
-		String query = "SELECT * FROM composizione WHERE username_cli = ? AND email_cli = ?";
+		String query = "SELECT * FROM composizione WHERE username_cli = ? AND email_cli = ? AND id_ordine IS NULL";
 		try (Connection conn = dataSource.getConnection(); PreparedStatement statement = conn.prepareStatement(query)) {
 			statement.setString(1, username);
 			statement.setString(2, email);
@@ -67,14 +68,14 @@ public class ComposizioneDAO {
 	}
 	// Altre operazioni CRUD per Composizione
 
-	public void saveAllComposizioni(List<Composizione> cartItems) throws SQLException {
+	public void saveAllComposizioni(List<Composizione> composizioni) throws SQLException {
 		try (Connection connection = dataSource.getConnection()) {
-			for (Composizione cartItem : cartItems) {
-				String user_email= cartItem.getEmail();
-				String user_username = cartItem.getUsername();
+			for (Composizione composizione : composizioni) {
+				String user_email= composizione.getEmail();
+				String user_username = composizione.getUsername();
 
-				int productId = cartItem.getIdProdotto();
-				int quantity = cartItem.getQuantita_prodotto();
+				int productId = composizione.getIdProdotto();
+				int quantity = composizione.getQuantita_prodotto();
 				// Check if the productId and user_id exist in the table.
 				String sql = "SELECT * FROM composizione WHERE username_cli = ? AND email_cli = ? AND id_ordine IS NULL";
 				PreparedStatement statement = connection.prepareStatement(sql);
@@ -133,5 +134,30 @@ public class ComposizioneDAO {
 			statement.setInt(5, productId);
 			statement.executeUpdate();
 		}
+	}
+	
+	public List<Composizione> findOrderedItemsByOrderId(String username, String email , int orderId) throws SQLException {
+		List<Composizione> composizioni = new ArrayList<>();
+		String query = "SELECT * FROM composizione WHERE username_cli = ? AND email_cli = ?  AND id_ordine = ?";
+		try (Connection connection = dataSource.getConnection();
+				PreparedStatement statement = connection.prepareStatement(query)) {
+			statement.setString(1, username);
+			statement.setString(2, email);
+			statement.setInt(3, orderId);
+			try (ResultSet resultSet = statement.executeQuery()) {
+				while (resultSet.next()) {
+					Composizione composizione = new Composizione();
+					composizione.setIdComposizione(resultSet.getInt("composizione_id"));
+					composizione.setIdOrdine(resultSet.getInt("id_ordine"));
+					composizione.setIdProdotto(resultSet.getInt("id_prodotto"));
+					composizione.setUsername(resultSet.getString("username_cli"));
+					composizione.setEmail(resultSet.getString("email_cli"));
+					composizione.setQuantita_prodotto(resultSet.getInt("quantita"));
+					composizione.setPrezzo_vendita(resultSet.getBigDecimal("prezzo_prodotto"));
+					composizioni.add(composizione);
+				}
+			}
+		}
+		return composizioni;
 	}
 }
