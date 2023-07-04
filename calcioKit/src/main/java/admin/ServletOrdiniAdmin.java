@@ -80,24 +80,24 @@ public class ServletOrdiniAdmin extends HttpServlet {
 			List<Cliente> userList = userDAO.getAllUsers();
 
 			List<Ordine> orderList = null;
-			String selectedClienteId = request.getParameter("userId");
+			String selectedUsername = request.getParameter("selectedUsername");
 			String fromDate = request.getParameter("fromDate");
 			String toDate = request.getParameter("toDate");
 			if (fromDate != null && !fromDate.isEmpty() && toDate != null && !toDate.isEmpty()
-					&& selectedClienteId != null && !selectedClienteId.isEmpty()) {
-				int userId = Integer.parseInt(selectedClienteId);
+					&& selectedUsername != null && !selectedUsername.isEmpty()) {
+				
 
 				java.sql.Date fromDateSql = java.sql.Date.valueOf(fromDate);
 				java.sql.Date toDateSql = java.sql.Date.valueOf(toDate);
-				orderList = orderDAO.getOrdini(fromDateSql, toDateSql, userId);
+				orderList = orderDAO.getOrdini(fromDateSql, toDateSql, selectedUsername);
 			} else if (fromDate != null && !fromDate.isEmpty() && toDate != null && !toDate.isEmpty()) {
 				java.sql.Date fromDateSql = java.sql.Date.valueOf(fromDate);
 				java.sql.Date toDateSql = java.sql.Date.valueOf(toDate);
 				orderList = orderDAO.getOrdini(fromDateSql, toDateSql);
-			} else if (selectedClienteId != null && !selectedClienteId.isEmpty()) {
+			} else if (selectedUsername != null && !selectedUsername.isEmpty()) {
 
 
-				orderList = orderDAO.getOrdineForUser(cliente.getUsername(),cliente.getEmail());
+				orderList = orderDAO.getOrdini(selectedUsername);
 			} else {
 				orderList = orderDAO.getAllOrdini();
 

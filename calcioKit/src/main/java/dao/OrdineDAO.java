@@ -100,8 +100,6 @@ public class OrdineDAO {
 		}
 	}
 
-	
-
 	public List<Ordine> getOrdini(java.sql.Date fromDate, java.sql.Date toDate) throws SQLException {
 		String query = "SELECT * FROM Ordine WHERE data_inserimento BETWEEN ? AND ?";
 		List<Ordine> orderList = new ArrayList<>();
@@ -130,15 +128,43 @@ public class OrdineDAO {
 		return orderList;
 	}
 
-	public List<Ordine> getOrdini(java.sql.Date fromDate, java.sql.Date toDate, int userId) throws SQLException {
-		String query = "SELECT * FROM Ordine WHERE data_inserimento BETWEEN ? AND ? AND ID_ordine = ?";
+	public List<Ordine> getOrdini(java.sql.Date fromDate, java.sql.Date toDate, String selectedUsername)
+			throws SQLException {
+		String query = "SELECT * FROM Ordine WHERE data_inserimento BETWEEN ? AND ? AND username_cli = ?";
 		List<Ordine> orderList = new ArrayList<>();
 
 		try (Connection connection = dataSource.getConnection();
 				PreparedStatement statement = connection.prepareStatement(query)) {
 			statement.setDate(1, fromDate);
 			statement.setDate(2, toDate);
-			statement.setInt(3, userId);
+			statement.setString(3, selectedUsername);
+
+			try (ResultSet resultSet = statement.executeQuery()) {
+				while (resultSet.next()) {
+					Ordine order = new Ordine();
+					order.setIdOrdine(resultSet.getInt("ID_ordine"));
+					order.setUsernameCliente(resultSet.getString("username_cli"));
+					order.setEmailCliente(resultSet.getString("email_cli"));
+					order.setPrezzoVendita(resultSet.getBigDecimal("prezzo_vendita"));
+					order.setDataInserimento(resultSet.getDate("data_inserimento"));
+					order.setIvaCout(resultSet.getDouble("iva_cout"));
+					order.setStatoOrdine(resultSet.getString("stato_ordine"));
+
+					orderList.add(order);
+				}
+			}
+		}
+
+		return orderList;
+	}
+
+	public List<Ordine> getOrdini(String selectedUsername) throws SQLException {
+		String query = "SELECT * FROM Ordine WHERE username_cli = ?";
+		List<Ordine> orderList = new ArrayList<>();
+
+		try (Connection connection = dataSource.getConnection();
+				PreparedStatement statement = connection.prepareStatement(query)) {
+			statement.setString(1, selectedUsername);
 
 			try (ResultSet resultSet = statement.executeQuery()) {
 				while (resultSet.next()) {
@@ -184,7 +210,7 @@ public class OrdineDAO {
 		return generatedOrdineId;
 	}
 
-	// Update Ordine ------------------ DA MODIFICARE 
+	// Update Ordine ------------------ DA MODIFICARE
 	public void updateOrdine(Ordine ordine) throws SQLException {
 		String query = "UPDATE Ordine SET username_cli = ?, email_cli = ?, data_inserimento = ?, prezzo_vendita = ? WHERE ID_ordine = ?";
 		try (Connection conn = dataSource.getConnection(); PreparedStatement statement = conn.prepareStatement(query)) {

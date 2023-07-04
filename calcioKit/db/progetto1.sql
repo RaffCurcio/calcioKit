@@ -75,89 +75,29 @@ CREATE TABLE Pagamento (
 
 
 CREATE TABLE Prodotto (
-  ID_prodotto INT PRIMARY KEY NOT NULL,
-  nome_prodotto VARCHAR(100) NOT NULL,
+  ID_Prodotto INT PRIMARY KEY AUTO_INCREMENT,
+  nome_Prodotto VARCHAR(100) NOT NULL,
   prezzo DECIMAL(10, 2) NOT NULL,
   descrizione TEXT,
   iva_p DECIMAL(5, 2) NOT NULL,
   path_immagine VARCHAR(255),
-  cancellato boolean default false,
-  ON DELETE CASCADE ON UPDATE CASCADE 
+  cancellato boolean default false
 );
 
 CREATE TABLE composizione (
   composizione_id INT PRIMARY KEY AUTO_INCREMENT,
 
-  id_prodotto INT NOT NULL,
+  id_Prodotto INT NOT NULL,
   id_ordine INT ,
-  prezzo_prodotto DECIMAL(10,2) ,
+  prezzo_Prodotto DECIMAL(10,2) ,
   quantita INT NOT NULL,
   username_cli VARCHAR(50) NOT NULL,
   email_cli VARCHAR(100) NOT NULL,
-  FOREIGN KEY (id_prodotto) REFERENCES Prodotto (ID_prodotto),
+  FOREIGN KEY (id_Prodotto) REFERENCES Prodotto (ID_Prodotto),
   FOREIGN KEY (id_ordine) REFERENCES Ordine (ID_ordine),
   FOREIGN KEY (username_cli, email_cli) REFERENCES Cliente (username, email) ON DELETE CASCADE
  
   );
-
-
-
-
-
-CREATE TABLE Magazzino (
-  nome_magazzino VARCHAR(100) NOT NULL,
-  indirizzo VARCHAR(100) NOT NULL,
-  citta VARCHAR(100) NOT NULL,
-  PRIMARY KEY (nome_magazzino, indirizzo, citta)
-);
-
-CREATE TABLE Locazione (
-  Id_prod INT NOT NULL,
-  nome_m VARCHAR(100) NOT NULL,
-  indirizzo_m VARCHAR(100) NOT NULL,
-  citta_m VARCHAR(100) NOT NULL,
-  FOREIGN KEY (Id_prod) REFERENCES Prodotto (ID_prodotto),
-  FOREIGN KEY (nome_m, indirizzo_m, citta_m) REFERENCES Magazzino (nome_magazzino, indirizzo, citta)
-);
-
--- Aggiungi la clausola ON UPDATE CASCADE alla chiave esterna Id_prodotto
-ALTER TABLE Locazione
-ADD CONSTRAINT fk_locazione_prodotto1
-FOREIGN KEY (Id_prod) REFERENCES prodotto (ID_prodotto)
-ON UPDATE CASCADE;
-
--- Aggiungi la clausola ON DELETE CASCADE alla chiave esterna Id_prodotto
-ALTER TABLE Locazione
-ADD CONSTRAINT fk_locazione_prodotto2
-FOREIGN KEY (Id_prod) REFERENCES Prodotto (ID_prodotto)
-ON DELETE CASCADE;
-
--- Aggiungi la clausola ON UPDATE CASCADE alla chiave esterna nome_magazzino, indirizzo_m, citta_m
-ALTER TABLE locazione
-ADD CONSTRAINT fk_locazione_magazzino1
-FOREIGN KEY (nome_m, indirizzo_m, citta_m) REFERENCES Magazzino (nome_magazzino, indirizzo, citta)
-ON UPDATE CASCADE;
-
--- Aggiungi la clausola ON DELETE CASCADE alla chiave esterna nome_magazzino, indirizzo_m, citta_m
-ALTER TABLE locazione
-ADD CONSTRAINT fk_locazione_magazzino2
-FOREIGN KEY (nome_m, indirizzo_m, citta_m) REFERENCES Magazzino (nome_magazzino, indirizzo, citta)
-ON DELETE CASCADE;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -264,47 +204,23 @@ VALUES (4, '2023-05-04', 2023, 12.80, 4);
 INSERT INTO fattura (ID_fattura, data_fattura, anno, iva_fattura, ID_P)
 VALUES (5, '2023-05-05', 2023, 18.20, 5);
 
--- Inserimento di un prodotto
-INSERT INTO prodotto (ID_prodotto, nome_prodotto, prezzo, descrizione, iva_p, path_immagine)
-VALUES (1, 'Maglia Maradona', 10.99, 'Maglia Maradona Vintage', 22.00, 'img/magliaMaradona.jpg ');
+-- Inserimento di un Prodotto
+INSERT INTO Prodotto (nome_Prodotto, prezzo, descrizione, iva_p, path_immagine)
+VALUES ('Maglia Maradona', 10.99, 'Maglia Maradona Vintage', 22.00, 'img/magliaMaradona.jpg ');
 
--- Inserimento di un altro prodotto
-INSERT INTO prodotto (ID_prodotto, nome_prodotto, prezzo, descrizione, iva_p, path_immagine)
-VALUES (2, 'Maglia Milan', 19.99, 'Maglia Milan 2022/2023', 15.50, 'img/magliaMilan.jpg ');
+-- Inserimento di un altro Prodotto
+INSERT INTO Prodotto (nome_Prodotto, prezzo, descrizione, iva_p, path_immagine)
+VALUES ('Maglia Milan', 19.99, 'Maglia Milan 2022/2023', 15.50, 'img/magliaMilan.jpg ');
 
--- Inserimento di un altro prodotto
-INSERT INTO prodotto (ID_prodotto, nome_prodotto, prezzo, descrizione, iva_p, path_immagine)
-VALUES (3, 'Maglia Napoli', 7.50, 'Maglia Napoli 2022/2023', 20.00, 'img/magliaNapoli.jpg ');
+-- Inserimento di un altro Prodotto
+INSERT INTO Prodotto (nome_Prodotto, prezzo, descrizione, iva_p, path_immagine)
+VALUES ('Maglia Napoli', 7.50, 'Maglia Napoli 2022/2023', 20.00, 'img/magliaNapoli.jpg ');
 
--- Inserimento di un altro prodotto
-INSERT INTO prodotto (ID_prodotto, nome_prodotto, prezzo, descrizione, iva_p, path_immagine)
-VALUES (4, 'Maglia Napoli San Valentino', 24.99, 'Maglia Napoli San Valentino', 12.80,'img/magliaNapoliSanValentino.jpg ');
+-- Inserimento di un altro Prodotto
+INSERT INTO Prodotto (nome_Prodotto, prezzo, descrizione, iva_p, path_immagine)
+VALUES ('Maglia Napoli San Valentino', 24.99, 'Maglia Napoli San Valentino', 12.80,'img/magliaNapoliSanValentino.jpg ');
 
--- Inserimento di un altro prodotto
-INSERT INTO prodotto (ID_prodotto, nome_prodotto, prezzo, descrizione, iva_p, path_immagine)
-VALUES (5, 'Maglia Roma', 15.00, 'Maglia Roma 2022/2023', 18.20, 'img/magliaRoma.jpg ');
-
--- Inserimento del primo magazzino
-INSERT INTO magazzino (nome_magazzino, indirizzo, citta)
-VALUES ('Magazzino A', 'Via Roma 123', 'Milano');
-
--- Inserimento del secondo magazzino
-INSERT INTO magazzino (nome_magazzino, indirizzo, citta)
-VALUES ('Magazzino B', 'Via Verdi 456', 'Roma');
-
--- Inserimento del terzo magazzino
-INSERT INTO magazzino (nome_magazzino, indirizzo, citta)
-VALUES ('Magazzino C', 'Via Dante 789', 'Napoli');
-
--- Inserimento del quarto magazzino
-INSERT INTO magazzino (nome_magazzino, indirizzo, citta)
-VALUES ('Magazzino D', 'Via Mazzini 10', 'Torino');
-
--- Inserimento del quinto magazzino
-INSERT INTO magazzino (nome_magazzino, indirizzo, citta)
-VALUES ('Magazzino E', 'Via Garibaldi 11', 'Firenze');
-
-INSERT INTO locazione (Id_prod, nome_m, indirizzo_m, citta_m)
-VALUES (1, 'Magazzino A', 'Via Roma 123', 'Milano');
-
+-- Inserimento di un altro Prodotto
+INSERT INTO Prodotto (nome_Prodotto, prezzo, descrizione, iva_p, path_immagine)
+VALUES ('Maglia Roma', 15.00, 'Maglia Roma 2022/2023', 18.20, 'img/magliaRoma.jpg ');
 

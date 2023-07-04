@@ -5,11 +5,11 @@
 <html lang="en">
 <head>
 <title>Admin Page</title>
-<script src="scripts/jquery-3.7.0.min.js"></script>
-<link rel="icon" href="/TechBuild/images/icon/TechBuild-16.ico">
+<script src="script\jquery-3.7.0.min.js"></script>
+<script src="script\asyncForms.js"></script>
+<script src="script\adminCatalog.js"></script>
 
-
-<script src="scripts\catalog.js"></script>
+<script src="script\catalog.js"></script>
 
 <link rel="stylesheet" type="text/css"
 	href="styles/catalog.css">
@@ -152,12 +152,12 @@
 							<%
 							if (prodotto.isCancellato()) {
 							%>
-							<input type="submit" value="Add Prodotto"
+							<input type="submit" value="Aggiungi prodottolo"
 								onclick="changeButtonLabel(this)">
 							<%
 							} else {
 							%>
-							<input type="submit" value="Remove Prodotto"
+							<input type="submit" value="cancella prodottolo"
 								onclick="changeButtonLabel(this)">
 							<%
 							}
@@ -195,6 +195,10 @@
 			<div>
 				<label for="priceForm">Price</label><br> <input type="number"
 					id="priceForm" name="price" step="any" required>
+			</div>
+			<div>
+				<label for="Iva">Iva</label><br> <input type="number"
+					id="priceForm" name="iva" step="any" required>
 			</div>
 
 			<div>

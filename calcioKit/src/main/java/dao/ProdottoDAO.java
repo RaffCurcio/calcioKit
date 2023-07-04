@@ -1,5 +1,6 @@
 package dao;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,7 +22,7 @@ public class ProdottoDAO {
 
 	// Metodo per creare un nuovo prodotto
 	public void createProdotto(Prodotto prodotto) throws SQLException {
-		String query = "INSERT INTO prodotto (nome_prodotto, descrizione, iva_p, prezzo, path_immagine) VALUES (?, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO prodotto (nome_prodotto, descrizione, iva_p, prezzo, path_immagine) VALUES (?, ?, ?, ?, ?)";
 		try (Connection conn = dataSource.getConnection(); PreparedStatement statement = conn.prepareStatement(query)) {
 			statement.setString(1, prodotto.getNomeProdotto());
 			statement.setString(2, prodotto.getDescrizione());
@@ -40,6 +41,7 @@ public class ProdottoDAO {
 			statement.executeUpdate();
 		}
 	}
+	//prodotti admin
 	public List<Prodotto> getAllProdottiZoccolame() throws SQLException {
 		String query = "SELECT * FROM prodotto";
 		try (Connection conn = dataSource.getConnection();
@@ -60,6 +62,56 @@ public class ProdottoDAO {
 			return prodotti;
 		}
 	}
+	public List<Prodotto> getAllProdottiZoccolame(BigDecimal minprezzo, BigDecimal maxprezzo) throws SQLException {
+		String query = "SELECT * FROM Prodotto WHERE prezzo >= ? AND prezzo <= ?";
+
+		try (Connection conn = dataSource.getConnection(); PreparedStatement statement = conn.prepareStatement(query)) {
+			List<Prodotto> prodotti = new ArrayList<>();
+			statement.setBigDecimal(1, minprezzo);
+			statement.setBigDecimal(2, maxprezzo);
+			try (ResultSet resultSet = statement.executeQuery()) {
+
+				while (resultSet.next()) {
+					Prodotto prodotto = new Prodotto();
+					prodotto.setIdProdotto(resultSet.getInt("ID_prodotto"));
+					prodotto.setNomeProdotto(resultSet.getString("nome_prodotto"));
+					prodotto.setDescrizione(resultSet.getString("descrizione"));
+					prodotto.setIva(resultSet.getDouble("iva_p"));
+					prodotto.setPrezzo(resultSet.getBigDecimal("prezzo"));
+					prodotto.setPath_immagine(resultSet.getString("path_immagine"));
+					prodotti.add(prodotto);
+
+				}
+				return prodotti;
+			}
+		}
+	}
+
+	public List<Prodotto> getAllProdotti(BigDecimal minprezzo, BigDecimal maxprezzo) throws SQLException {
+		String query = "SELECT * FROM Prodotto WHERE prezzo >= ? AND prezzo <= ?  AND cancellato = FALSE";
+
+		try (Connection conn = dataSource.getConnection(); PreparedStatement statement = conn.prepareStatement(query)) {
+			List<Prodotto> prodotti = new ArrayList<>();
+			statement.setBigDecimal(1, minprezzo);
+			statement.setBigDecimal(2, maxprezzo);
+			try (ResultSet resultSet = statement.executeQuery()) {
+
+				while (resultSet.next()) {
+					Prodotto prodotto = new Prodotto();
+					prodotto.setIdProdotto(resultSet.getInt("ID_prodotto"));
+					prodotto.setNomeProdotto(resultSet.getString("nome_prodotto"));
+					prodotto.setDescrizione(resultSet.getString("descrizione"));
+					prodotto.setIva(resultSet.getDouble("iva_p"));
+					prodotto.setPrezzo(resultSet.getBigDecimal("prezzo"));
+					prodotto.setPath_immagine(resultSet.getString("path_immagine"));
+					prodotti.add(prodotto);
+
+				}
+				return prodotti;
+			}
+		}
+	}
+
 	// Metodo per ottenere tutti i prodotti
 	// Get all Prodotti
 	public List<Prodotto> getAllProdotti() throws SQLException {

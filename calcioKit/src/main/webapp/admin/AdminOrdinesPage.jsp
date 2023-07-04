@@ -7,15 +7,14 @@
 
 <html lang="en">
 <head>
-<script src="scripts/jquery-3.7.0.min.js"></script>
-<link rel="icon" href="/TechBuild/images/icon/TechBuild-16.ico">
+<script src="script/jquery-3.7.0.min.js"></script>
+<link rel="icon" href="images/icon/TechBuild-16.ico">
 
 <link rel="stylesheet" type="text/css"
-	href="/TechBuild/styles/adminOrdinePage.css">
-<script src="scripts\asyncForms.js"></script>
+	href="/calcioKit/styles/adminOrdinePage.css">
+<script src="script\asyncForms.js"></script>
 <link rel="stylesheet" type="text/css"
-	href="/TechBuild/styles/cartNotification.css">
-
+	href="styles/cartNotification.css">
 <title>Cliente Ordini</title>
 </head>
 
@@ -37,7 +36,7 @@
 		<section id="Ordini">
 			<form action="AdminOrdinePage" method="POST">
 				<h1>Filter by Cliente</h1>
-				<select name="clienteId" id="clienteId">
+				<select name="selectedUsername" id="clienteId">
 					<option value="">All Clienti</option>
 					<%
 					List<Cliente> clienteList = (List<Cliente>) request.getAttribute("clienteList");
