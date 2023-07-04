@@ -1,28 +1,33 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<title>Catalogo</title>
-<link rel="stylesheet" type="text/css" href="styles/catalog.css">
+<title>Maglie da calcio - Sito di vendita</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="styles/homepage.css">
+
+<link rel="stylesheet" type="text/css" href="styles/Navbar.css">
+
+
 
 </head>
 <body>
-	<div class="header">
-		<!-- Includi il tuo header personalizzato qui -->
-		<%@ include file="fragments/Header.jsp"%>
-	</div>
 
-	<h1>Catalogo Prodotti</h1>
-	<!-- ... codice precedente ... -->
+	<jsp:include page="fragments/Header.jsp" />
 
+
+
+	<!-- CONTENUTO PAGINA -->
+<h1 style="text-align:center;">Prodotti Raccomandati GAY</h1>
 
 	<div id="catalogoContainer">
 		<%-- Recupera la lista dei prodotti dalla richiesta --%>
 		<%@ page import="java.util.List"%>
 		<%@ page import="model.Prodotto"%>
 		<%
-		List<Prodotto> prodotti = (List<Prodotto>) request.getAttribute("prodotti");
+		
+
+				List<Prodotto> prodotti = (List<Prodotto>) request.getAttribute("prodotti");
 		%>
 
 		<%-- Mostra i prodotti nel catalogo --%>
@@ -43,7 +48,8 @@
 				src="<%=prodotto.getPath_immagine()%>" height="180" width="180">
 			</a>
 			<h2><%=prodotto.getNomeProdotto()%></h2>
-			<span>Prezzo: </span><p class="prezzo"><%=prodotto.getPrezzo()%></p>
+			<span>Prezzo: </span>
+			<p class="prezzo"><%=prodotto.getPrezzo()%></p>
 			<span>Descrizione:</span> <span class="descrizione"><%=prodotto.getDescrizione()%></span>
 			<form action="AggiungiAlCarrello" method="POST">
 				<input type="hidden" name="idProdotto"
@@ -58,11 +64,7 @@
 		%>
 	</div>
 
-	<!-- ... codice successivo ... -->
+	<jsp:include page="fragments/Footer.jsp" />
 
-	<div class="footer">
-		<!-- Includi il tuo footer personalizzato qui -->
-		<%@ include file="fragments/Footer.jsp"%>
-	</div>
 </body>
 </html>

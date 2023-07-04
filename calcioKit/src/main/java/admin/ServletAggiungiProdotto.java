@@ -30,6 +30,7 @@ public class ServletAggiungiProdotto extends HttpServlet {
 		BigDecimal price = new BigDecimal(request.getParameter("price"));
 		double iva = Double.parseDouble(request.getParameter("iva"));
 		String imagePath = request.getParameter("imagePath");
+		boolean recommended = Boolean.parseBoolean(request.getParameter("recommended"));
 		HttpSession session = request.getSession();
 
 		Cliente cliente = (Cliente) session.getAttribute("cliente");
@@ -67,6 +68,7 @@ public class ServletAggiungiProdotto extends HttpServlet {
 		prodotto.setIva(iva);
 		prodotto.setPath_immagine(imagePath);
 		prodotto.setCancellato(false);
+		prodotto.setRaccomandato(recommended);
 
 		try {
 			prodottoDAO.createProdotto(prodotto);

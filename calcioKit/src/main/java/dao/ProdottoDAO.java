@@ -22,13 +22,14 @@ public class ProdottoDAO {
 
 	// Metodo per creare un nuovo prodotto
 	public void createProdotto(Prodotto prodotto) throws SQLException {
-		String query = "INSERT INTO prodotto (nome_prodotto, descrizione, iva_p, prezzo, path_immagine) VALUES (?, ?, ?, ?, ?)";
+		String query = "INSERT INTO prodotto (nome_prodotto, descrizione, iva_p, prezzo, path_immagine, raccomandato) VALUES (?, ?, ?, ?, ?, ?)";
 		try (Connection conn = dataSource.getConnection(); PreparedStatement statement = conn.prepareStatement(query)) {
 			statement.setString(1, prodotto.getNomeProdotto());
 			statement.setString(2, prodotto.getDescrizione());
 			statement.setDouble(3, prodotto.getIva());
 			statement.setBigDecimal(4, prodotto.getPrezzo());
 			statement.setString(5, prodotto.getPath_immagine());
+			statement.setBoolean(6, prodotto.isRaccomandato());
 			statement.executeUpdate();
 		}
 	}
@@ -41,9 +42,11 @@ public class ProdottoDAO {
 			statement.executeUpdate();
 		}
 	}
-	//prodotti admin
-	public List<Prodotto> getAllProdottiZoccolame() throws SQLException {
-		String query = "SELECT * FROM prodotto";
+
+	// Metodo per ottenere tutti i prodotti
+	// Get all Prodotti
+	public List<Prodotto> getAllProdotti() throws SQLException {
+		String query = "SELECT * FROM prodotto WHERE cancellato = FALSE";
 		try (Connection conn = dataSource.getConnection();
 				PreparedStatement statement = conn.prepareStatement(query);
 				ResultSet resultSet = statement.executeQuery()) {
@@ -56,34 +59,34 @@ public class ProdottoDAO {
 				prodotto.setIva(resultSet.getDouble("iva_p"));
 				prodotto.setPrezzo(resultSet.getBigDecimal("prezzo"));
 				prodotto.setPath_immagine(resultSet.getString("path_immagine"));
+				prodotto.setRaccomandato(resultSet.getBoolean("raccomandato"));
 				prodotti.add(prodotto);
 
 			}
 			return prodotti;
 		}
 	}
-	public List<Prodotto> getAllProdottiZoccolame(BigDecimal minprezzo, BigDecimal maxprezzo) throws SQLException {
-		String query = "SELECT * FROM Prodotto WHERE prezzo >= ? AND prezzo <= ?";
 
-		try (Connection conn = dataSource.getConnection(); PreparedStatement statement = conn.prepareStatement(query)) {
+	public List<Prodotto> getAllProdottiRaccomandati() throws SQLException {
+		String query = "SELECT * FROM prodotto WHERE cancellato = FALSE and raccomandato = TRUE";
+		try (Connection conn = dataSource.getConnection();
+				PreparedStatement statement = conn.prepareStatement(query);
+				ResultSet resultSet = statement.executeQuery()) {
 			List<Prodotto> prodotti = new ArrayList<>();
-			statement.setBigDecimal(1, minprezzo);
-			statement.setBigDecimal(2, maxprezzo);
-			try (ResultSet resultSet = statement.executeQuery()) {
+			while (resultSet.next()) {
+				Prodotto prodotto = new Prodotto();
+				prodotto.setIdProdotto(resultSet.getInt("ID_prodotto"));
+				prodotto.setNomeProdotto(resultSet.getString("nome_prodotto"));
+				prodotto.setDescrizione(resultSet.getString("descrizione"));
+				prodotto.setIva(resultSet.getDouble("iva_p"));
+				prodotto.setPrezzo(resultSet.getBigDecimal("prezzo"));
+				prodotto.setPath_immagine(resultSet.getString("path_immagine"));
+				prodotto.setRaccomandato(resultSet.getBoolean("raccomandato"));
 
-				while (resultSet.next()) {
-					Prodotto prodotto = new Prodotto();
-					prodotto.setIdProdotto(resultSet.getInt("ID_prodotto"));
-					prodotto.setNomeProdotto(resultSet.getString("nome_prodotto"));
-					prodotto.setDescrizione(resultSet.getString("descrizione"));
-					prodotto.setIva(resultSet.getDouble("iva_p"));
-					prodotto.setPrezzo(resultSet.getBigDecimal("prezzo"));
-					prodotto.setPath_immagine(resultSet.getString("path_immagine"));
-					prodotti.add(prodotto);
+				prodotti.add(prodotto);
 
-				}
-				return prodotti;
 			}
+			return prodotti;
 		}
 	}
 
@@ -104,6 +107,8 @@ public class ProdottoDAO {
 					prodotto.setIva(resultSet.getDouble("iva_p"));
 					prodotto.setPrezzo(resultSet.getBigDecimal("prezzo"));
 					prodotto.setPath_immagine(resultSet.getString("path_immagine"));
+					prodotto.setRaccomandato(resultSet.getBoolean("raccomandato"));
+
 					prodotti.add(prodotto);
 
 				}
@@ -112,10 +117,9 @@ public class ProdottoDAO {
 		}
 	}
 
-	// Metodo per ottenere tutti i prodotti
-	// Get all Prodotti
-	public List<Prodotto> getAllProdotti() throws SQLException {
-		String query = "SELECT * FROM prodotto WHERE cancellato = FALSE";
+	// prodotti admin
+	public List<Prodotto> getAllProdottiZoccolame() throws SQLException {
+		String query = "SELECT * FROM prodotto";
 		try (Connection conn = dataSource.getConnection();
 				PreparedStatement statement = conn.prepareStatement(query);
 				ResultSet resultSet = statement.executeQuery()) {
@@ -128,6 +132,8 @@ public class ProdottoDAO {
 				prodotto.setIva(resultSet.getDouble("iva_p"));
 				prodotto.setPrezzo(resultSet.getBigDecimal("prezzo"));
 				prodotto.setPath_immagine(resultSet.getString("path_immagine"));
+				prodotto.setRaccomandato(resultSet.getBoolean("raccomandato"));
+
 				prodotti.add(prodotto);
 
 			}
@@ -135,22 +141,50 @@ public class ProdottoDAO {
 		}
 	}
 
-	public Prodotto getOrderProduct(int productId) throws SQLException {
+	public List<Prodotto> getAllProdottiZoccolame(BigDecimal minprezzo, BigDecimal maxprezzo) throws SQLException {
+		String query = "SELECT * FROM Prodotto WHERE prezzo >= ? AND prezzo <= ?";
+
+		try (Connection conn = dataSource.getConnection(); PreparedStatement statement = conn.prepareStatement(query)) {
+			List<Prodotto> prodotti = new ArrayList<>();
+			statement.setBigDecimal(1, minprezzo);
+			statement.setBigDecimal(2, maxprezzo);
+			try (ResultSet resultSet = statement.executeQuery()) {
+
+				while (resultSet.next()) {
+					Prodotto prodotto = new Prodotto();
+					prodotto.setIdProdotto(resultSet.getInt("ID_prodotto"));
+					prodotto.setNomeProdotto(resultSet.getString("nome_prodotto"));
+					prodotto.setDescrizione(resultSet.getString("descrizione"));
+					prodotto.setIva(resultSet.getDouble("iva_p"));
+					prodotto.setPrezzo(resultSet.getBigDecimal("prezzo"));
+					prodotto.setPath_immagine(resultSet.getString("path_immagine"));
+					prodotto.setRaccomandato(resultSet.getBoolean("raccomandato"));
+
+					prodotti.add(prodotto);
+
+				}
+				return prodotti;
+			}
+		}
+	}
+
+	public Prodotto getOrderProduct(int prodottoId) throws SQLException {
 		String query = "SELECT * FROM prodotto WHERE ID_prodotto = ?";
 		try (Connection conn = dataSource.getConnection(); PreparedStatement statement = conn.prepareStatement(query)) {
-			statement.setInt(1, productId);
+			statement.setInt(1, prodottoId);
 			try (ResultSet resultSet = statement.executeQuery()) {
 				if (resultSet.next()) {
-					Prodotto product = new Prodotto();
-					product.setIdProdotto(resultSet.getInt("ID_prodotto"));
-					product.setNomeProdotto(resultSet.getString("nome_prodotto"));
-					product.setDescrizione(resultSet.getString("descrizione"));
-					product.setIva(resultSet.getDouble("iva_p"));
-					product.setPrezzo(resultSet.getBigDecimal("prezzo"));
-					product.setPath_immagine(resultSet.getString("path_immagine"));
-					product.setCancellato(resultSet.getBoolean("cancellato"));
+					Prodotto prodotto = new Prodotto();
+					prodotto.setIdProdotto(resultSet.getInt("ID_prodotto"));
+					prodotto.setNomeProdotto(resultSet.getString("nome_prodotto"));
+					prodotto.setDescrizione(resultSet.getString("descrizione"));
+					prodotto.setIva(resultSet.getDouble("iva_p"));
+					prodotto.setPrezzo(resultSet.getBigDecimal("prezzo"));
+					prodotto.setPath_immagine(resultSet.getString("path_immagine"));
+					prodotto.setCancellato(resultSet.getBoolean("cancellato"));
+					prodotto.setRaccomandato(resultSet.getBoolean("raccomandato"));
 
-					return product;
+					return prodotto;
 
 				} else {
 					return null;
@@ -175,6 +209,8 @@ public class ProdottoDAO {
 					prodotto.setIva(resultSet.getDouble("iva_p"));
 					prodotto.setPrezzo(resultSet.getBigDecimal("prezzo"));
 					prodotto.setPath_immagine(resultSet.getString("path_immagine"));
+					prodotto.setRaccomandato(resultSet.getBoolean("raccomandato"));
+
 					return prodotto;
 				}
 			}
@@ -195,6 +231,8 @@ public class ProdottoDAO {
 					prodotto.setIva(resultSet.getDouble("iva_p"));
 					prodotto.setPrezzo(resultSet.getBigDecimal("prezzo"));
 					prodotto.setPath_immagine(resultSet.getString("path_immagine"));
+					prodotto.setRaccomandato(resultSet.getBoolean("raccomandato"));
+
 					return prodotto;
 				}
 			}
@@ -202,10 +240,10 @@ public class ProdottoDAO {
 		return null; // Prodotto non trovato
 	}
 
-	public void toggleProductDeleted(int productId) throws SQLException {
+	public void toggleProductDeleted(int prodottoId) throws SQLException {
 		String query = "UPDATE Prodotto SET cancellato = CASE WHEN cancellato = 1 THEN 0 ELSE 1 END WHERE ID_prodotto = ?";
 		try (Connection conn = dataSource.getConnection(); PreparedStatement statement = conn.prepareStatement(query)) {
-			statement.setInt(1, productId);
+			statement.setInt(1, prodottoId);
 			statement.executeUpdate();
 		}
 	}

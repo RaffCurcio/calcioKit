@@ -15,10 +15,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Cart Items</title>
-<link rel="stylesheet" type="text/css" href="styles/Carrello.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-	type="text/javascript"></script>
+<script src="script/jquery-3.7.0.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="styles/cart.css">
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('.prodotto-quantita').on('input', function() {
@@ -82,7 +81,7 @@
 		if (composizioni == null || composizioni.isEmpty()) {
 		%>
 		<p class="empty-cart-msg">
-			Your cart is empty.<br> <a href="Catalogo">Continue Shopping</a>
+			Your cart is empty.<br> <a href="/Catalogo">Continue Shopping</a>
 		</p>
 		<%
 		} else {

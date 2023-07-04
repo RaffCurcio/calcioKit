@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 public class Prodotto {
 	private boolean cancellato;
+	private boolean raccomandato;
 	private String descrizione;
 	private int idProdotto;
 	private double iva;
@@ -98,6 +99,14 @@ public class Prodotto {
 	public String toString() {
 		return "Prodotto [idProdotto=" + idProdotto + ", nomeProdotto=" + nomeProdotto + ", prezzo=" + prezzo
 				+ ", descrizione=" + descrizione + ", iva=" + iva + ", nomeCatalogo=" + nomeCatalogo + "]";
+	}
+
+	public boolean isRaccomandato() {
+		return raccomandato;
+	}
+
+	public void setRaccomandato(boolean raccomandato) {
+		this.raccomandato = raccomandato;
 	}
 
 }

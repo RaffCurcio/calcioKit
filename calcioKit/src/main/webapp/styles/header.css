@@ -1,0 +1,209 @@
+body {
+	background-image: url('../images/svg/low-poly-grid-haikei.svg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	margin: 0;
+	padding: 0;
+	font-family: Arial, sans-serif;
+}
+/*Color of the price text*/
+.product-subtotal, .product-price {
+	color: green;
+}
+
+/* h1 { */
+/* 	color: #FFFFFF; */
+/* } */
+
+/* h2 { */
+/* 	color: #FFFFFF; */
+/* 	text-align: center; */
+/* } */
+
+/* h3 { */
+/* 	color: #FFFFFF; */
+/* } */
+
+/* a { */
+/* 	color: #77bbff; */
+/* 	background-color: transparent; */
+/* } */
+
+/* a:hover { */
+/* 	text-decoration: underline; */
+/* 	color: #1cb5ff; */
+/* } */
+
+/* p { */
+/* 	color: #F8F8F8; */
+/* } */
+
+/* label, strong { */
+/* 	color: #FFFFFF; */
+/* } */
+
+/* input, select { */
+/* 	text-align: center; */
+/* 	background-color: transparent; */
+/* 	color: #F8F8F8; */
+/* } */
+
+/* option { */
+/* 	background-color: #1c0d2a; */
+/* 	color: #F8F8F8; */
+/* 	border: none; */
+/* } */
+
+.product-details {
+	text-align: center;
+	border-top: 2px solid red;
+	border-left: 2px solid red;
+	border-right: 2px solid red;
+	border-bottom: 2px dashed red;
+	border: 1px solid #FFFFFF;
+	box-shadow: 0 2px 4px #FFFFFF;
+	border-radius: 6px;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+
+.cart-total {
+	color: green;
+}
+
+.cart-table {
+	box-shadow: -1px 5px 9px 0px rgba(2, 0, 0, 0.5)
+}
+
+input[type="submit"] {
+	background-color: orange;
+	color: #1c0d2a;
+	border-style: solid;
+	padding: 8px 16px;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+input[type="submit"]:hover {
+	background-color: rgb(225, 225, 225, 0.2);
+}
+
+th, caption {
+	color: #FFFFFF;
+	background-color: #0d1b2a;
+}
+
+button {
+	background-color: orange;
+	color: #0d1b2a;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus,
+	textarea:focus {
+	background-color: #37aaff;
+}
+
+.orderDetails {
+	background-color: rgb(250, 250, 250, 0.3);
+}
+/*Text area and admin catalog section addproduct*/
+textarea {
+	background-color: transparent;
+	color: #F8F8F8;
+	resize: vertical;
+}
+
+#AddProduct {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.button-container {
+	text-align: center;
+}
+
+/* end */
+.error {
+	font-size: 20px;
+	text-align: center;
+	color: red;
+}
+
+/* Header CSS */
+
+/* Styles for the navigation */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f1f1f1;
+}
+
+.navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navbar li {
+  margin-right: 10px;
+}
+
+.navbar li a {
+  text-decoration: none;
+  color: #333;
+  padding: 5px;
+}
+
+.navbar li a.active {
+  font-weight: bold;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+}
+
+.input-box {
+  margin-right: 10px;
+}
+
+.searchBar {
+  padding: 5px;
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+}
+
+ul li {
+  margin-right: 10px;
+}
+
+ul li a {
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.cart i {
+  /* Add any specific styles for the cart icon */
+}
+
+.cliente i {
+  /* Add any specific styles for the cliente icon */
+  color: green;
+}
+
+.toggle-btn a {
+  text-decoration: none;
+  color: #333;
+}

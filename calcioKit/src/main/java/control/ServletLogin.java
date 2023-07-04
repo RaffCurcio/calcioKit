@@ -104,7 +104,7 @@ public class ServletLogin extends HttpServlet {
 			session.setAttribute("sessionToken", sessionToken);
 
 			// Redirect to a protected resource or home page
-			response.sendRedirect("Homepage.jsp");
+			response.sendRedirect("HomePage");
 		} else {
 
 			String errorMessage = "Incorrect clientename or password";

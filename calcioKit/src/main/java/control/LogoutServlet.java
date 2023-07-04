@@ -51,13 +51,13 @@ public class LogoutServlet extends HttpServlet {
 
 		} else if (servletPath.equals("forceLogout")) {
 			session.invalidate();
-			response.sendRedirect("Homepage.jsp");
+			response.sendRedirect("HomePage");
 
 			return;
 		}
 		session.invalidate(); // Invalidate the session
 
-		response.sendRedirect("Homepage.jsp");
+		response.sendRedirect("HomePage");
 
 	}
 

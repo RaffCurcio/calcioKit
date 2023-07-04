@@ -81,6 +81,7 @@ CREATE TABLE Prodotto (
   descrizione TEXT,
   iva_p DECIMAL(5, 2) NOT NULL,
   path_immagine VARCHAR(255),
+  raccomandato boolean default false,
   cancellato boolean default false
 );
 

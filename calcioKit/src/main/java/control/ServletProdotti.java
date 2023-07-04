@@ -14,7 +14,7 @@ import dao.DBConnection;
 import dao.ProdottoDAO;
 import model.Prodotto;
 
-@WebServlet({ "/Catalogo", "/AdminCatalogPage" })
+@WebServlet({ "/HomePage", "/Catalogo", "/AdminCatalogPage" })
 public class ServletProdotti extends HttpServlet {
 	private static final long serialVersionUID = 2L;
 	private ProdottoDAO prodottoDAO;
@@ -23,6 +23,7 @@ public class ServletProdotti extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
+
 			String servletPath = request.getServletPath();
 
 			if (servletPath.equals("/AdminCatalogPage")) {
@@ -32,11 +33,23 @@ public class ServletProdotti extends HttpServlet {
 
 				request.getRequestDispatcher("admin/AdminCatalogPage.jsp").forward(request, response);
 
+			} else if (servletPath.equals("/HomePage")) {
+				List<Prodotto> prodotti = prodottoDAO.getAllProdottiRaccomandati();
+
+				request.setAttribute("prodotti", prodotti);
+				request.getRequestDispatcher("HomePage.jsp").forward(request, response);
+
+			} else if (servletPath.equals("/Catalogo")) {
+				List<Prodotto> prodotti = prodottoDAO.getAllProdotti();
+
+				request.setAttribute("prodotti", prodotti);
+				request.getRequestDispatcher("HomePage.jsp").forward(request, response);
+
 			} else {
 				List<Prodotto> prodotti = prodottoDAO.getAllProdotti();
 
 				request.setAttribute("prodotti", prodotti);
-				request.getRequestDispatcher("/Catalogo.jsp").forward(request, response);
+				request.getRequestDispatcher("HomePage.jsp").forward(request, response);
 
 			}
 

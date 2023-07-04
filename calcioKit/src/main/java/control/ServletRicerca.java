@@ -17,6 +17,10 @@ import model.Prodotto;
 @WebServlet("/ServletRicerca")
 
 public class ServletRicerca extends HttpServlet {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ProdottoDAO prodottoDAO;
 
 	@Override

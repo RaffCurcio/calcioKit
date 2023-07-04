@@ -73,7 +73,6 @@ public class ServletProfiloUtente extends HttpServlet {
 		HttpSession session = request.getSession();
 		Cliente cliente = ((Cliente) session.getAttribute("cliente"));
 
-
 		if (cliente == null) {
 			// Cliente is not authenticated, redirect to login page or show an error message
 			response.sendRedirect("login.jsp");

@@ -7,7 +7,7 @@
 	<display-name>CalcioKit</display-name>
 
 	<welcome-file-list>
-		<welcome-file>Homepage.jsp</welcome-file>
+		<welcome-file>HomePage.jsp</welcome-file>
 	</welcome-file-list>
 
 	<error-page>

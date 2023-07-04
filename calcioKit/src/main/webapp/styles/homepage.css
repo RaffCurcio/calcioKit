@@ -1,0 +1,81 @@
+/* styles/HomePage.css */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#catalogoContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px;
+}
+
+.prodotto {
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+}
+
+.prodotto a {
+  text-decoration: none;
+  color: #333;
+}
+
+.prodotto a:hover {
+  text-decoration: underline;
+}
+
+.prodotto img {
+  height: 180px;
+  width: 180px;
+}
+
+.prodotto h2 {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.prodotto .prezzo {
+  font-weight: bold;
+}
+
+.prodotto .descrizione {
+  display: block;
+  margin-top: 5px;
+}
+
+.prodotto form {
+  margin-top: 10px;
+}
+
+.prodotto input[type="number"] {
+  width: 50px;
+}
+
+.prodotto input[type="submit"] {
+  margin-top: 5px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.prodotto input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+p {
+  margin: 0;
+}
+
+/* styles/Navbar.css */
+
+/* Aggiungi il tuo stile per la barra di navigazione qui */

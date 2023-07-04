@@ -11,8 +11,7 @@
 
 <script src="script\catalog.js"></script>
 
-<link rel="stylesheet" type="text/css"
-	href="styles/catalog.css">
+<link rel="stylesheet" type="text/css" href="styles/catalog.css">
 
 
 
@@ -132,10 +131,16 @@
 									name="iva" id="iva" min=1 max=100 step="any"
 									value="<%=prodotto.getIva()%>">
 							</div>
-							
+
 							<div>
 								<label for="imagePath">Image Path</label><br> <input
 									type="text" name="imagePath" id="imagePath"
+									value="<%=prodotto.getPath_immagine()%>">
+							</div>
+
+							<div>
+								<label for="recommended">Recommended</label><br> <input
+									type="checkbox" id="recommendedForm" name="recommended"
 									value="<%=prodotto.getPath_immagine()%>">
 							</div>
 

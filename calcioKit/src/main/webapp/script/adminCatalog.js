@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', function() {
 function validateForm() {
 	let nameInput = document.getElementById('nameForm');
 	let descriptionInput = document.getElementById('descriptionForm');
-	let categoryInput = document.getElementById('categoryForm');
 	let priceInput = document.getElementById('priceForm');
 	let imagePathInput = document.getElementById('imagePathForm');
 
@@ -47,12 +46,6 @@ function validateForm() {
 		descriptionInput.classList.remove('invalid');
 	}
 
-	if (categoryInput.value.trim() === '') {
-		categoryInput.classList.add('invalid');
-		isValid = false;
-	} else {
-		categoryInput.classList.remove('invalid');
-	}
 
 	let price = parseFloat(priceInput.value);
 	if (isNaN(price) || price <= 0) {

@@ -85,7 +85,6 @@ public class ServletOrdiniAdmin extends HttpServlet {
 			String toDate = request.getParameter("toDate");
 			if (fromDate != null && !fromDate.isEmpty() && toDate != null && !toDate.isEmpty()
 					&& selectedUsername != null && !selectedUsername.isEmpty()) {
-				
 
 				java.sql.Date fromDateSql = java.sql.Date.valueOf(fromDate);
 				java.sql.Date toDateSql = java.sql.Date.valueOf(toDate);
@@ -95,7 +94,6 @@ public class ServletOrdiniAdmin extends HttpServlet {
 				java.sql.Date toDateSql = java.sql.Date.valueOf(toDate);
 				orderList = orderDAO.getOrdini(fromDateSql, toDateSql);
 			} else if (selectedUsername != null && !selectedUsername.isEmpty()) {
-
 
 				orderList = orderDAO.getOrdini(selectedUsername);
 			} else {

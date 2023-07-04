@@ -1,85 +1,61 @@
-<link rel="stylesheet" type="text/css" href="styles/Header.css">
-<link rel="stylesheet" type="text/css" href="styles/Navbar.css">
+<link rel="stylesheet" type="text/css" href="styles/header.css">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!--  <link rel="stylesheet" type="text/css" href="styles/Homepage.css"> -->
-
-<link rel="stylesheet" type="text/css" href="styles/Navbar.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-
-<link
-	href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
-	rel="stylesheet">
-
-<link rel="stylesheet"
-	href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap"
-	rel="stylesheet">
-<header class="top">
-	<div id="headerLogo">
-		<img id="logo" src="img/logo.png" alt="Logo del sito">
-	</div>
-</header>
 <nav>
 	<ul class="navbar">
-		<li><a href="Homepage.jsp" class="active">Home</a></li>
-		<li><a href="Catalogo">Prodotti</a></li>
+		<li><a href="/calcioKit/HomePage" class="active">Home</a></li>
+			<li><a href="Catalogo" class="login"><img
+					src="img/football-jersey-svgrepo-com.svg" alt="cart" width="24" height="24">Prodotti</a></li>
 	</ul>
-
 	<div class="main">
-		<form class="input-box">
+		<form class="input-box" action="/calcioKit/ServletRicerca">
 			<input type="text" placeholder="search" class="searchBar"
-				action="ServletRicerca" name="ricerca">
+				name="ricerca">
 
 		</form>
+		<ul>
+			<li><a href="/calcioKit/Cart" class="cart"><img src="img/cart.svg"
+					alt="cart" width="24" height="24">Carrello</a></li>
+			<%@ page import="model.Cliente"%>
 
-		<li><a href="Cart" class="cart"><i
-				class="ri-shopping-cart-2-line"></i></a></li>
-		<%@ page import="model.Cliente"%>
+			<%
+			if (session.getAttribute("cliente") == null) {
+			%>
+			<li><a href="/calcioKit/Login.jsp" class="login"><img
+					src="img/user_logout.svg" alt="cart" width="24" height="24">Login</a></li>
+			<li><a href="/calcioKit/Registrazione.jsp" class="Registrati"><img
+					src="img/user_logout.svg" alt="cart" width="24" height="24">Registrati</a></li>
+			<%
+			} else {
+			%>
+			<li><a href="/calcioKit/ProfiloUtente.jsp" class="Profilo"><img
+					src="img/user_login.svg" alt="Profilo" width="24" height="24">Profilo</a></li>
+			<li><a href="/calcioKit/Ordini.jsp" class="Ordini"><img
+					src="img/order-svgrepo-com.svg" alt="Ordini" width="24" height="24">Ordini</a></li>
+			<li><a href="/calcioKit/logout" class="Logout"><img
+					src="img/user_logout.svg" alt="cart" width="24" height="24">Logout</a></li>
 
-		<%
-		if (session.getAttribute("cliente") == null) {
-		%>
-		<a href="" class="cliente"><i class="ri-cliente-fill"></i></a> <a
-			href="Login.jsp">Login</a> <a href="Registrazione.jsp">Register</a>
-		<%
-		} else {
-		%>
-		<a href="ProfiloUtente.jsp" class="cliente"><i class="ri-cliente-fill"
-			style="color: green"></i></a> <a href="Ordini.jsp">Ordini</a> <a
-			href="logout">Logout</a>
-		<%
-		}
-		%>
-		<%
-		Cliente cliente = (Cliente) session.getAttribute("cliente");
+			<%
+			}
+			%>
+			<%
+			Cliente cliente = (Cliente) session.getAttribute("cliente");
 
-		if (cliente != null) {
-			if (cliente.getRuolo_cliente().equals("admin")) {
-		%>
-		<li><a href="/calcioKit/AdminCatalogPage">Admin Catalog Page</a></li>
-		<li><a href="/calcioKit/AdminOrdinePage">Admin Orders Page</a> <%
+			if (cliente != null) {
+				if (cliente.getRuolo_cliente().equals("admin")) {
+			%>
+			<li><a href="/calcioKit/AdminCatalogPage" class="Logout"><img
+			src="img/admin-with-cogwheels-svgrepo-com.svg" alt="cart" width="24" height="24">Admin Catalog Page</a></li>
+
+			<li><a href="/calcioKit/AdminOrdinePage" class="Logout"><img
+			src="img/admin-with-cogwheels-svgrepo-com.svg" alt="cart" width="24" height="24">Admin Orders Page</a></li>
+<%
+
  }
- }
- %>
+ } %>
+		</ul>
 	</div>
 
 	<div class="toggle-btn">
 		<a href=""><i class="ri-menu-line"></i></a>
 	</div>
 </nav>
-<!--
-	 <script>
-        ri-menu-line = document.querySelector(".ri-meniu-line");
-        nav = document.querySelector("nav");
-        ri-menu-line.onclick = function() {
-            nav.classList.toggle("active");
-        }
-    </script>
-	-->
