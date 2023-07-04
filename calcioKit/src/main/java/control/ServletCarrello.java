@@ -39,7 +39,7 @@ public class ServletCarrello extends HttpServlet {
 		} else {
 			composizioni = (List<Composizione>) session.getAttribute("carrello");
 
-		}		// Create a JsonArray to hold the cart item objects
+		} // Create a JsonArray to hold the cart item objects
 		JsonArray composizioniJson = new JsonArray();
 		BigDecimal prezzoTotale = BigDecimal.ZERO;
 		if (composizioni != null) {

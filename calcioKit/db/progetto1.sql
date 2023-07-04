@@ -72,11 +72,7 @@ CREATE TABLE Pagamento (
   FOREIGN KEY (ID_P) REFERENCES Pagamento (ID_pagamento)
   ON DELETE CASCADE ON UPDATE CASCADE 
 );
- 
- CREATE TABLE Catalogo (
-    nome_catalogo VARCHAR(100) PRIMARY KEY NOT NULL,
-    descrizione_cat TEXT
-);
+
 
 CREATE TABLE Prodotto (
   ID_prodotto INT PRIMARY KEY NOT NULL,
@@ -86,8 +82,6 @@ CREATE TABLE Prodotto (
   iva_p DECIMAL(5, 2) NOT NULL,
   path_immagine VARCHAR(255),
   cancellato boolean default false,
-  nome_c VARCHAR(100) NOT NULL,
-  FOREIGN KEY (nome_c) REFERENCES Catalogo (nome_catalogo)
   ON DELETE CASCADE ON UPDATE CASCADE 
 );
 
@@ -270,45 +264,25 @@ VALUES (4, '2023-05-04', 2023, 12.80, 4);
 INSERT INTO fattura (ID_fattura, data_fattura, anno, iva_fattura, ID_P)
 VALUES (5, '2023-05-05', 2023, 18.20, 5);
 
--- Inserimento di un catalogo
-INSERT INTO catalogo (nome_catalogo, descrizione_cat)
-VALUES ('Catalogo A', 'Descrizione del Catalogo A');
-
--- Inserimento di un altro catalogo
-INSERT INTO catalogo (nome_catalogo, descrizione_cat)
-VALUES ('Catalogo B', 'Descrizione del Catalogo B');
-
--- Inserimento di un altro catalogo
-INSERT INTO catalogo (nome_catalogo, descrizione_cat)
-VALUES ('Catalogo C', 'Descrizione del Catalogo C');
-
--- Inserimento di un altro catalogo
-INSERT INTO catalogo (nome_catalogo, descrizione_cat)
-VALUES ('Catalogo D', 'Descrizione del Catalogo D');
-
--- Inserimento di un altro catalogo
-INSERT INTO catalogo (nome_catalogo, descrizione_cat)
-VALUES ('Catalogo E', 'Descrizione del Catalogo E');
-
 -- Inserimento di un prodotto
-INSERT INTO prodotto (ID_prodotto, nome_prodotto, prezzo, descrizione, iva_p, path_immagine , nome_c)
-VALUES (1, 'Maglia Maradona', 10.99, 'Maglia Maradona Vintage', 22.00, 'img/magliaMaradona.jpg ' , 'Catalogo A');
+INSERT INTO prodotto (ID_prodotto, nome_prodotto, prezzo, descrizione, iva_p, path_immagine)
+VALUES (1, 'Maglia Maradona', 10.99, 'Maglia Maradona Vintage', 22.00, 'img/magliaMaradona.jpg ');
 
 -- Inserimento di un altro prodotto
-INSERT INTO prodotto (ID_prodotto, nome_prodotto, prezzo, descrizione, iva_p, path_immagine , nome_c)
-VALUES (2, 'Maglia Milan', 19.99, 'Maglia Milan 2022/2023', 15.50, 'img/magliaMilan.jpg ' , 'Catalogo A');
+INSERT INTO prodotto (ID_prodotto, nome_prodotto, prezzo, descrizione, iva_p, path_immagine)
+VALUES (2, 'Maglia Milan', 19.99, 'Maglia Milan 2022/2023', 15.50, 'img/magliaMilan.jpg ');
 
 -- Inserimento di un altro prodotto
-INSERT INTO prodotto (ID_prodotto, nome_prodotto, prezzo, descrizione, iva_p, path_immagine , nome_c)
-VALUES (3, 'Maglia Napoli', 7.50, 'Maglia Napoli 2022/2023', 20.00, 'img/magliaNapoli.jpg ' ,'Catalogo B');
+INSERT INTO prodotto (ID_prodotto, nome_prodotto, prezzo, descrizione, iva_p, path_immagine)
+VALUES (3, 'Maglia Napoli', 7.50, 'Maglia Napoli 2022/2023', 20.00, 'img/magliaNapoli.jpg ');
 
 -- Inserimento di un altro prodotto
-INSERT INTO prodotto (ID_prodotto, nome_prodotto, prezzo, descrizione, iva_p, path_immagine , nome_c)
-VALUES (4, 'Maglia Napoli San Valentino', 24.99, 'Maglia Napoli San Valentino', 12.80,'img/magliaNapoliSanValentino.jpg ' , 'Catalogo C');
+INSERT INTO prodotto (ID_prodotto, nome_prodotto, prezzo, descrizione, iva_p, path_immagine)
+VALUES (4, 'Maglia Napoli San Valentino', 24.99, 'Maglia Napoli San Valentino', 12.80,'img/magliaNapoliSanValentino.jpg ');
 
 -- Inserimento di un altro prodotto
-INSERT INTO prodotto (ID_prodotto, nome_prodotto, prezzo, descrizione, iva_p, path_immagine , nome_c)
-VALUES (5, 'Maglia Roma', 15.00, 'Maglia Roma 2022/2023', 18.20, 'img/magliaRoma.jpg ' , 'Catalogo C');
+INSERT INTO prodotto (ID_prodotto, nome_prodotto, prezzo, descrizione, iva_p, path_immagine)
+VALUES (5, 'Maglia Roma', 15.00, 'Maglia Roma 2022/2023', 18.20, 'img/magliaRoma.jpg ');
 
 -- Inserimento del primo magazzino
 INSERT INTO magazzino (nome_magazzino, indirizzo, citta)

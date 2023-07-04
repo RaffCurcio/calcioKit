@@ -4,13 +4,13 @@ import java.math.BigDecimal;
 import java.sql.Date;
 
 public class Ordine {
-	private int idOrdine;
 	private Date dataInserimento;
-	private BigDecimal prezzoVendita;
+	private String email_cli;
+	private int idOrdine;
 	private double ivaCout;
+	private BigDecimal prezzoVendita;
 	private String statoOrdine;
 	private String username_cli;
-	private String email_cli;
 
 	public Ordine() {
 	}

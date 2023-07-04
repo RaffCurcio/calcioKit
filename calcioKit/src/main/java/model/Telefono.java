@@ -1,10 +1,10 @@
 package model;
 
 public class Telefono {
+	private String email_cli;
 	private String numeroTelefono;
 	private String prefisso;
 	private String username_cli;
-	private String email_cli;
 
 	public Telefono() {
 	}

@@ -4,11 +4,11 @@ import java.math.BigDecimal;
 import java.sql.Date;
 
 public class Fattura {
-	private int idFattura;
-	private Date dataFattura;
 	private int anno;
-	private BigDecimal ivaFattura;
+	private Date dataFattura;
+	private int idFattura;
 	private int idPagamento;
+	private BigDecimal ivaFattura;
 
 	public Fattura() {
 	}

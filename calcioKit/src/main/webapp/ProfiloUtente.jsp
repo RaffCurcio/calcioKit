@@ -12,7 +12,15 @@
 </head>
 <body>
 	<jsp:include page="fragments/Header.jsp" />
-
+	<%
+	if (request.getAttribute("errorMessage") != null) {
+	%>
+	<div class="error">
+		<%=request.getAttribute("errorMessage")%>
+	</div>
+	<%
+	}
+	%>
 	<div class="container-userProfile">
 		<div class="profile-section">
 			<h1>Cliente Profile</h1>

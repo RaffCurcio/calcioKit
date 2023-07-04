@@ -63,13 +63,7 @@ public class ServletProfiloUtente extends HttpServlet {
 		}
 
 		// Validate citta
-		if (!citta.matches("^[a-zA-Z]{1,50}$")) {
-			String errorMessage = "Invalid indirizzo (1-50 characters)";
-			response.sendError(HttpServletResponse.SC_BAD_REQUEST, errorMessage);
-			return;
-		}
-
-		if (!provincia.matches("^[a-zA-Z]{1,50}$")) {
+		if (!citta.matches("^[a-zA-Z]{1,50}$") || !provincia.matches("^[a-zA-Z]{1,50}$")) {
 			String errorMessage = "Invalid indirizzo (1-50 characters)";
 			response.sendError(HttpServletResponse.SC_BAD_REQUEST, errorMessage);
 			return;
@@ -78,7 +72,7 @@ public class ServletProfiloUtente extends HttpServlet {
 		// Get the cliente ID from the session
 		HttpSession session = request.getSession();
 		Cliente cliente = ((Cliente) session.getAttribute("cliente"));
-		;
+
 
 		if (cliente == null) {
 			// Cliente is not authenticated, redirect to login page or show an error message

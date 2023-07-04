@@ -10,7 +10,6 @@
 .profile-section {
   width: 50%;
   margin-right: 20px;
-  color: white; /* Colore del testo bianco */
 }
 
 .profile-details {
@@ -24,7 +23,6 @@
 /* Stili per la sezione di modifica */
 .update-section {
   width: 50%;
-  color: white; /* Colore del testo bianco */
 }
 
 h2 {
@@ -39,7 +37,6 @@ form {
 
 label {
   margin-bottom: 5px;
-  color: white; /* Colore del testo bianco */
 }
 
 input[type="text"] {
@@ -51,7 +48,6 @@ input[type="text"] {
 input[type="submit"] {
   padding: 10px 20px;
   background-color: #4CAF50;
-  color: white;
   border: none;
   cursor: pointer;
 }
@@ -66,5 +62,4 @@ input[type="submit"] {
   border: 1px solid #ccc;
   padding: 20px;
   margin-bottom: 20px;
-  color: white; /* Colore del testo bianco */
 }

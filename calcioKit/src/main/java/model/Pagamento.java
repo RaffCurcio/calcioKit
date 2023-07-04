@@ -4,19 +4,19 @@ import java.math.BigDecimal;
 import java.sql.Date;
 
 public class Pagamento {
-	private int idPagamento;
-	private Date dataPagamento;
-	private BigDecimal importoPagamento;
-	private String tipoPagamento;
-	private String numeroCarta;
-	private Date dataScadenza;
-	private String cvc;
-	private String titolareConto;
-	private String iban;
 	private String bic;
+	private String cvc;
+	private Date dataPagamento;
+	private Date dataScadenza;
 	private String emailPayPal;
-	private String passwordPayPal;
+	private String iban;
 	private int idOrdine;
+	private int idPagamento;
+	private BigDecimal importoPagamento;
+	private String numeroCarta;
+	private String passwordPayPal;
+	private String tipoPagamento;
+	private String titolareConto;
 
 	public Pagamento() {
 	}

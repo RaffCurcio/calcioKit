@@ -62,10 +62,10 @@ public class ServletAggiornaQuantitaCarrello extends HttpServlet {
 			}
 		}
 		if (((Cliente) session.getAttribute("cliente")) == null) {
-			session.setAttribute("guestCart",carrello);
+			session.setAttribute("guestCart", carrello);
 
 		} else {
-			session.setAttribute("carrello",carrello);
+			session.setAttribute("carrello", carrello);
 
 		}
 		JsonObject jsonResponse = new JsonObject();

@@ -3,14 +3,14 @@ package model;
 import java.math.BigDecimal;
 
 public class Prodotto {
-	private int idProdotto;
-	private String nomeProdotto;
-	private BigDecimal prezzo;
+	private boolean cancellato;
 	private String descrizione;
+	private int idProdotto;
 	private double iva;
 	private String nomeCatalogo;
+	private String nomeProdotto;
 	private String path_immagine;
-	private boolean cancellato;
+	private BigDecimal prezzo;
 
 	// Costruttori
 	public Prodotto() {

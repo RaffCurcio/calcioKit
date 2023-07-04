@@ -13,13 +13,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.ClienteDAO;
 import dao.ComposizioneDAO;
 import dao.DBConnection;
 import dao.PagamentoDAO;
-import dao.ClienteDAO;
+import model.Cliente;
 import model.Composizione;
 import model.Pagamento;
-import model.Cliente;
 
 @WebServlet("/login")
 public class ServletLogin extends HttpServlet {
@@ -27,6 +27,7 @@ public class ServletLogin extends HttpServlet {
 
 	private ComposizioneDAO carrelloItemDAO;
 	private ClienteDAO clienteDAO;
+	private PagamentoDAO pagamentoDAO;
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -37,7 +38,7 @@ public class ServletLogin extends HttpServlet {
 		HttpSession session = request.getSession();
 		// Perform authentication logic here (e.g., checking against a database)
 		Cliente cliente = null;
-		Pagamento paymentMethod = null;
+		Pagamento pagamentoMethod = null;
 		List<Composizione> carrelloItems = null;
 
 		try {
@@ -51,16 +52,10 @@ public class ServletLogin extends HttpServlet {
 		System.out.println(cliente);
 
 		if (cliente != null) {
-			/*try {
-				//paymentMethod = paymentMethodDAO.getPagamento(cliente.getClienteId());
-			} catch (SQLException e) {
-				String errorMessage = "There was an error during the retrieval of your data, try again";
-				response.sendError(500, errorMessage);
-				return;
-			}*/
 
 			try {
-				carrelloItems = carrelloItemDAO.getComposizioniByUsernameAndEmail(cliente.getUsername(), cliente.getEmail());
+				carrelloItems = carrelloItemDAO.getComposizioniByUsernameAndEmail(cliente.getUsername(),
+						cliente.getEmail());
 			} catch (SQLException e) {
 				String errorMessage = "There was an error during the retrieval of your carrello items, try again";
 				response.sendError(500, errorMessage);
@@ -69,7 +64,8 @@ public class ServletLogin extends HttpServlet {
 			// Get the guest carrello from the guest session
 			List<Composizione> guestCart = (List<Composizione>) session.getAttribute("guestCart");
 
-			// Get the cliente carrello from the session or create a new carrello if it doesn't exist
+			// Get the cliente carrello from the session or create a new carrello if it
+			// doesn't exist
 			if (carrelloItems == null) {
 				carrelloItems = new ArrayList<>();
 			}
@@ -80,7 +76,8 @@ public class ServletLogin extends HttpServlet {
 					for (Composizione clienteComposizione : carrelloItems) {
 						if (guestComposizione.getIdProdotto() == clienteComposizione.getIdProdotto()) {
 							// Update the quantity of the existing carrello item
-							clienteComposizione.setQuantita_prodotto((clienteComposizione.getQuantita_prodotto() + guestComposizione.getQuantita_prodotto()));
+							clienteComposizione.setQuantita_prodotto((clienteComposizione.getQuantita_prodotto()
+									+ guestComposizione.getQuantita_prodotto()));
 							productExists = true;
 							break;
 						}
@@ -103,7 +100,7 @@ public class ServletLogin extends HttpServlet {
 			String sessionToken = UUID.randomUUID().toString();
 
 			session.setAttribute("cliente", cliente);
-			session.setAttribute("paymentMethod", paymentMethod);
+			session.setAttribute("pagamentoMethod", pagamentoMethod);
 			session.setAttribute("sessionToken", sessionToken);
 
 			// Redirect to a protected resource or home page
@@ -122,6 +119,7 @@ public class ServletLogin extends HttpServlet {
 		// Initialize the ClienteDAO instance
 		clienteDAO = new ClienteDAO(DBConnection.getDataSource()); // Replace 'dataSource' with your actual data source
 		carrelloItemDAO = new ComposizioneDAO(DBConnection.getDataSource());
+		pagamentoDAO = new PagamentoDAO(DBConnection.getDataSource());
 	}
 
 }

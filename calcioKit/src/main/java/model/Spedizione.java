@@ -4,11 +4,11 @@ import java.math.BigDecimal;
 import java.sql.Date;
 
 public class Spedizione {
-	private int idSpedizione;
-	private Date dataSpedizione;
-	private BigDecimal costiSpedizione;
 	private BigDecimal costiExtra;
+	private BigDecimal costiSpedizione;
+	private Date dataSpedizione;
 	private int idOrdine;
+	private int idSpedizione;
 
 	public Spedizione() {
 	}

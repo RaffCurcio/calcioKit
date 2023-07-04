@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.sql.DataSource;
 
@@ -53,6 +55,27 @@ public class ClienteDAO {
 		cliente.setCap(resultSet.getString("cap"));
 		cliente.setRuolo_cliente(resultSet.getString("ruolo_cliente"));
 		return cliente;
+	}
+
+	public List<Cliente> getAllUsers() throws SQLException {
+		String query = "SELECT * FROM Cliente";
+		List<Cliente> userList = new ArrayList<>();
+
+		try (Connection connection = dataSource.getConnection();
+				PreparedStatement statement = connection.prepareStatement(query);
+				ResultSet resultSet = statement.executeQuery()) {
+			while (resultSet.next()) {
+				Cliente cliente = new Cliente();
+				cliente.setUsername(resultSet.getString("username"));
+				cliente.setPassword(resultSet.getString("pwd"));
+				cliente.setEmail(resultSet.getString("email"));
+				cliente.setRuolo_cliente(resultSet.getString("ruolo_cliente"));
+
+				userList.add(cliente);
+			}
+		}
+
+		return userList;
 	}
 
 	public Cliente getClienteByEmail(String email) throws SQLException {
@@ -126,4 +149,5 @@ public class ClienteDAO {
 			statement.executeUpdate();
 		}
 	}
+
 }

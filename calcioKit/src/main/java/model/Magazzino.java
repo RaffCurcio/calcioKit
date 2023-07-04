@@ -1,9 +1,9 @@
 package model;
 
 public class Magazzino {
-	private String nomeMagazzino;
-	private String indirizzo;
 	private String città;
+	private String indirizzo;
+	private String nomeMagazzino;
 
 	public Magazzino() {
 	}

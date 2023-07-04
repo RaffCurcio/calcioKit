@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.Composizione;
 import model.Cliente;
+import model.Composizione;
 
 @WebServlet("/AggiungiAlCarrello")
 public class ServletAggiungiAlCarrello extends HttpServlet {
@@ -38,7 +38,7 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
 		}
 
 		Cliente cliente = null;
-		
+
 		List<Composizione> carrello = null;
 		if (((Cliente) session.getAttribute("cliente")) == null) {
 			carrello = (List<Composizione>) session.getAttribute("guestCart");
@@ -49,7 +49,7 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
 			cliente = ((Cliente) session.getAttribute("cliente"));
 
 		}
-		
+
 		if (carrello == null) {
 			carrello = new ArrayList<>();
 		}

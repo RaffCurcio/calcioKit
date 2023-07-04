@@ -2,12 +2,7 @@ body {
 	font-family: Arial, sans-serif;
 }
 
-h1 {
-	text-align: center;
-	margin-bottom: 30px;
-}
-
-.register_form{
+#register_form{
 	width: 400px;
 	height: 500px;
 	margin-top: 200px;
@@ -23,6 +18,9 @@ h1 {
 	font-size: 30px;
 	font-family: Helvetica, Arial, sans-serif;
 	padding: 20px;
+		text-align: center;
+	margin-bottom: 30px;
+	
 }
 
 
@@ -50,7 +48,7 @@ input[type="submit"] {
 	font-size: 16px;
 }
 
-#Login_text{
+label{
 	font-size: 20px;
 	font-family: Helvetica, Arial, sans-serif;
 	padding: 20px;

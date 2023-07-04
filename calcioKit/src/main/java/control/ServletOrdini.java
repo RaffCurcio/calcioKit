@@ -20,10 +20,10 @@ import dao.ComposizioneDAO;
 import dao.DBConnection;
 import dao.OrdineDAO;
 import dao.ProdottoDAO;
+import model.Cliente;
 import model.Composizione;
 import model.Ordine;
 import model.Prodotto;
-import model.Cliente;
 
 @WebServlet("/Ordini")
 public class ServletOrdini extends HttpServlet {

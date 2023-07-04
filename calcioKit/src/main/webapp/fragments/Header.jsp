@@ -6,59 +6,75 @@
 <!--  <link rel="stylesheet" type="text/css" href="styles/Homepage.css"> -->
 
 <link rel="stylesheet" type="text/css" href="styles/Navbar.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
-<link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+<link
+	href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
+	rel="stylesheet">
 
-<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+<link rel="stylesheet"
+	href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 
-<link rel="preconnect" href="https://fonts.googleapis.com"> 
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap"
+	rel="stylesheet">
 <header class="top">
-		<div id="headerLogo">
-			<img id="logo" src="img/logo.png" alt="Logo del sito">
-		</div>
-	</header>
-	<nav>
-		<ul class="navbar">
-			<li><a href="Homepage.jsp" class="active">Home</a></li>
-			<li><a href="Catalogo">Prodotti</a></li>
-			<li><a href="#">Contatti</a></li>
-		</ul>
-			
-			<div class="main">
-			<form class="input-box">
-					<input type="text" placeholder="search" class="searchBar" action="ServletRicerca" name="ricerca">
-					
-			</form>
-			
-				<li><a href="Cart" class="cart"><i class="ri-shopping-cart-2-line"></i></a></li>
-				
-				<%
-				if (session.getAttribute("cliente") == null) {
-				%>
-				<a href="" class="user"><i class="ri-user-fill"></i></a>
-				<a href="Login.jsp">Login</a>
-				<a href="Registrazione.jsp">Register</a>
-				<%
-				} else {
-				%>
-				<a href="ProfiloUtente.jsp" class="user"><i class="ri-user-fill" style = "color:green"></i></a>
-								<a href="Ordini.jsp">Ordini</a>
-				
-				<a href="logout">Logout</a>
-				<%
-				}
-				%>
-				
-			</div>
-			
-		<div class="toggle-btn">
-				<a href=""><i class="ri-menu-line"></i></a>
-				</div>
-	</nav>
-	<!--
+	<div id="headerLogo">
+		<img id="logo" src="img/logo.png" alt="Logo del sito">
+	</div>
+</header>
+<nav>
+	<ul class="navbar">
+		<li><a href="Homepage.jsp" class="active">Home</a></li>
+		<li><a href="Catalogo">Prodotti</a></li>
+	</ul>
+
+	<div class="main">
+		<form class="input-box">
+			<input type="text" placeholder="search" class="searchBar"
+				action="ServletRicerca" name="ricerca">
+
+		</form>
+
+		<li><a href="Cart" class="cart"><i
+				class="ri-shopping-cart-2-line"></i></a></li>
+		<%@ page import="model.Cliente"%>
+
+		<%
+		if (session.getAttribute("cliente") == null) {
+		%>
+		<a href="" class="cliente"><i class="ri-cliente-fill"></i></a> <a
+			href="Login.jsp">Login</a> <a href="Registrazione.jsp">Register</a>
+		<%
+		} else {
+		%>
+		<a href="ProfiloUtente.jsp" class="cliente"><i class="ri-cliente-fill"
+			style="color: green"></i></a> <a href="Ordini.jsp">Ordini</a> <a
+			href="logout">Logout</a>
+		<%
+		}
+		%>
+		<%
+		Cliente cliente = (Cliente) session.getAttribute("cliente");
+
+		if (cliente != null) {
+			if (cliente.getRuolo_cliente().equals("admin")) {
+		%>
+		<li><a href="/calcioKit/AdminCatalogPage">Admin Catalog Page</a></li>
+		<li><a href="/calcioKit/AdminOrdinePage">Admin Orders Page</a> <%
+ }
+ }
+ %>
+	</div>
+
+	<div class="toggle-btn">
+		<a href=""><i class="ri-menu-line"></i></a>
+	</div>
+</nav>
+<!--
 	 <script>
         ri-menu-line = document.querySelector(".ri-meniu-line");
         nav = document.querySelector("nav");

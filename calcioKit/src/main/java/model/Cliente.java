@@ -1,16 +1,16 @@
 package model;
 
 public class Cliente {
-	private String username;
-	private String email;
-	private String password;
-	private String nome;
-	private String cognome;
-	private String indirizzo;
-	private String citta;
-	private String provincia;
 	private String cap;
+	private String citta;
+	private String cognome;
+	private String email;
+	private String indirizzo;
+	private String nome;
+	private String password;
+	private String provincia;
 	private String ruolo_cliente;
+	private String username;
 
 	public Cliente() {
 	}

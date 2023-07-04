@@ -11,14 +11,38 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import model.Composizione;
-import model.Composizione;
-import model.Composizione;
 
 public class ComposizioneDAO {
 	private DataSource dataSource;
 
 	public ComposizioneDAO(DataSource dataSource) {
 		this.dataSource = dataSource;
+	}
+
+	public List<Composizione> findOrderedItemsByOrderId(String username, String email, int orderId)
+			throws SQLException {
+		List<Composizione> composizioni = new ArrayList<>();
+		String query = "SELECT * FROM composizione WHERE username_cli = ? AND email_cli = ?  AND id_ordine = ?";
+		try (Connection connection = dataSource.getConnection();
+				PreparedStatement statement = connection.prepareStatement(query)) {
+			statement.setString(1, username);
+			statement.setString(2, email);
+			statement.setInt(3, orderId);
+			try (ResultSet resultSet = statement.executeQuery()) {
+				while (resultSet.next()) {
+					Composizione composizione = new Composizione();
+					composizione.setIdComposizione(resultSet.getInt("composizione_id"));
+					composizione.setIdOrdine(resultSet.getInt("id_ordine"));
+					composizione.setIdProdotto(resultSet.getInt("id_prodotto"));
+					composizione.setUsername(resultSet.getString("username_cli"));
+					composizione.setEmail(resultSet.getString("email_cli"));
+					composizione.setQuantita_prodotto(resultSet.getInt("quantita"));
+					composizione.setPrezzo_vendita(resultSet.getBigDecimal("prezzo_prodotto"));
+					composizioni.add(composizione);
+				}
+			}
+		}
+		return composizioni;
 	}
 
 	public List<Composizione> getComposizioniByUsernameAndEmail(String username, String email) throws SQLException {
@@ -56,6 +80,16 @@ public class ComposizioneDAO {
 		}
 	}
 
+	public void removeAllDeletedItems(int productId) throws SQLException {
+		String query = "DELETE FROM composizione WHERE id_ordine IS NULL AND id_prodotto = ?";
+		try (Connection connection = dataSource.getConnection();
+				PreparedStatement statement = connection.prepareStatement(query)) {
+			statement.setInt(1, productId);
+			statement.executeUpdate();
+
+		}
+	}
+
 	public void removeComposizione(String username, String email, int idProdotto) throws SQLException {
 		String query = "DELETE FROM composizione WHERE username_cli = ? AND email_cli = ? AND id_prodotto = ?";
 		try (Connection connection = dataSource.getConnection();
@@ -71,7 +105,7 @@ public class ComposizioneDAO {
 	public void saveAllComposizioni(List<Composizione> composizioni) throws SQLException {
 		try (Connection connection = dataSource.getConnection()) {
 			for (Composizione composizione : composizioni) {
-				String user_email= composizione.getEmail();
+				String user_email = composizione.getEmail();
 				String user_username = composizione.getUsername();
 
 				int productId = composizione.getIdProdotto();
@@ -123,7 +157,8 @@ public class ComposizioneDAO {
 		}
 	}
 
-	public void updateComposizione(int orderId, String username, String email, BigDecimal price, int productId) throws SQLException {
+	public void updateComposizione(int orderId, String username, String email, BigDecimal price, int productId)
+			throws SQLException {
 		String query = "UPDATE Composizione SET id_ordine = ?, prezzo_prodotto = ? WHERE username_cli = ? AND email_cli = ? AND id_ordine IS NULL AND id_prodotto = ?";
 		try (Connection connection = dataSource.getConnection();
 				PreparedStatement statement = connection.prepareStatement(query)) {
@@ -135,29 +170,5 @@ public class ComposizioneDAO {
 			statement.executeUpdate();
 		}
 	}
-	
-	public List<Composizione> findOrderedItemsByOrderId(String username, String email , int orderId) throws SQLException {
-		List<Composizione> composizioni = new ArrayList<>();
-		String query = "SELECT * FROM composizione WHERE username_cli = ? AND email_cli = ?  AND id_ordine = ?";
-		try (Connection connection = dataSource.getConnection();
-				PreparedStatement statement = connection.prepareStatement(query)) {
-			statement.setString(1, username);
-			statement.setString(2, email);
-			statement.setInt(3, orderId);
-			try (ResultSet resultSet = statement.executeQuery()) {
-				while (resultSet.next()) {
-					Composizione composizione = new Composizione();
-					composizione.setIdComposizione(resultSet.getInt("composizione_id"));
-					composizione.setIdOrdine(resultSet.getInt("id_ordine"));
-					composizione.setIdProdotto(resultSet.getInt("id_prodotto"));
-					composizione.setUsername(resultSet.getString("username_cli"));
-					composizione.setEmail(resultSet.getString("email_cli"));
-					composizione.setQuantita_prodotto(resultSet.getInt("quantita"));
-					composizione.setPrezzo_vendita(resultSet.getBigDecimal("prezzo_prodotto"));
-					composizioni.add(composizione);
-				}
-			}
-		}
-		return composizioni;
-	}
+
 }

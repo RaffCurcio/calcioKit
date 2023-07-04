@@ -35,7 +35,8 @@ public class LogoutServlet extends HttpServlet {
 				// Save the composiziones to the database
 				if (composiziones != null && !composiziones.isEmpty()) {
 					try {
-						// Assuming you have a method in ComposizioneDAO to save multiple cart items at once
+						// Assuming you have a method in ComposizioneDAO to save multiple cart items at
+						// once
 						composizioneDAO.saveAllComposizioni(composiziones);
 					} catch (SQLException e) {
 						String errorMessage = "There was an error during the logout, your items in the cart didn't make it to the database\n"

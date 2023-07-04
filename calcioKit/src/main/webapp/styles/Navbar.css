@@ -93,11 +93,11 @@ nav{
 .input-box .button:active {
   transform: translateY(-50%) scale(0.98);
 }
-.user{
+.cliente{
 	display: flex;
 	align-items: center;
 }
-.user i{
+.cliente i{
 	color: black;
 	font-size: 28px;
 	margin-right: 7px;
@@ -134,7 +134,7 @@ nav{
   .nav{
 	padding: 0 50px;
 	}
-  .user{
+  .cliente{
   display: none;
   }
   .cart{

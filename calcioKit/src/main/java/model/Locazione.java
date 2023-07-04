@@ -1,10 +1,10 @@
 package model;
 
 public class Locazione {
-	private int idProdotto;
-	private String nomeMagazzino;
-	private String indirizzoMagazzino;
 	private String cittàMagazzino;
+	private int idProdotto;
+	private String indirizzoMagazzino;
+	private String nomeMagazzino;
 
 	public Locazione() {
 	}

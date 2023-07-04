@@ -30,29 +30,6 @@ public class ServletRegistrazione extends HttpServlet {
 		String password = request.getParameter("password");
 		String email = request.getParameter("email");
 
-		// Validate username
-		if (!username.matches("^[a-zA-Z0-9_]{5,20}$")) {
-			String errorMessage = "Invalid username (5-20 characters, alphanumeric and underscore only)";
-			request.setAttribute("errorMessage", errorMessage);
-			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-			return;
-		}
-
-		// Validate email
-		if (!email.matches("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$")) {
-			String errorMessage = "Invalid email address";
-			request.setAttribute("errorMessage", errorMessage);
-			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-			return;
-		}
-
-		// Validate password
-		if (!password.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$")) {
-			String errorMessage = "Invalid password (minimum 8 characters, at least one letter and one number)";
-			request.setAttribute("errorMessage", errorMessage);
-			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-			return;
-		}
 		// Create a new Cliente object
 		Cliente cliente = new Cliente();
 		cliente.setUsername(username);

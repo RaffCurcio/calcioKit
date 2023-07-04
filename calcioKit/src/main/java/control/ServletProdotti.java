@@ -14,7 +14,7 @@ import dao.DBConnection;
 import dao.ProdottoDAO;
 import model.Prodotto;
 
-@WebServlet("/Catalogo")
+@WebServlet({ "/Catalogo", "/AdminCatalogPage" })
 public class ServletProdotti extends HttpServlet {
 	private static final long serialVersionUID = 2L;
 	private ProdottoDAO prodottoDAO;
@@ -23,23 +23,30 @@ public class ServletProdotti extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			// Recupera tutti i prodotti dal database
+			String servletPath = request.getServletPath();
 
-			List<Prodotto> prodotti = prodottoDAO.getAllProdotti();
+			if (servletPath.equals("/AdminCatalogPage")) {
+				List<Prodotto> prodotti = prodottoDAO.getAllProdottiZoccolame();
 
-			// Passa i prodotti alla pagina catalogo.jsp
-			request.setAttribute("prodotti", prodotti);
-			request.getRequestDispatcher("/Catalogo.jsp").forward(request, response);
+				request.setAttribute("prodotti", prodotti);
+
+				request.getRequestDispatcher("admin/AdminCatalogPage.jsp").forward(request, response);
+
+			} else {
+				List<Prodotto> prodotti = prodottoDAO.getAllProdotti();
+
+				request.setAttribute("prodotti", prodotti);
+				request.getRequestDispatcher("/Catalogo.jsp").forward(request, response);
+
+			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			// Handle the exception appropriately or display an error page
 		}
 	}
 
 	@Override
 	public void init() {
-		// Initialize the UserDAO instance
 
 		prodottoDAO = new ProdottoDAO(DBConnection.getDataSource()); // Replace 'dataSource' with your actual data
 																		// source
