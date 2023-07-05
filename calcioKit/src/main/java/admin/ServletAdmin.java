@@ -72,15 +72,15 @@ public class ServletAdmin extends HttpServlet {
 				BigDecimal price = new BigDecimal(request.getParameter("price"));
 				double iva = Double.parseDouble(request.getParameter("iva"));
 				String imagePath = request.getParameter("imagePath");
-
+				boolean recommended = request.getParameter("recommended") != null;
 				Prodotto existingProdotto = productDAO.getOrderProduct(productId);
-
 				existingProdotto.setNomeProdotto(name);
 				existingProdotto.setDescrizione(description);
 				existingProdotto.setPrezzo(price);
 				existingProdotto.setIva(iva);
 				existingProdotto.setPath_immagine(imagePath);
-
+				existingProdotto.setRaccomandato(recommended);
+				System.out.println(recommended);
 				productDAO.updateProdotto(existingProdotto);
 
 			}

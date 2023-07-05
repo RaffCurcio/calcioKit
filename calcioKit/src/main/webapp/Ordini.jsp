@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>Elenco Ordini</title>	
-    <link rel="stylesheet" type="text/css" href="styles/Ordini.css">
+    <link rel="stylesheet" type="text/css" href="styles/ordini.css">
     
     <%
 	String sessionToken = (String) session.getAttribute("sessionToken");

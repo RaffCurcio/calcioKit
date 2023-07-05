@@ -1,0 +1,155 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+/* Ordini Table */
+#ordiniTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+#ordiniTable th,
+#ordiniTable td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+}
+
+#ordiniTable th:first-child,
+#ordiniTable td:first-child {
+  text-align: left;
+}
+
+#ordiniTable td:last-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+#ordiniTable td table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+#ordiniTable td table th,
+#ordiniTable td table td {
+  padding: 5px;
+  border-bottom: none;
+}
+
+#ordiniTable td table th:first-child,
+#ordiniTable td table td:first-child {
+  text-align: left;
+}
+
+#ordiniTable td table td:last-child {
+  width: 80px;
+}
+
+#ordiniTable td table td img {
+  max-width: 60px;
+  max-height: 60px;
+  object-fit: cover;
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+  #ordiniTable th,
+  #ordiniTable td {
+    padding: 5px;
+    font-size: 12px;
+  }
+  
+  #ordiniTable th:last-child,
+  #ordiniTable td:last-child {
+    display: none;
+  }
+  
+  #ordiniTable td table {
+    margin-top: 5px;
+  }
+  
+  #ordiniTable td table th,
+  #ordiniTable td table td {
+    padding: 3px;
+    font-size: 10px;
+  }
+  
+  #ordiniTable td table td:last-child {
+    display: none;
+  }
+  
+  #ordiniTable td table td img {
+    max-width: 40px;
+    max-height: 40px;
+  }
+}
+/* ... codice CSS precedente ... */
+
+/* Collapsed Order Details */
+.order-details.collapsed {
+    display: none;
+}
+
+/* Order Header Styling */
+.order-header {
+    cursor: pointer;
+    background-color: #f5f5f5;
+}
+
+.order-header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.order-header-content span {
+    font-weight: bold;
+}
+
+/* Composition Table Styling */
+.composition-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.composition-table th,
+.composition-table td {
+    padding: 5px;
+    border-bottom: none;
+}
+
+.composition-table th:first-child,
+.composition-table td:first-child {
+    text-align: left;
+}
+
+.composition-table td:last-child {
+    width: 80px;
+}
+
+.composition-table td img {
+    max-width: 60px;
+    max-height: 60px;
+    object-fit: cover;
+}
+
+/* ... codice CSS successivo ... */

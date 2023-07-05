@@ -18,7 +18,7 @@
 
 
 	<!-- CONTENUTO PAGINA -->
-<h1 style="text-align:center;">Prodotti Raccomandati GAY</h1>
+<h1 style="text-align:center;">Prodotti Raccomandati</h1>
 
 	<div id="catalogoContainer">
 		<%-- Recupera la lista dei prodotti dalla richiesta --%>

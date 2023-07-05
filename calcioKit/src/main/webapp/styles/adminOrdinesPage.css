@@ -1,0 +1,100 @@
+/* Stili per schermi di larghezza inferiore a 600px */
+@media only screen and (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+
+  table {
+    font-size: 12px;
+  }
+
+  input[type="date"] {
+    width: 100%;
+  }
+}
+
+/* Stili per schermi di larghezza compresa tra 601px e 1024px */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  body {
+    font-size: 16px;
+  }
+
+  table {
+    font-size: 14px;
+  }
+
+  input[type="date"] {
+    width: 200px;
+  }
+}
+
+/* Stili per schermi di larghezza superiore a 1024px */
+@media only screen and (min-width: 1025px) {
+  body {
+    font-size: 18px;
+  }
+
+  table {
+    font-size: 16px;
+  }
+
+  input[type="date"] {
+    width: 250px;
+  }
+}
+
+/* Altri stili comuni per tutti i dispositivi */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+section#Ordini {
+  margin-bottom: 30px;
+}
+
+h1, h3 {
+  margin: 10px 0;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+select, input[type="date"], input[type="submit"] {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+caption {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
+
+th {
+  font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+

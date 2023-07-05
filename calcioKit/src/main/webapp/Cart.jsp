@@ -81,7 +81,7 @@
 		if (composizioni == null || composizioni.isEmpty()) {
 		%>
 		<p class="empty-cart-msg">
-			Your cart is empty.<br> <a href="/Catalogo">Continue Shopping</a>
+			Your cart is empty.<br> <a href="/calcioKit/HomePage">Continue Shopping</a>
 		</p>
 		<%
 		} else {

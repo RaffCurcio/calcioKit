@@ -34,18 +34,18 @@ public class ServletCatalogoFiltro extends HttpServlet {
 
 		String minPriceParam = request.getParameter("minPrice");
 		String maxPriceParam = request.getParameter("maxPrice");
-		List<Prodotto> filteredProdottos;
+		List<Prodotto> filteredProdotti;
 		try {
 			if (servletPath.equals("/FilterCatalog")) {
 				if (minPriceParam != null && maxPriceParam != null) {
 					BigDecimal minPrice = new BigDecimal(minPriceParam);
 					BigDecimal maxPrice = new BigDecimal(maxPriceParam);
-					filteredProdottos = prodottoDAO.getAllProdotti(minPrice, maxPrice);
+					filteredProdotti = prodottoDAO.getAllProdotti(minPrice, maxPrice);
 				} else {
-					filteredProdottos = prodottoDAO.getAllProdotti();
+					filteredProdotti = prodottoDAO.getAllProdotti();
 				}
 
-				request.setAttribute("prodotti", filteredProdottos);
+				request.setAttribute("prodotti", filteredProdotti);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("Catalog.jsp");
 				dispatcher.forward(request, response);
 
@@ -53,12 +53,12 @@ public class ServletCatalogoFiltro extends HttpServlet {
 				if (minPriceParam != null && maxPriceParam != null) {
 					BigDecimal minPrice = new BigDecimal(minPriceParam);
 					BigDecimal maxPrice = new BigDecimal(maxPriceParam);
-					filteredProdottos = prodottoDAO.getAllProdottiZoccolame(minPrice, maxPrice);
+					filteredProdotti = prodottoDAO.getAllProdottiAdmin(minPrice, maxPrice);
 				} else {
-					filteredProdottos = prodottoDAO.getAllProdottiZoccolame();
+					filteredProdotti = prodottoDAO.getAllProdottiAdmin();
 				}
 
-				request.setAttribute("prodotti", filteredProdottos);
+				request.setAttribute("prodotti", filteredProdotti);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("admin/AdminCatalogPage.jsp");
 				dispatcher.forward(request, response);
 

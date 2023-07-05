@@ -118,7 +118,7 @@ public class ProdottoDAO {
 	}
 
 	// prodotti admin
-	public List<Prodotto> getAllProdottiZoccolame() throws SQLException {
+	public List<Prodotto> getAllProdottiAdmin() throws SQLException {
 		String query = "SELECT * FROM prodotto";
 		try (Connection conn = dataSource.getConnection();
 				PreparedStatement statement = conn.prepareStatement(query);
@@ -141,7 +141,7 @@ public class ProdottoDAO {
 		}
 	}
 
-	public List<Prodotto> getAllProdottiZoccolame(BigDecimal minprezzo, BigDecimal maxprezzo) throws SQLException {
+	public List<Prodotto> getAllProdottiAdmin(BigDecimal minprezzo, BigDecimal maxprezzo) throws SQLException {
 		String query = "SELECT * FROM Prodotto WHERE prezzo >= ? AND prezzo <= ?";
 
 		try (Connection conn = dataSource.getConnection(); PreparedStatement statement = conn.prepareStatement(query)) {
@@ -250,14 +250,15 @@ public class ProdottoDAO {
 
 	// Metodo per aggiornare un prodotto esistente
 	public void updateProdotto(Prodotto prodotto) throws SQLException {
-		String query = "UPDATE prodotto SET nome_prodotto = ?, descrizione = ?, iva_p = ?, prezzo = ?, path_immagine = ? WHERE ID_prodotto = ?";
+		String query = "UPDATE prodotto SET nome_prodotto = ?, descrizione = ?, iva_p = ?, prezzo = ?, path_immagine = ? , raccomandato = ? WHERE ID_prodotto = ?";
 		try (Connection conn = dataSource.getConnection(); PreparedStatement statement = conn.prepareStatement(query)) {
 			statement.setString(1, prodotto.getNomeProdotto());
 			statement.setString(2, prodotto.getDescrizione());
 			statement.setDouble(3, prodotto.getIva());
 			statement.setBigDecimal(4, prodotto.getPrezzo());
 			statement.setString(5, prodotto.getPath_immagine());
-			statement.setInt(6, prodotto.getIdProdotto());
+			statement.setBoolean(6, prodotto.isRaccomandato());
+			statement.setInt(7, prodotto.getIdProdotto());
 			statement.executeUpdate();
 		}
 	}

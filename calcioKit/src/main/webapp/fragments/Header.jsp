@@ -7,11 +7,7 @@
 					src="img/football-jersey-svgrepo-com.svg" alt="cart" width="24" height="24">Prodotti</a></li>
 	</ul>
 	<div class="main">
-		<form class="input-box" action="/calcioKit/ServletRicerca">
-			<input type="text" placeholder="search" class="searchBar"
-				name="ricerca">
-
-		</form>
+		
 		<ul>
 			<li><a href="/calcioKit/Cart" class="cart"><img src="img/cart.svg"
 					alt="cart" width="24" height="24">Carrello</a></li>

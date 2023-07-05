@@ -13,8 +13,9 @@
 <link rel="stylesheet" type="text/css"
 	href="/calcioKit/styles/adminOrdinePage.css">
 <script src="script\asyncForms.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="styles/cartNotification.css">
+
+	<link rel="stylesheet" type="text/css" href="styles/adminOrdinesPage.css">
+	
 <title>Cliente Ordini</title>
 </head>
 
@@ -35,9 +36,9 @@
 
 		<section id="Ordini">
 			<form action="AdminOrdinePage" method="POST">
-				<h1>Filter by Cliente</h1>
+				<h1>Ordina per Cliente</h1>
 				<select name="selectedUsername" id="clienteId">
-					<option value="">All Clienti</option>
+					<option value="">Tutti i Clienti</option>
 					<%
 					List<Cliente> clienteList = (List<Cliente>) request.getAttribute("clienteList");
 					for (Cliente cliente : clienteList) {
@@ -50,12 +51,12 @@
 					%>
 					
 				</select> <br> <br>
-				<h1>Filter by Date Range</h1>
-				<h3>From</h3>
+				<h1>Ordina per Data</h1>
+				<h3>Dal</h3>
 				<input type="date" name="fromDate" id="fromDate">
-				<h3>To</h3>
+				<h3>Al</h3>
 				<input type="date" name="toDate" id="toDate"> <input
-					type="submit" value="Apply Filter"> <input type="hidden"
+					type="submit" value="Applica Filtro"> <input type="hidden"
 					name="clientToken" value="<%=sessionToken%>">
 
 			</form>
@@ -65,11 +66,12 @@
 
 				<thead>
 					<tr>
-						<th>Cliente ID</th>
+						<th>ID Cliente</th>
+						<th>Email </th>
 						<th>Ordine ID</th>
-						<th>Ordine Date</th>
-						<th>Total Amount</th>
-						<th>Status</th>
+						<th>Data Ordine</th>
+						<th>Totale ordine</th>
+						<th>Stato</th>
 						<th>Action</th>
 					</tr>
 				</thead>
@@ -92,11 +94,11 @@
 									value="<%=sessionToken%>"> <input type="hidden"
 									name="orderId" value="<%=ordine.getIdOrdine()%>"> <select
 									name="status">
-									<option value="Completed">Completed</option>
-									<option value="Cancelled">Cancelled</option>
-									<option value="Awaiting Shipment">Awaiting Shipment</option>
-									<option value="Shipped">Shipped</option>
-								</select> <input type="submit" value="Change Status">
+									<option value="Completato">Completato</option>
+									<option value="Cancellato">Cancellato</option>
+									<option value="In consegna">In consegna</option>
+									<option value="Consegnato">Consegnato</option>
+								</select> <input type="submit" value="Cambia Status">
 
 							</form>
 						</td>

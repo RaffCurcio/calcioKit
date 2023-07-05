@@ -4,7 +4,7 @@
 <title>Registration</title>
 
 <link rel="stylesheet" type="text/css"
-	href="styles/Registrazione.css">
+	href="styles/registrazione.css">
 <script src="script/registrazione.js"></script>
 
 </head>

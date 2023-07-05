@@ -11,7 +11,8 @@
 
 <script src="script\catalog.js"></script>
 
-<link rel="stylesheet" type="text/css" href="styles/catalog.css">
+<!-- <link rel="stylesheet" type="text/css" href="styles/catalog.css"> -->
+<link rel="stylesheet" type="text/css" href="styles/adminCatalogPage.css">
 
 
 
@@ -50,7 +51,7 @@
 	%>
 	<jsp:include page="../fragments/Header.jsp" />
 	<div id="buttonDiv">
-		<button id="toggleButton">Show Catalog</button>
+		<button id="toggleButton">Mostra Catalogo</button>
 	</div>
 	<div id="cart-notification"></div>
 
@@ -59,32 +60,32 @@
 			<div class="filter-section">
 				<form id="filterForm" action="FilterCatalogAdmin" method="POST">
 					<input type="hidden" name="clientToken" value="<%=sessionToken%>">
-					<label for="minPrice">Min Price</label> <input type="range"
+					<label for="minPrice">Prezzo Minimo</label> <input type="range"
 						name="minPrice" id="minPrice" value="0" min="0" max="1000"
 						step="1"> <input type="number" id="minPriceText" value="0"
-						min="0" max="1000" step="1"> <label for="maxPrice">Max
-						Price</label> <input type="range" name="maxPrice" id="maxPrice"
+						min="0" max="1000" step="1"> <label for="maxPrice">Prezzo Massimo
+						</label> <input type="range" name="maxPrice" id="maxPrice"
 						value="1000" min="0" max="1000" step="1"> <input
 						type="number" id="maxPriceText" value="1000" min="0" max="1000"
-						step="any"> <input type="submit" value="Apply Filter">
+						step="any"> <input type="submit" value="Applica Filtro">
 				</form>
 			</div>
 			<div class="prodotto-list">
 				<%@ page import="model.Prodotto"%>
 				<%@ page import="java.util.List"%>
 				<%
-				List<Prodotto> prodottos = (List<Prodotto>) request.getAttribute("prodotti");
+				List<Prodotto> prodotti = (List<Prodotto>) request.getAttribute("prodotti");
 				%>
 
 				<%
-				if (prodottos.isEmpty()) {
+				if (prodotti.isEmpty()) {
 				%>
-				<p class="no-prodottos-msg">No prodottos available.</p>
+				<p class="no-prodotti-msg">Prodotti non disponibili.</p>
 				<%
 				} else {
 				%>
 				<%
-				for (Prodotto prodotto : prodottos) {
+				for (Prodotto prodotto : prodotti) {
 				%>
 				<div class="prodotto-item">
 					<div class="prodotto-image">
@@ -103,7 +104,7 @@
 
 					<div class="prodotto-details">
 						<h1>
-							Prodotto Id
+							Prodotto ID
 							<%=prodotto.getIdProdotto()%></h1>
 
 						<form class="prodotto-details-form" action="Update" method="POST">
@@ -112,17 +113,17 @@
 								type="hidden" name="clientToken" value="<%=sessionToken%>">
 
 							<div>
-								<label for="name">Name</label><br> <input type="text"
+								<label for="name">Nome</label><br> <input type="text"
 									name="name" id="name" value="<%=prodotto.getNomeProdotto()%>">
 							</div>
 
 							<div>
-								<label for="description">Description</label><br>
+								<label for="description">Descrizione</label><br>
 								<textarea name="description" id="description"><%=prodotto.getDescrizione()%></textarea>
 							</div>
 
 							<div>
-								<label for="price">Price</label><br> <input type="number"
+								<label for="price">Prezzo</label><br> <input type="number"
 									name="price" id="price" min=1 max=1000 step="any"
 									value="<%=prodotto.getPrezzo()%>">
 							</div>
@@ -133,20 +134,20 @@
 							</div>
 
 							<div>
-								<label for="imagePath">Image Path</label><br> <input
+								<label for="imagePath">Path Immagine</label><br> <input
 									type="text" name="imagePath" id="imagePath"
 									value="<%=prodotto.getPath_immagine()%>">
 							</div>
 
 							<div>
-								<label for="recommended">Recommended</label><br> <input
-									type="checkbox" id="recommendedForm" name="recommended"
-									value="<%=prodotto.getPath_immagine()%>">
+								<label for="recommended">Raccomandato</label><br> <input
+									type="checkbox" name="recommended" id="recommended"
+									<%if (prodotto.isRaccomandato()) {%> checked <%}%>>
 							</div>
 
 
 							<div class="button-container">
-								<input type="submit" value="Update Prodotto">
+								<input type="submit" value="Aggiorna Prodotto">
 							</div>
 						</form>
 						<form action="Remove" method="POST">
@@ -157,12 +158,12 @@
 							<%
 							if (prodotto.isCancellato()) {
 							%>
-							<input type="submit" value="Aggiungi prodottolo"
+							<input type="submit" value="Aggiungi prodotto"
 								onclick="changeButtonLabel(this)">
 							<%
 							} else {
 							%>
-							<input type="submit" value="cancella prodottolo"
+							<input type="submit" value="Cancella prodotto"
 								onclick="changeButtonLabel(this)">
 							<%
 							}
@@ -183,22 +184,22 @@
 
 	<section id="AddProdotto">
 
-		<h1>Add Prodotto</h1>
+		<h1>Aggiungi Prodotto</h1>
 		<form class="prodotto-details" action="addProdotto" method="POST"
 			id="AddProdottoForm" onsubmit="return validateForm()">
 			<div>
-				<label for="nameForm">Name</label><br> <input type="text"
+				<label for="nameForm">Nome</label><br> <input type="text"
 					id="nameForm" name="name" required>
 			</div>
 
 			<div>
-				<label for="descriptionForm">Description</label><br>
+				<label for="descriptionForm">Descrizione</label><br>
 				<textarea id="descriptionForm" name="description" required></textarea>
 			</div>
 
 
 			<div>
-				<label for="priceForm">Price</label><br> <input type="number"
+				<label for="priceForm">Prezzo</label><br> <input type="number"
 					id="priceForm" name="price" step="any" required>
 			</div>
 			<div>
@@ -207,17 +208,17 @@
 			</div>
 
 			<div>
-				<label for="imagePathForm">Image Path</label><br> <input
+				<label for="imagePathForm">Path Immagine</label><br> <input
 					type="text" id="imagePathForm" name="imagePath" required>
 			</div>
 
 			<div>
-				<label for="recommendedForm">Recommended</label><br> <input
+				<label for="recommendedForm">Raccomandato</label><br> <input
 					type="checkbox" id="recommendedForm" name="recommended">
 			</div>
 			<input type="hidden" name="clientToken" value="<%=sessionToken%>">
 			<div class="button-container">
-				<input type="submit" value="Add Prodotto">
+				<input type="submit" value="Aggiungi Prodotto">
 			</div>
 		</form>
 

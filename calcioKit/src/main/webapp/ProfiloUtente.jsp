@@ -8,7 +8,7 @@
 <head>
 <title>Profilo Utente</title>
 
-<link rel="stylesheet" type="text/css" href="styles/ProfiloUtente.css">
+<link rel="stylesheet" type="text/css" href="styles/profiloUtente.css">
 </head>
 <body>
 	<jsp:include page="fragments/Header.jsp" />

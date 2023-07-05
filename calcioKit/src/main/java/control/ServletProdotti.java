@@ -27,7 +27,7 @@ public class ServletProdotti extends HttpServlet {
 			String servletPath = request.getServletPath();
 
 			if (servletPath.equals("/AdminCatalogPage")) {
-				List<Prodotto> prodotti = prodottoDAO.getAllProdottiZoccolame();
+				List<Prodotto> prodotti = prodottoDAO.getAllProdottiAdmin();
 
 				request.setAttribute("prodotti", prodotti);
 

@@ -6,7 +6,7 @@
 <meta charset="ISO-8859-1">
 
 <title>Login - CalcioKit</title>
-<link rel="stylesheet" type="text/css" href="styles/Login.css?ts=<?=time()?>&quot"">
+<link rel="stylesheet" type="text/css" href="styles/login.css?ts=<?=time()?>&quot"">
 
 
 </head>
