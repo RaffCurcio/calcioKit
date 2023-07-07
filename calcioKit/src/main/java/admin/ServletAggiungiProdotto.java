@@ -77,7 +77,7 @@ public class ServletAggiungiProdotto extends HttpServlet {
 		} catch (SQLException e) {
 			request.setAttribute("errorMessage", "Error adding prodotto ");
 			request.getRequestDispatcher("AdminCatalogPage").forward(request, response);
-			System.out.println(e);
+			
 		}
 	}
 

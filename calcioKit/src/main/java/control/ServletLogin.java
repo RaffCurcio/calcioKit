@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import dao.ClienteDAO;
 import dao.ComposizioneDAO;
 import dao.DBConnection;
-import dao.PagamentoDAO;
+
 import model.Cliente;
 import model.Composizione;
 import model.Pagamento;
@@ -27,8 +27,6 @@ public class ServletLogin extends HttpServlet {
 
 	private ComposizioneDAO carrelloItemDAO;
 	private ClienteDAO clienteDAO;
-	private PagamentoDAO pagamentoDAO;
-
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -49,7 +47,7 @@ public class ServletLogin extends HttpServlet {
 
 			return;
 		}
-		System.out.println(cliente);
+		
 
 		if (cliente != null) {
 
@@ -119,7 +117,7 @@ public class ServletLogin extends HttpServlet {
 		// Initialize the ClienteDAO instance
 		clienteDAO = new ClienteDAO(DBConnection.getDataSource()); // Replace 'dataSource' with your actual data source
 		carrelloItemDAO = new ComposizioneDAO(DBConnection.getDataSource());
-		pagamentoDAO = new PagamentoDAO(DBConnection.getDataSource());
+		
 	}
 
 }

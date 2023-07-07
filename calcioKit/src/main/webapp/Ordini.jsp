@@ -74,6 +74,7 @@
 
     <h1>Elenco Ordini</h1>
     <table id="ordiniTable">
+    	<caption>Tabella Ordini</caption>
         <thead>
             <tr>
                 <th>ID Ordine</th>

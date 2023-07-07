@@ -45,7 +45,7 @@ public class ServletOrdini extends HttpServlet {
 		}
 
 		try {
-			System.out.println(cliente.getUsername() + cliente.getEmail());
+			
 			List<Ordine> ordini = ordineDAO.getOrdineForUser(cliente.getUsername(), cliente.getEmail());
 			JsonObject resultJson = new JsonObject();
 

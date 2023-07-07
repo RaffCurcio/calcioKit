@@ -22,8 +22,8 @@
 		<div class="prodotto">
 			<a href="ProductDetailsServlet?id=<%=prodotto.getIdProdotto()%>">
 				<script type="text/javascript" src="script/imageZoom.js"></script> <img
-				onmouseover="bigImg(this)" onmouseout="normalImg(this)" border="0"
-				src="<%=prodotto.getPath_immagine()%>" height="180" width="180">
+				onmouseover="zoomIn(this)" onmouseout="zoomOut(this)" border="0"
+				src="<%=prodotto.getPath_immagine()%>" height="180" width="180" alt="immagineZoomata">
 			</a>
 			<h2><%=prodotto.getNomeProdotto()%></h2>
 			<span>Prezzo: </span>

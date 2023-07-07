@@ -80,7 +80,7 @@ public class ServletAdmin extends HttpServlet {
 				existingProdotto.setIva(iva);
 				existingProdotto.setPath_immagine(imagePath);
 				existingProdotto.setRaccomandato(recommended);
-				System.out.println(recommended);
+				
 				productDAO.updateProdotto(existingProdotto);
 
 			}
