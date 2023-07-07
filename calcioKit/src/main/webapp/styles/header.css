@@ -207,3 +207,53 @@ ul li a {
   text-decoration: none;
   color: #333;
 }
+
+/* Stili per dispositivi mobili */
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar li {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .main {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 10px;
+  }
+
+  .input-box {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .toggle-btn {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
+
+/* Stili per tablet */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .navbar li {
+    margin-right: 5px;
+  }
+
+  .input-box {
+    margin-right: 5px;
+  }
+
+  .toggle-btn {
+    margin-right: 5px;
+  }
+}
+
+/* Stili per schermi più grandi */
+@media (min-width: 1025px) {
+  /* Aggiungi qui eventuali stili specifici per schermi più grandi */
+}
+

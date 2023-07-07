@@ -1,9 +1,9 @@
-function bigImg(x) {
-  x.style.height = "250px";
-  x.style.width = "250px";
+function zoomIn(x) {
+  x.style.transform = "scale(1.2)";
+  x.style.transition = "transform 0.3s ease";
 }
 
-function normalImg(x) {
-  x.style.height = "180px";
-  x.style.width = "180px";
+function zoomOut(x) {
+  x.style.transform = "scale(1)";
+  x.style.transition = "transform 0.3s ease";
 }
