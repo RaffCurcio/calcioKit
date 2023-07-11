@@ -18,7 +18,7 @@
     <script src="script/asyncForms.js"></script>
 
 	<!-- CONTENUTO PAGINA -->
-<h1 style="text-align:center;">Prodotti Raccomandati</h1>
+<h1 style="text-align:center;">Prodotti</h1>
 
 	<div id="catalogoContainer">
 		<%-- Recupera la lista dei prodotti dalla richiesta --%>
@@ -55,7 +55,7 @@
 				<input type="hidden" name="idProdotto"
 					value="<%=prodotto.getIdProdotto()%>"> <input type="number"
 					name="quantita" value="1" min="1"> <input type="submit"
-					value="Add to Cart">
+					value="Aggiugni al carrello">
 			</form>
 		</div>
 		<%

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
 <meta charset="ISO-8859-1">
 
@@ -30,7 +30,7 @@
 		</div>
 		<div class="form-group">
 			<p class="Login_text">
-				Se non sei registrato, <a href="registrazione.html">clicca qui</a>
+				Se non sei registrato, <a href="Registrazione.jsp">clicca qui</a>
 				per registrarti.
 			</p>
 		</div>

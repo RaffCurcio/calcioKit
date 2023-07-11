@@ -58,14 +58,9 @@ public class ServletCarrello extends HttpServlet {
 					composizioneJson.addProperty("nomeCatalogo", product.getNomeCatalogo());
 					composizioneJson.addProperty("prezzo", product.getPrezzo());
 					composizioneJson.addProperty("quantity", composizione.getQuantita_prodotto());
-					try {
-						prezzoTotale = prezzoTotale.add(
-								product.getPrezzo().multiply(BigDecimal.valueOf(composizione.getQuantita_prodotto())));
-					} catch (NullPointerException e) {
-						String errorMessage = "There was an error retrieving your cart data";
-						response.sendError(500, errorMessage);
-						return;
-					}
+					prezzoTotale = prezzoTotale
+							.add(product.getPrezzo().multiply(BigDecimal.valueOf(composizione.getQuantita_prodotto())));
+
 					composizioniJson.add(composizioneJson); // Add composizioneJson to composizioniJson
 
 				} catch (SQLException e) {
@@ -73,6 +68,10 @@ public class ServletCarrello extends HttpServlet {
 					response.sendError(500, errorMessage);
 					return;
 
+				} catch (NullPointerException e) {
+					String errorMessage = "There was an error retrieving your cart data";
+					response.sendError(500, errorMessage);
+					return;
 				}
 
 			}

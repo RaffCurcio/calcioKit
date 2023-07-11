@@ -24,7 +24,33 @@ public class ServletCatalogoFiltro extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		String servletPath = request.getServletPath();
+
+		List<Prodotto> filteredProdotti;
+		try {
+			if (servletPath.equals("/FilterCatalog")) {
+
+				filteredProdotti = prodottoDAO.getAllProdotti();
+				request.setAttribute("prodotti", filteredProdotti);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("Catalog.jsp");
+				dispatcher.forward(request, response);
+
+			} else if (servletPath.equals("/FilterCatalogAdmin")) {
+				filteredProdotti = prodottoDAO.getAllProdottiAdmin();
+				request.setAttribute("prodotti", filteredProdotti);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("admin/AdminCatalogPage.jsp");
+				dispatcher.forward(request, response);
+
+			}
+
+		} catch (NumberFormatException e) {
+			String errorMessage = "There was an error in filtering your catalog, invalid number found, try again";
+			response.sendError(500, errorMessage);
+		} catch (SQLException e) {
+			String errorMessage = "There was an error in filtering your catalog, try again";
+			response.sendError(500, errorMessage);
+
+		}
 	}
 
 	@Override

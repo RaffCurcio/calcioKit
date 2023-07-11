@@ -11,7 +11,7 @@
 <%@ page import="javax.servlet.http.HttpSession"%>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
 <meta charset="UTF-8">
 <title>Cart Items</title>
@@ -67,7 +67,7 @@
 	<jsp:include page="fragments/Header.jsp" />
 
 	<div class="container">
-		<h1 style="text-align: center">Shopping Cart</h1>
+		<h1 style="text-align: center">Carrello</h1>
 
 		<%
 		List<Composizione> composizioni = null;
@@ -81,20 +81,20 @@
 		if (composizioni == null || composizioni.isEmpty()) {
 		%>
 		<p class="empty-cart-msg">
-			Your cart is empty.<br> <a href="/calcioKit/HomePage">Continue Shopping</a>
+			Il tuo carrello è vuoto.<br> <a href="/calcioKit/HomePage">Continua ad acquistare</a>
 		</p>
 		<%
 		} else {
 		%>
 		<table class="cart-table">
-			<caption>Items in the Cart</caption>
+			<caption>Oggetti nel carrello</caption>
 
 			<thead>
 				<tr>
 					<th>Prodotto</th>
-					<th>Price</th>
-					<th>Quantity</th>
-					<th>Subtotal</th>
+					<th>Prezzo</th>
+					<th>Quantità</th>
+					<th>Subtotale</th>
 					<th></th>
 				</tr>
 			</thead>

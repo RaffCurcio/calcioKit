@@ -1,7 +1,7 @@
 
 <%@ page import="model.Cliente"%>
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
     <title>Elenco Ordini</title>	
     <link rel="stylesheet" type="text/css" href="styles/ordini.css">

@@ -108,7 +108,7 @@ public class ServletLogin extends HttpServlet {
 			String errorMessage = "Incorrect clientename or password";
 			request.setAttribute("errorMessage", errorMessage);
 			request.getRequestDispatcher("/Login.jsp").forward(request, response);
-			return;
+			
 		}
 	}
 
