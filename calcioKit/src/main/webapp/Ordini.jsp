@@ -16,6 +16,8 @@
 	}
 	%>
     <script src="script/jquery-3.7.0.min.js"></script>
+    
+    
     <script>
         $(document).ready(function() {
             $.ajax({
@@ -31,6 +33,8 @@
                             "<td>" + order.orderDate + "</td>" +
                             "<td>" + order.totalAmount + "</td>" +
                             "<td>" + order.orderStatus + "</td>" +
+                     
+                            
                             "</tr>";
 
                         // Aggiungi le composizioni per l'ordine corrente
@@ -81,6 +85,7 @@
                 <th>Data Ordine</th>
                 <th>Totale</th>
                 <th>Stato</th>
+                
             </tr>
         </thead>
         <tbody>

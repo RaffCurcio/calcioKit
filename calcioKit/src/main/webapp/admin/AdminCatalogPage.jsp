@@ -2,9 +2,9 @@
 <%@ page import="model.Cliente"%>
 <%@ page import="java.util.List"%>
 
-<html lang="en">
+<html lang="it">
 <head>
-<title>Admin Page</title>
+<title>Pagina Admin</title>
 <script src="script\jquery-3.7.0.min.js"></script>
 <script src="script\asyncForms.js"></script>
 <script src="script\adminCatalog.js"></script>

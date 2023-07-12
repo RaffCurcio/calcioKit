@@ -103,58 +103,57 @@ public class ComposizioneDAO {
 	// Altre operazioni CRUD per Composizione
 
 	public void saveAllComposizioni(List<Composizione> composizioni) throws SQLException {
-		try (Connection connection = dataSource.getConnection()) {
-			for (Composizione composizione : composizioni) {
-				String user_email = composizione.getEmail();
-				String user_username = composizione.getUsername();
+	    try (Connection connection = dataSource.getConnection()) {
+	        for (Composizione composizione : composizioni) {
+	            String user_email = composizione.getEmail();
+	            String user_username = composizione.getUsername();
 
-				int productId = composizione.getIdProdotto();
-				int quantity = composizione.getQuantita_prodotto();
-				// Check if the productId and user_id exist in the table.
-				String sql = "SELECT * FROM composizione WHERE username_cli = ? AND email_cli = ? AND id_ordine IS NULL";
-				PreparedStatement statement = connection.prepareStatement(sql);
-				statement.setString(1, user_username);
-				statement.setString(2, user_email);
-				ResultSet resultSet = statement.executeQuery();
+	            int productId = composizione.getIdProdotto();
+	            int quantity = composizione.getQuantita_prodotto();
+	            // Check if the productId and user_id exist in the table.
+	            String sql = "SELECT * FROM composizione WHERE username_cli = ? AND email_cli = ? AND id_ordine IS NULL";
+	            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+	                statement.setString(1, user_username);
+	                statement.setString(2, user_email);
+	                try (ResultSet resultSet = statement.executeQuery()) {
+	                    boolean productIdExists = false;
 
-				boolean productIdExists = false;
+	                    // Iterate over the result set
+	                    while (resultSet.next()) {
+	                        int fetchedProductId = resultSet.getInt("id_prodotto");
+	                        int fetchedOrderId = resultSet.getInt("id_ordine");
 
-				// Iterate over the result set
-				while (resultSet.next()) {
-					int fetchedProductId = resultSet.getInt("id_prodotto");
-					int fetchedOrderId = resultSet.getInt("id_ordine");
+	                        if (fetchedOrderId == 0 && fetchedProductId == productId) {
 
-					if (fetchedOrderId == 0 && fetchedProductId == productId) {
+	                            // Update quantity
+	                            productIdExists = true;
+	                            sql = "UPDATE Composizione SET quantita = ? WHERE id_prodotto = ? AND username_cli = ? AND email_cli = ? AND id_ordine IS NULL";
+	                            try (PreparedStatement updateStatement = connection.prepareStatement(sql)) {
+	                                updateStatement.setInt(1, quantity);
+	                                updateStatement.setInt(2, productId);
+	                                updateStatement.setString(3, user_username);
+	                                updateStatement.setString(4, user_email);
+	                                updateStatement.executeUpdate();
+	                            }
+	                        }
+	                    }
 
-						// Update quantity
-						productIdExists = true;
-						sql = "UPDATE Composizione SET quantita = ? WHERE id_prodotto = ? AND username_cli = ? AND email_cli = ? AND id_ordine IS NULL";
-						statement = connection.prepareStatement(sql);
-						statement.setInt(1, quantity);
-						statement.setInt(2, productId);
-						statement.setString(3, user_username);
-						statement.setString(4, user_email);
-						statement.executeUpdate();
-					}
-				}
-
-				if (!productIdExists) {
-					// Insert a new row since productId is different from every row
-					// Perform the insert operation here
-					sql = "INSERT INTO Composizione (id_prodotto, quantita, id_ordine, username_cli, email_cli) VALUES (?, ?, NULL, ?, ?)";
-					statement = connection.prepareStatement(sql);
-					statement.setInt(1, productId);
-					statement.setInt(2, quantity);
-					statement.setString(3, user_username);
-					statement.setString(4, user_email);
-					statement.executeUpdate();
-
-				}
-
-				resultSet.close();
-				statement.close();
-			}
-		}
+	                    if (!productIdExists) {
+	                        // Insert a new row since productId is different from every row
+	                        // Perform the insert operation here
+	                        sql = "INSERT INTO Composizione (id_prodotto, quantita, id_ordine, username_cli, email_cli) VALUES (?, ?, NULL, ?, ?)";
+	                        try (PreparedStatement insertStatement = connection.prepareStatement(sql)) {
+	                            insertStatement.setInt(1, productId);
+	                            insertStatement.setInt(2, quantity);
+	                            insertStatement.setString(3, user_username);
+	                            insertStatement.setString(4, user_email);
+	                            insertStatement.executeUpdate();
+	                        }
+	                    }
+	                }
+	            }
+	        }
+	    }
 	}
 
 	public void updateComposizione(int orderId, String username, String email, BigDecimal price, int productId)

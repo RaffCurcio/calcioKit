@@ -35,7 +35,7 @@ public class ServletProdottoDescrizione extends HttpServlet {
 		try {
 			prodotto = prodottoDAO.getProdottoById(prodottoID);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
