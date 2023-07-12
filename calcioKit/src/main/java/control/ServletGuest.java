@@ -44,7 +44,7 @@ public class ServletGuest extends HttpServlet {
 		}
 
 		// Redirect alla pagina del carrello
-		// response.sendRedirect("carrello.jsp");
+		
 	}
 
 	private List<String> getCartFromCookie(HttpServletRequest request) {
