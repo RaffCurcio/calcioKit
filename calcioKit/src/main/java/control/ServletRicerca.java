@@ -32,7 +32,8 @@ public class ServletRicerca extends HttpServlet {
 			prodotto = prodottoDAO.getProdottoByName(ricerca);
 		} catch (SQLException e) {
 			
-			e.printStackTrace();
+			response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+			return;	
 		}
 		request.setAttribute("prodotto", prodotto);
 
