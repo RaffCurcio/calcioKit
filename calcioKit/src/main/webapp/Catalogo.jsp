@@ -55,7 +55,7 @@
 				<input type="hidden" name="idProdotto"
 					value="<%=prodotto.getIdProdotto()%>"> <input type="number"
 					name="quantita" value="1" min="1"> <input type="submit"
-					value="Aggiugni al carrello">
+					value="Aggiungi al carrello">
 			</form>
 		</div>
 		<%
