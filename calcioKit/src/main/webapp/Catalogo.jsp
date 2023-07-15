@@ -9,7 +9,6 @@
 <link rel="stylesheet" type="text/css" href="styles/Navbar.css">
 
 
-
 </head>
 <body>
 
@@ -54,7 +53,7 @@
 			<form action="AggiungiAlCarrello" method="POST">
 				<input type="hidden" name="idProdotto"
 					value="<%=prodotto.getIdProdotto()%>"> <input type="number"
-					name="quantita" value="1" min="1"> <input type="submit"
+					name="quantita" value="1"  min="1" max="10"> <input type="submit"
 					value="Aggiungi al carrello">
 			</form>
 		</div>

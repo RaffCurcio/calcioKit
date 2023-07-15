@@ -65,7 +65,7 @@ public class ServletOrdini extends HttpServlet {
 				for (Composizione composizione : composizioni) {
 					JsonObject composizioneJson = new JsonObject();
 
-					Prodotto prodotto = prodottoDAO.getProdottoById(composizione.getIdProdotto());
+					Prodotto prodotto = prodottoDAO.getOrderProduct(composizione.getIdProdotto());
 					JsonObject prodottoJson = new JsonObject();
 					prodottoJson.addProperty("price", prodotto.getPrezzo().toString());
 					prodottoJson.addProperty("name", prodotto.getNomeProdotto());

@@ -14,7 +14,7 @@
 	href="/calcioKit/styles/adminOrdinePage.css">
 <script src="script\asyncForms.js"></script>
 
-	<link rel="stylesheet" type="text/css" href="styles/adminOrdinesPage.css">
+	<link rel="stylesheet" type="text/css" href="styles/adminOrdiniPage.css">
 	
 <title>Cliente Ordini</title>
 </head>

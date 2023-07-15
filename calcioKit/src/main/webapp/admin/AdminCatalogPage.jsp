@@ -157,12 +157,12 @@
 							<%
 							if (prodotto.isCancellato()) {
 							%>
-							<input type="submit" value="Aggiungi prodotto"
+							<input type="submit" value="Aggiungi"
 								onclick="changeButtonLabel(this)">
 							<%
 							} else {
 							%>
-							<input type="submit" value="Cancella prodotto"
+							<input type="submit" value="Cancella"
 								onclick="changeButtonLabel(this)">
 							<%
 							}

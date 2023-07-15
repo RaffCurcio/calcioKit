@@ -46,7 +46,7 @@ public class ServletRegistrazione extends HttpServlet {
 		} catch (SQLException e) {
 			if (e instanceof SQLIntegrityConstraintViolationException) {
 				// Handle duplicate entry error
-				String errorMessage = "Username or email already exists";
+				String errorMessage = "usernomignolo o emailotta già esistono";
 				request.setAttribute("errorMessage", errorMessage);
 				response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 				request.getRequestDispatcher("/Registrazione.jsp").forward(request, response);

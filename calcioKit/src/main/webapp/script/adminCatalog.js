@@ -1,13 +1,12 @@
 function submitForm(form) {
 	form.submit();
 }
-
 function changeButtonLabel(button) {
-	if (button.value === "cancella prodottolo") {
-		button.value = "Aggiungi prodottolo";
-	} else {
-		button.value = "cancella prodottolo";
-	}
+  if (button.value === "Cancella") {
+    button.value = "Aggiungi";
+  } else if (button.value === "Aggiungi") {
+    button.value = "Cancella";
+  }
 }
 
 

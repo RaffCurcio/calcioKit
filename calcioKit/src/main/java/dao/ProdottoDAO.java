@@ -133,6 +133,7 @@ public class ProdottoDAO {
 				prodotto.setPrezzo(resultSet.getBigDecimal("prezzo"));
 				prodotto.setPath_immagine(resultSet.getString("path_immagine"));
 				prodotto.setRaccomandato(resultSet.getBoolean("raccomandato"));
+				prodotto.setCancellato(resultSet.getBoolean("cancellato"));
 
 				prodotti.add(prodotto);
 

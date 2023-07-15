@@ -19,58 +19,67 @@
     
     
     <script>
-        $(document).ready(function() {
-            $.ajax({
-                url: "Ordini",
-                type: "GET",
-                dataType: "json",
-                success: function(response) {
-                    // Aggiungi gli ordini alla tabella
-                    var table = $("#ordiniTable");
-                    $.each(response, function(key, order) {
-                        var row = "<tr>" +
-                            "<td>" + order.orderId + "</td>" +
-                            "<td>" + order.orderDate + "</td>" +
-                            "<td>" + order.totalAmount + "</td>" +
-                            "<td>" + order.orderStatus + "</td>" +
-                     
-                            
-                            "</tr>";
+    $(document).ready(function() {
+        $.ajax({
+            url: "Ordini",
+            type: "GET",
+            dataType: "json",
+            success: function(response) {
+                // Aggiungi gli ordini alla tabella
+                var table = $("#ordiniTable");
+                $.each(response, function(key, order) {
+                    var orderRow = $("<tr>" +
+                        "<td>" + order.orderId + "</td>" +
+                        "<td>" + order.orderDate + "</td>" +
+                        "<td>" + order.totalAmount + "</td>" +
+                        "<td>" + order.orderStatus + "</td>" +
+                        "<td><button class='collapsible'>Dettagli</button></td>" +
+                        "</tr>");
 
-                        // Aggiungi le composizioni per l'ordine corrente
-                        if (order.composizioni.length > 0) {
-                            row += "<tr>" +
-                                "<td colspan='4'>" +
-                                "<table>" +
-                                "<tr>" +
-                                "<th>Prodotto</th>" +
-                                "<th>Quantità</th>" +
-                                "<th>Prezzo</th>" +
-                                "<th>Immagine</th>" +
-                                "</tr>";
+                    // Crea la riga per le composizioni dell'ordine corrente
+                    var compositionsRow = $("<tr class='compositions-row'>" +
+                        "<td colspan='5'>" +
+                        "<table>" +
+                        "<tr>" +
+                        "<th>Prodotto</th>" +
+                        "<th>Descrizione</th>" +
+                        "<th>Quantità</th>" +
+                        "<th>Prezzo</th>" +
+                        "<th>Immagine</th>" +
+                        "</tr>" +
+                        "</table>" +
+                        "</td>" +
+                        "</tr>");
 
-                            $.each(order.composizioni, function(index, composition) {
-                                row += "<tr>" +
+                    // Aggiungi le composizioni per l'ordine corrente
+                    if (order.composizioni.length > 0) {
+                        $.each(order.composizioni, function(index, composition) {
+                            var compositionRow = $("<tr>" +
                                     "<td>" + composition.product.name + "</td>" +
-                                    "<td>" + composition.quantity + "</td>" +
-                                    "<td>" + composition.price + "</td>" +
-                                    "<td><img src='" + composition.product.image + "'></td>" +
-                                    "</tr>";
-                            });
+                                    "<td>" + composition.product.description + "</td>" +
+                                "<td>" + composition.quantity + "</td>" +
+                                "<td>" + composition.price + "</td>" +
+                                "<td><img src='" + composition.product.image + "'></td>" +
+                                "</tr>");
+                            
+                            compositionsRow.find("table").append(compositionRow);
+                        });
+                    }
 
-                            row += "</table>" +
-                                "</td>" +
-                                "</tr>";
-                        }
+                    // Aggiungi le righe all'ordine corrente
+                    orderRow.add(compositionsRow).appendTo(table);
 
-                        table.append(row);
+                    // Aggiungi il gestore di eventi per il collasso/espansione
+                    orderRow.find(".collapsible").on("click", function() {
+                        compositionsRow.toggle();
                     });
-                },
-                error: function(xhr, status, error) {
-                    console.log("Errore durante il recupero degli ordini.");
-                }
-            });
+                });
+            },
+            error: function(xhr, status, error) {
+                console.log("Errore durante il recupero degli ordini.");
+            }
         });
+    });
     </script>
 </head>
 <body>
@@ -85,6 +94,7 @@
                 <th>Data Ordine</th>
                 <th>Totale</th>
                 <th>Stato</th>
+                <th>Prodotti</th>
                 
             </tr>
         </thead>

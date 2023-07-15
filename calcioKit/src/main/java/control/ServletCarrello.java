@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -40,6 +41,8 @@ public class ServletCarrello extends HttpServlet {
 			composizioni = (List<Composizione>) session.getAttribute("carrello");
 
 		} // Create a JsonArray to hold the cart item objects
+		List<Composizione> itemsToRemove = new ArrayList<>();
+
 		JsonArray composizioniJson = new JsonArray();
 		BigDecimal prezzoTotale = BigDecimal.ZERO;
 		if (composizioni != null) {
@@ -47,8 +50,12 @@ public class ServletCarrello extends HttpServlet {
 				Prodotto product = null;
 				try {
 
+	
 					product = prodottoDAO.getProdottoById(composizione.getIdProdotto());
-
+					if (product == null) {
+						itemsToRemove.add(composizione);
+						continue;
+					}
 					// Create a JsonObject for each cart item
 					JsonObject composizioneJson = new JsonObject();
 					composizioneJson.addProperty("path_immagine", product.getPath_immagine());
@@ -75,6 +82,8 @@ public class ServletCarrello extends HttpServlet {
 				}
 
 			}
+			composizioni.removeAll(itemsToRemove);
+
 		}
 		// Set the cart items JsonArray as a request attribute
 		request.setAttribute("composizioniJson", composizioniJson.toString());

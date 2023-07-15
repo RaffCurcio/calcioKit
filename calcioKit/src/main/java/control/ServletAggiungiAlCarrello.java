@@ -58,8 +58,11 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
 		for (Composizione composizione : carrello) {
 			if (composizione.getIdProdotto() == productId) {
 				// Update the quantita of the existing carrello item
-				composizione.setQuantita_prodotto(composizione.getQuantita_prodotto() + quantita);
 				productExists = true;
+
+				if(composizione.getQuantita_prodotto() + quantita > 10)
+					break;
+				composizione.setQuantita_prodotto(composizione.getQuantita_prodotto() + quantita);
 
 				break;
 			}

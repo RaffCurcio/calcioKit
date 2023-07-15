@@ -28,8 +28,8 @@
 			errorText.text('');
 
 			// Check if quantita is below 1
-			if (quantita < 1) {
-				errorText.text('Quantity must be 1 or greater.');
+			if (quantita < 1 or quantita > 10) {
+				errorText.text('la quantità deve essere maggiore di 1 e minore di 11.');
 				return;
 			}
 

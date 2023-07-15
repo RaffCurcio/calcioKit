@@ -105,9 +105,9 @@ public class ServletLogin extends HttpServlet {
 			response.sendRedirect("HomePage");
 		} else {
 
-			String errorMessage = "Incorrect clientename or password";
+			String errorMessage = "Username o password non validi";
 			request.setAttribute("errorMessage", errorMessage);
-			request.getRequestDispatcher("/Login.jsp").forward(request, response);
+			request.getRequestDispatcher("Login.jsp").forward(request, response);
 			
 		}
 	}

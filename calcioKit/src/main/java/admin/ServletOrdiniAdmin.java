@@ -49,7 +49,7 @@ public class ServletOrdiniAdmin extends HttpServlet {
 			request.setAttribute("clienteList", userList);
 			request.setAttribute("ordineList", orderList);
 
-			request.getRequestDispatcher("admin/AdminOrdinesPage.jsp").forward(request, response);
+			request.getRequestDispatcher("admin/AdminOrdiniPage.jsp").forward(request, response);
 		} catch (SQLException e) {
 			response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
 					"An error occurred while retrieving cliente orders." + e);
@@ -104,7 +104,7 @@ public class ServletOrdiniAdmin extends HttpServlet {
 			request.setAttribute("clienteList", userList);
 			request.setAttribute("ordineList", orderList);
 
-			request.getRequestDispatcher("admin/AdminOrdinesPage.jsp").forward(request, response);
+			request.getRequestDispatcher("admin/AdminOrdiniPage.jsp").forward(request, response);
 		} catch (SQLException e) {
 			response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
 					"An error occurred while retrieving cliente orders." + e);

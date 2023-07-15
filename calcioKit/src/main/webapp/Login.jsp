@@ -15,6 +15,15 @@
 
 	<form class="login_form" action="login" method="post">
 	<h1>LOGIN</h1>
+	<%
+	if (request.getAttribute("errorMessage") != null) {
+	%>
+	<div class="error">
+		<%=request.getAttribute("errorMessage")%>
+	</div>
+	<%
+	}
+	%>
 		<div class="form-group">
 			<label for="username">Username:</label> <input type="text"
 				placeholder="Inserire username" id="username" name="username"

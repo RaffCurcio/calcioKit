@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,18 +20,32 @@ public class ClienteDAO {
 	}
 
 	public void addCliente(Cliente cliente) throws SQLException {
-		String query = "INSERT INTO Cliente (username, pwd, email, ruolo_cliente) VALUES (?, ?, ?, ?)";
+	    String query = "INSERT INTO Cliente (username, pwd, email, ruolo_cliente) VALUES (?, ?, ?, ?)";
+	    String checkQuery = "SELECT COUNT(*) FROM Cliente WHERE username = ? OR email = ?";
 
-		try (Connection connection = dataSource.getConnection();
-				PreparedStatement statement = connection.prepareStatement(query)) {
-			statement.setString(1, cliente.getUsername());
-			statement.setString(2, cliente.getPassword());
-			statement.setString(3, cliente.getEmail());
-			statement.setString(4, cliente.getRuolo_cliente());
+	    try (Connection connection = dataSource.getConnection();
+	         PreparedStatement checkStatement = connection.prepareStatement(checkQuery);
+	         PreparedStatement statement = connection.prepareStatement(query)) {
+	        checkStatement.setString(1, cliente.getUsername());
+	        checkStatement.setString(2, cliente.getEmail());
 
-			statement.executeUpdate();
-		}
+	        ResultSet resultSet = checkStatement.executeQuery();
+	        if (resultSet.next()) {
+	            int count = resultSet.getInt(1);
+	            if (count > 0) {
+	                throw new SQLIntegrityConstraintViolationException("Username o email già esistenti.");
+	            }
+	        }
+
+	        statement.setString(1, cliente.getUsername());
+	        statement.setString(2, cliente.getPassword());
+	        statement.setString(3, cliente.getEmail());
+	        statement.setString(4, cliente.getRuolo_cliente());
+
+	        statement.executeUpdate();
+	    }
 	}
+
 
 	public void cancellaCliente(String username, String password) throws SQLException {
 		String query = "DELETE FROM Cliente WHERE username = ? AND pwd = ?";
