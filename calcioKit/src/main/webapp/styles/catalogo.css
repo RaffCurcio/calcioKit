@@ -1,0 +1,56 @@
+
+/* Contenuto pagina */
+h1 {
+  text-align: center;
+}
+
+#catalogoContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.prodotto {
+  width: 500px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.prodotto a {
+  text-decoration: none;
+  color: #333;
+}
+
+.prodotto img {
+  width: 100%;
+  height: auto;
+}
+
+.prezzo {
+  font-weight: bold;
+}
+
+.descrizione {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+form {
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Stili per dispositivi con larghezza inferiore a 600px */
+@media (max-width: 600px) {
+  #catalogoContainer {
+    justify-content: flex-start;
+  }
+
+  .prodotto {
+    width: 100%;
+  }
+}

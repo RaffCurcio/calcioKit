@@ -60,12 +60,12 @@
 				<form id="filterForm" action="FilterCatalogAdmin" method="POST">
 					<input type="hidden" name="clientToken" value="<%=sessionToken%>">
 					<label for="minPrice">Prezzo Minimo</label> <input type="range"
-						name="minPrice" id="minPrice" value="0" min="0" max="1000"
+						name="minPrice" id="minPrice" value="0" min="0" max="300"
 						step="1"> <input type="number" id="minPriceText" value="0"
-						min="0" max="1000" step="1"> <label for="maxPrice">Prezzo Massimo
+						min="0" max="300" step="1"> <label for="maxPrice">Prezzo Massimo
 						</label> <input type="range" name="maxPrice" id="maxPrice"
-						value="1000" min="0" max="1000" step="1"> <input
-						type="number" id="maxPriceText" value="1000" min="0" max="1000"
+						value="300" min="0" max="300" step="1"> <input
+						type="number" id="maxPriceText" value="300" min="0" max="300"
 						step="any"> <input type="submit" value="Applica Filtro">
 				</form>
 			</div>
@@ -123,7 +123,7 @@
 
 							<div>
 								<label for="price">Prezzo</label><br> <input type="number"
-									name="price" id="price" min=1 max=1000 step="any"
+									name="price" id="price" min=1 max=300 step="any"
 									value="<%=prodotto.getPrezzo()%>">
 							</div>
 							<div>

@@ -1,57 +1,47 @@
-
-
-/* Contenuto pagina */
-h1 {
-  text-align: center;
-}
-
+/* Stili per il contenitore del catalogo */
 #catalogoContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
+/* Stili per ogni prodotto */
 .prodotto {
-  width: 500px;
-  margin: 10px;
+  width: 200px;
+  margin: 20px;
   padding: 10px;
-  border: 1px solid #ccc;
   text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .prodotto a {
   text-decoration: none;
-  color: #333;
 }
 
 .prodotto img {
   width: 100%;
-  height: auto;
+  max-height: 180px;
+  object-fit: cover;
+  border-radius: 5px;
 }
 
-.prezzo {
+.prodotto h2 {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.prodotto .prezzo {
   font-weight: bold;
 }
 
-.descrizione {
+.prodotto .descrizione {
   display: block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  margin-top: 5px;
+  font-size: 14px;
 }
 
-form {
+.prodotto form {
   margin-top: 10px;
-  text-align: center;
 }
 
-/* Stili per dispositivi con larghezza inferiore a 600px */
-@media (max-width: 600px) {
-  #catalogoContainer {
-    justify-content: flex-start;
-  }
-
-  .prodotto {
-    width: 100%;
-  }
-}
