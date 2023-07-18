@@ -20,7 +20,7 @@ CREATE TABLE Ordine (
   data_inserimento DATE NOT NULL,
   prezzo_vendita DECIMAL(10, 2) NOT NULL,
   iva_cout DECIMAL(5, 2) NOT NULL,
-  stato_ordine VARCHAR(20) NOT NULL,
+  stato_ordine VARCHAR(50) NOT NULL,
   username_cli VARCHAR(50) NOT NULL,
   email_cli VARCHAR(100) NOT NULL,
   FOREIGN KEY (username_cli, email_cli) REFERENCES Cliente (username, email)
@@ -36,29 +36,14 @@ CREATE TABLE Telefono (
   ON DELETE CASCADE ON UPDATE CASCADE 
 );
 
-CREATE TABLE Spedizione (
-  ID_spedizione INT PRIMARY KEY NOT NULL,
-  data_sp DATE NOT NULL,
-  costi_sp DECIMAL(10, 2) NOT NULL,
-  costi_exp DECIMAL(10, 2) NOT NULL,
-  ordine_spedito INT NOT NULL,
-  FOREIGN KEY (ordine_spedito) REFERENCES Ordine (ID_ordine)
-  ON DELETE CASCADE ON UPDATE CASCADE 
-);
 
 CREATE TABLE Pagamento (
-  ID_pagamento INT PRIMARY KEY NOT NULL,
+  ID_pagamento INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   data_pag DATE NOT NULL,
   importo_pag DECIMAL(10, 2) NOT NULL,
-  tipo_pag VARCHAR(50) NOT NULL,
   num_carta VARCHAR(20),
   data_scadenza DATE,
-  cvc VARCHAR(4),
   titolare_conto VARCHAR(100),
-  iban VARCHAR(30),
-  bic VARCHAR(20),
-  email_payp VARCHAR(100),
-  pwd_payp VARCHAR(50),
   id_ordine INT NOT NULL,
   FOREIGN KEY (id_ordine) REFERENCES Ordine (ID_ordine)
   ON DELETE CASCADE ON UPDATE CASCADE 

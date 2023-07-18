@@ -7,39 +7,46 @@ document.querySelector('.toggle-btn').addEventListener('click', function() {
 </script>
 <nav>
   <div class="navbar">
-    <a href="HomePage" class="active">Home</a>
-    <a href="Catalogo" class="login"><img src="img/football-jersey-svgrepo-com.svg" alt="cart" width="24" height="24">Prodotti</a>
-    <a href="Cart" class="cart"><img src="img/cart.svg" alt="cart" width="24" height="24">Carrello</a>
+    <div class="left-menu">
+      <a href="HomePage" class="login"><img src="img/house-svgrepo-com.svg" alt="Homepage" width="24" height="24">Homepage</a>
+      <a href="Catalogo" class="login"><img src="img/football-jersey-svgrepo-com.svg" alt="Catalogo" width="24" height="24">Catalogo</a>
+    </div>
 
-    <%@ page import="model.Cliente"%>
+    <div class="center-menu">
+      <a href="Cart" class="cart"><img src="img/cart.svg" alt="cart" width="24" height="24">Carrello</a>
+    </div>
 
-    <%
-    if (session.getAttribute("cliente") == null) {
-    %>
-    <a href="Login.jsp" class="login"><img src="img/user_logout.svg" alt="cart" width="24" height="24">Login</a>
-    <a href="Registrazione.jsp" class="Registrati"><img src="img/user_logout.svg" alt="cart" width="24" height="24">Registrati</a>
-    <%
-    } else {
-    %>
-    <a href="ProfiloUtente.jsp" class="Profilo"><img src="img/user_login.svg" alt="Profilo" width="24" height="24">Profilo</a>
-    <a href="Ordini.jsp" class="Ordini"><img src="img/order-svgrepo-com.svg" alt="Ordini" width="24" height="24">Ordini</a>
-    <a href="logout" class="Logout"><img src="img/user_logout.svg" alt="cart" width="24" height="24">Logout</a>
-    <%
-    }
+    <div class="right-menu">
+      <%@ page import="model.Cliente"%>
 
-    Cliente cliente = (Cliente) session.getAttribute("cliente");
+      <%
+      if (session.getAttribute("cliente") == null) {
+      %>
+      <a href="Login.jsp" class="login"><img src="img/user_logout.svg" alt="cart" width="24" height="24">Login</a>
+      <a href="Registrazione.jsp" class="Registrati"><img src="img/user_logout.svg" alt="cart" width="24" height="24">Registrati</a>
+      <%
+      } else {
+      %>
+      <a href="ProfiloUtente.jsp" class="Profilo"><img src="img/user_login.svg" alt="Profilo" width="24" height="24">Profilo</a>
+      <a href="Ordini.jsp" class="Ordini"><img src="img/order-svgrepo-com.svg" alt="Ordini" width="24" height="24">Ordini</a>
+      <a href="logout" class="Logout"><img src="img/user_logout.svg" alt="Logout" width="24" height="24">Logout</a>
+      <%
+      }
 
-    if (cliente != null) {
-      if (cliente.getRuolo_cliente().equals("admin")) {
-    %>
-    <a href="AdminCatalogPage" class="Logout"><img src="img/admin-with-cogwheels-svgrepo-com.svg" alt="cart" width="24" height="24">Admin Catalog Page</a>
-    <a href="AdminOrdinePage" class="Logout"><img src="img/admin-with-cogwheels-svgrepo-com.svg" alt="cart" width="24" height="24">Admin Orders Page</a>
-    <%
-    }
-    } %>
-  </div>
+      Cliente cliente = (Cliente) session.getAttribute("cliente");
 
-  <div class="toggle-btn">
-    <a href=""><i class="ri-menu-line"></i></a>
+      if (cliente != null) {
+        if (cliente.getRuolo_cliente().equals("admin")) {
+      %>
+      <a href="AdminCatalogPage" class="Logout"><img src="img/admin-with-cogwheels-svgrepo-com.svg" alt="cart" width="24" height="24">Admin Catalog Page</a>
+      <a href="AdminOrdinePage" class="Logout"><img src="img/admin-with-cogwheels-svgrepo-com.svg" alt="cart" width="24" height="24">Admin Orders Page</a>
+      <%
+      }
+      } %>
+    </div>
+
+    <div class="toggle-btn">
+      <a href="#"><i class="ri-menu-line"></i></a>
+    </div>
   </div>
 </nav>

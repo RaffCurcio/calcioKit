@@ -28,7 +28,7 @@
 			errorText.text('');
 
 			// Check if quantita is below 1
-			if (quantita < 1 or quantita > 10) {
+			if (quantita < 1 || quantita > 10) {
 				errorText.text('la quantità deve essere maggiore di 1 e minore di 11.');
 				return;
 			}
@@ -71,17 +71,21 @@
 
 		<%
 		List<Composizione> composizioni = null;
-		if (((Cliente) session.getAttribute("cliente")) == null) {
+		Cliente cliente = (Cliente)session.getAttribute("cliente");
+		if (cliente == null) {
+
 			composizioni = (List<Composizione>) session.getAttribute("guestCart");
 
 		} else {
 			composizioni = (List<Composizione>) session.getAttribute("carrello");
+			
 
 		}
 		if (composizioni == null || composizioni.isEmpty()) {
 		%>
 		<p class="empty-cart-msg">
-			Il tuo carrello è vuoto.<br> <a href="/calcioKit/HomePage">Continua ad acquistare</a>
+			Il tuo carrello è vuoto.<br> <a href="/calcioKit/HomePage">Continua
+				ad acquistare</a>
 		</p>
 		<%
 		} else {
@@ -154,10 +158,26 @@
 
 
 					Totale carrello: $<%=prezzoTotale%></p>
+				<%
+				if (prezzoTotale.compareTo(BigDecimal.ZERO) > 0 && cliente != null) {
+				%>
+				<div class="cart-payment-details">
+					<h3>Dettagli pagamento</h3>
+					<label for="numeroCarta">Numero Carta:</label> <input type="text"
+						id="numeroCarta" name="numeroCarta" required> <label
+						for="dataScadenza">Data Scadenza:</label> <input type="date"
+						id="dataScadenza" name="dataScadenza" required> <label
+						for="titolareConto">Titolare Conto:</label> <input type="text"
+						id="titolareConto" name="titolareConto" value="<%=cliente.getNome()%> <%=cliente.getCognome()%>" required>
+				</div>
+				<%
+				}
+				%>
 
 				<button type="submit" class="checkout-btn">Procedi al
 					checkout</button>
 			</div>
+
 		</form>
 
 		<%

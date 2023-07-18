@@ -12,14 +12,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import dao.ComposizioneDAO;
 import dao.DBConnection;
 import dao.OrdineDAO;
 import dao.ProdottoDAO;
+import dao.PagamentoDAO;
 import model.Cliente;
 import model.Composizione;
 import model.Ordine;
 import model.Prodotto;
+import model.Pagamento;
 
 @WebServlet("/Checkout")
 public class ServletCheckout extends HttpServlet {
@@ -27,6 +31,7 @@ public class ServletCheckout extends HttpServlet {
 	private ComposizioneDAO composizioneDAO;
 	private OrdineDAO ordineDAO;
 	private ProdottoDAO prodottoDAO;
+	private PagamentoDAO pagamentoDAO;
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -68,6 +73,50 @@ public class ServletCheckout extends HttpServlet {
 
 			return;
 		}
+		String numeroCarta = request.getParameter("numeroCarta");
+		String titolareConto = request.getParameter("titolareConto");
+		String dataScadenzaString = request.getParameter("dataScadenza");
+		java.util.Date utilDate = null;
+
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			utilDate = dateFormat.parse(dataScadenzaString);
+		} catch (ParseException e) {
+			String errorMessage = "There was an error in retrieving the data ";
+			response.sendError(500, errorMessage);
+			return;
+		}
+		java.sql.Date dataScadenza = new java.sql.Date(utilDate.getTime());
+		if (dataScadenza.before(localDate)) {
+			String errorMessage = "La carta è scaduta.";
+			request.setAttribute("errorMessage", errorMessage);
+			request.getRequestDispatcher("Cart.jsp").forward(request, response);
+			return;
+
+		}
+		// Controllo che il numero della carta sia composto solo da cifre
+		if (!numeroCarta.matches("^\\d+$")) {
+			String errorMessage = "Il numero della carta deve essere composto solo da cifre.";
+			request.setAttribute("errorMessage", errorMessage);
+			request.getRequestDispatcher("Cart.jsp").forward(request, response);
+			return;
+		}
+
+		// Controllo che la data di scadenza sia nel formato corretto (YYYY-MM-DD)
+		if (!dataScadenzaString.matches("^\\d{4}-\\d{2}-\\d{2}$")) {
+			String errorMessage = "La data di scadenza deve essere nel formato corretto (YYYY-MM-DD).";
+			request.setAttribute("errorMessage", errorMessage);
+			request.getRequestDispatcher("Cart.jsp").forward(request, response);
+			return;
+		}
+
+		// Controllo che il titolare del conto sia stato inserito
+		if (titolareConto.trim().isEmpty()) {
+			String errorMessage = "Inserisci il titolare del conto.";
+			request.setAttribute("errorMessage", errorMessage);
+			request.getRequestDispatcher("Cart.jsp").forward(request, response);
+			return;
+		}
 
 		List<Composizione> composiziones;
 		if (((Cliente) session.getAttribute("cliente")) == null) {
@@ -91,7 +140,7 @@ public class ServletCheckout extends HttpServlet {
 		ordine.setPrezzoVendita(totalPrice);
 		ordine.setEmailCliente(cliente.getEmail());
 		ordine.setUsernameCliente(cliente.getUsername());
-		ordine.setStatoOrdine("Awaiting Shipment");
+		ordine.setStatoOrdine("In attesa di spedizione");
 		int ordineId;
 		try {
 			ordineId = ordineDAO.saveOrdine(ordine);
@@ -129,6 +178,26 @@ public class ServletCheckout extends HttpServlet {
 			session.setAttribute("carrello", null);
 		}
 
+		Pagamento pagamento = new Pagamento();
+		pagamento.setIdPagamento(0); // o l'ID appropriato se ne hai uno
+		pagamento.setDataPagamento(localDate); // Imposta la data di pagamento come la data corrente
+		pagamento.setImportoPagamento(totalPrice); // Imposta l'importo del pagamento con il prezzo totale
+		pagamento.setNumeroCarta(numeroCarta); // Ottieni il numero di carta dalla richiesta, se
+												// è presente
+
+		pagamento.setDataScadenza(dataScadenza); // Ottieni la data di scadenza dalla richiesta, se è presente
+		pagamento.setTitolareConto(titolareConto); // Ottieni il titolare del conto dalla
+													// richiesta, se è presente
+		pagamento.setIdOrdine(ordineId); // Imposta l'ID dell'ordine associato al pagamento
+
+		try {
+			pagamentoDAO.insertPagamento(pagamento);
+		} catch (SQLException e) {
+			String errorMessage = "There was an error in saving the payment data to the database";
+			response.sendError(500, errorMessage);
+			return;
+		}
+
 		response.sendRedirect("Ordini.jsp");
 	}
 
@@ -137,6 +206,7 @@ public class ServletCheckout extends HttpServlet {
 		prodottoDAO = new ProdottoDAO(DBConnection.getDataSource());
 		composizioneDAO = new ComposizioneDAO(DBConnection.getDataSource());
 		ordineDAO = new OrdineDAO(DBConnection.getDataSource());
+		pagamentoDAO = new PagamentoDAO(DBConnection.getDataSource());
 
 	}
 

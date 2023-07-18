@@ -34,15 +34,12 @@ public class ServletEliminaProdotto extends HttpServlet {
 
 			// Recupera il cliente dalla sessione
 			HttpSession session = request.getSession();
-			Cliente cliente = (Cliente) session.getAttribute("cliente");
 
 			// Rimuovi il prodotto dal carrello nella sessione
 			List<Composizione> carrello = null;
 
 			if (((Cliente) session.getAttribute("cliente")) == null) {
 				carrello = (List<Composizione>) session.getAttribute("guestCart");
-
-				session.setAttribute("guestCart", carrello);
 			} else {
 				carrello = (List<Composizione>) session.getAttribute("carrello");
 
@@ -54,17 +51,19 @@ public class ServletEliminaProdotto extends HttpServlet {
 
 				} else {
 					session.setAttribute("carrello", carrello);
+					try {
+						Cliente cliente = (Cliente) session.getAttribute("cliente");
+
+						composizioneDAO.removeComposizione(cliente.getUsername(), cliente.getEmail(), idProdotto);
+					} catch (SQLException e) {
+						response.sendRedirect("error.jsp");
+						return;
+					}
 
 				}
 			}
 
 			// Rimuovi il prodotto dal carrello nel database
-			try {
-				composizioneDAO.removeComposizione(cliente.getUsername(), cliente.getEmail(), idProdotto);
-			} catch (SQLException e) {
-				response.sendRedirect("error.jsp");
-				return;
-			}
 
 			// Reindirizza alla pagina del carrello
 			response.sendRedirect("Cart");

@@ -100,9 +100,9 @@ button {
 	color: #0d1b2a;
 }
 
-input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus,
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus,input[type="number"]:focus,
 	textarea:focus {
-	background-color: #37aaff;
+	background-color: #e3e3e3;
 }
 
 .orderDetails {
@@ -136,152 +136,85 @@ textarea {
 /* Header CSS */
 
 /* Styles for the navigation */
-/* Styles for the navigation */
-nav {
-	background-color: #003D6B;
-	height: 70px;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: 0 20px;
-}
-
+/* Default styles */
 .navbar {
-	display: flex;
-	align-items: center;
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(0,0,255,0.7);
+  padding: 10px;
 }
 
 .navbar a {
-	color: #fff;
-	text-decoration: none;
-	font-size: 16px;
-	margin-right: 20px;
-	display: flex;
-	align-items: center;
+  margin-right: 10px;
+  color: #333;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
 }
 
 .navbar a.active {
-	font-weight: bold;
+  color: #555;
+  font-weight: bold;
 }
 
-.navbar a img {
-	margin-right: 5px;
+.navbar img {
+  margin-right: 5px;
 }
 
 .toggle-btn {
-	display: none;
+  display: none;
 }
 
-@media ( max-width : 768px) {
-	.navbar {
-		display: none;
-	}
-	.toggle-btn {
-		display: block;
-	}
-	.toggle-btn a {
-		color: #fff;
-		font-size: 24px;
-		text-decoration: none;
-	}
+.left-menu {
+  display: flex;
+  align-items: center;
 }
 
-@media ( max-width : 768px) {
-	.navbar {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		position: absolute;
-		top: 70px;
-		left: 0;
-		width: 100%;
-		background-color: #003D6B;
-		text-align: center;
-		transition: all 0.3s ease;
-		z-index: 99;
-	}
-	.navbar li {
-		margin: 10px 0;
-	}
-	.navbar .toggle-btn {
-		display: none;
-	}
-	.show {
-		display: block;
-	}
+.center-menu {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  justify-content: center;
 }
 
-@media ( max-width : 768px) {
-	.navbar {
-		display: none;
-	}
-	.toggle-btn {
-		display: block;
-	}
-	.toggle-btn a {
-		color: #fff;
-		font-size: 24px;
-		text-decoration: none;
-	}
+.right-menu {
+  display: flex;
+  align-items: center;
 }
 
-@media ( max-width : 768px) {
-	.navbar {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
-	.navbar li {
-		display: block;
-		margin-bottom: 10px;
-	}
-	.navbar .toggle-btn {
-		display: none;
-	}
-}
+/* Responsive styles */
+@media only screen and (max-width: 600px) {
+  .navbar {
+    flex-wrap: wrap;
+  }
 
-/* Stili per dispositivi mobili */
-@media ( max-width : 600px) {
-	.navbar {
-		flex-direction: column;
-		align-items: flex-start;
-	}
-	.navbar li {
-		margin-right: 0;
-		margin-bottom: 10px;
-	}
-	.main {
-		flex-direction: column;
-		align-items: flex-start;
-		margin-top: 10px;
-	}
-	.input-box {
-		margin-right: 0;
-		margin-bottom: 10px;
-	}
-	.toggle-btn {
-		margin-right: 0;
-		margin-bottom: 10px;
-	}
-}
+  .left-menu,
+  .center-menu,
+  .right-menu {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+  }
 
-/* Stili per tablet */
-@media ( min-width : 601px) and (max-width: 1024px) {
-	.navbar li {
-		margin-right: 5px;
-	}
-	.input-box {
-		margin-right: 5px;
-	}
-	.toggle-btn {
-		margin-right: 5px;
-	}
-}
+  .toggle-btn {
+    display: block;
+    margin-top: 10px;
+    cursor: pointer;
+  }
 
-/* Stili per schermi più grandi */
-@media ( min-width : 1025px) {
-	/* Aggiungi qui eventuali stili specifici per schermi più grandi */
+  .toggle-btn a {
+    display: flex;
+    align-items: center;
+    color: #333;
+    text-decoration: none;
+  }
+
+  .toggle-btn i {
+    margin-right: 5px;
+  }
+
+  .navbar.show {
+    display: flex;
+  }
 }

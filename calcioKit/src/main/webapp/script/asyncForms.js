@@ -3,7 +3,7 @@ $(document).ready(function() {
 	$("form").submit(function(e) {
 
 		// Check if the form has an action attribute set to "Checkout"
-		let allowedActions = ["Checkout", "AdminOrdinePage", "FilterCatalogAdmin", "FilterCatalog"];
+		let allowedActions = ["Checkout", "AdminOrdinePage", "FilterCatalogAdmin"];
 
 		if (allowedActions.includes($(this).attr("action"))) {
 			// Allow the form to perform a regular submission

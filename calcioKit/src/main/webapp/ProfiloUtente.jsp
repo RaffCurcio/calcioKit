@@ -23,7 +23,7 @@
 	%>
 	<div class="container-userProfile">
 		<div class="profile-section">
-			<h1>Cliente Profile</h1>
+			<h1>Profilo Utente</h1>
 
 			<%-- Get the cliente and cliente objects from the session --%>
 			<%

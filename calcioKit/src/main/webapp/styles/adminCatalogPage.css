@@ -1,196 +1,173 @@
 /* Stili per schermi di larghezza inferiore a 600px */
 @media only screen and (max-width: 600px) {
-  body {
-    font-size: 14px;
-  }
-
-  #buttonDiv {
-    margin-top: 20px;
-  }
-
-  #catalog {
-    padding: 10px;
-  }
-
-  .container-catalog {
-     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-    
-  }
-
-  .filter-section {
-    margin-bottom: 10px;
-  }
-
-  .prodotto-list {
-    display: block;
-  }
-
-  .prodotto-item {
-    margin-bottom: 20px;
-    padding: 10px;
-  }
-
-  .prodotto-image {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-
-  .prodotto-details {
-    margin-top: 10px;
-  }
-
-  .button-container {
-    text-align: center;
-    margin-top: 10px;
-  }
-
-  #AddProdotto {
-    padding: 10px;
-  }
+	body {
+		font-size: 14px;
+	}
+	#buttonDiv {
+		margin-top: 20px;
+	}
+	#catalog {
+		padding: 10px;
+	}
+	.container-catalog {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-direction: column;
+	}
+	.filter-section {
+		margin-bottom: 10px;
+	}
+	.prodotto-list {
+		display: block;
+	}
+	.prodotto-item {
+		margin-bottom: 20px;
+		padding: 10px;
+	}
+	.prodotto-image {
+		width: 100%;
+		margin-bottom: 10px;
+	}
+	.prodotto-details {
+		margin-top: 10px;
+	}
+	.button-container {
+		text-align: center;
+		margin-top: 10px;
+	}
+	#AddProdotto {
+		padding: 10px;
+	}
 }
 
 /* Stili per schermi di larghezza compresa tra 601px e 1024px */
 @media only screen and (min-width: 601px) and (max-width: 1024px) {
-  body {
-    font-size: 16px;
-  }
-
-  #buttonDiv {
-    margin-top: 30px;
-  }
-
-  .prodotto-item {
-    margin-bottom: 30px;
-    padding: 20px;
-  }
-
-  .prodotto-details {
-    margin-top: 20px;
-  }
-
-  .button-container {
-    text-align: center;
-    margin-top: 20px;
-  }
-
-  #AddProdotto {
-    padding: 20px;
-  }
+	body {
+		font-size: 16px;
+	}
+	#buttonDiv {
+		margin-top: 30px;
+	}
+	.prodotto-item {
+		margin-bottom: 30px;
+		padding: 20px;
+	}
+	.prodotto-details {
+		margin-top: 20px;
+	}
+	.button-container {
+		text-align: center;
+		margin-top: 20px;
+	}
+	#AddProdotto {
+		padding: 20px;
+	}
 }
 
 /* Stili per schermi di larghezza superiore a 1024px */
 @media only screen and (min-width: 1025px) {
-  body {
-    font-size: 18px;
-  }
-
-  #buttonDiv {
-    margin-top: 40px;
-  }
-
-  .prodotto-item {
-    margin-bottom: 40px;
-    padding: 30px;
-  }
-
-  .prodotto-details {
-    margin-top: 30px;
-  }
-
-  .button-container {
-    text-align: center;
-    margin-top: 30px;
-  }
-
-  #AddProdotto {
-    padding: 30px;
-  }
+	body {
+		font-size: 18px;
+	}
+	#buttonDiv {
+		margin-top: 40px;
+	}
+	.prodotto-item {
+		margin-bottom: 40px;
+		padding: 30px;
+	}
+	.prodotto-details {
+		margin-top: 30px;
+	}
+	.button-container {
+		text-align: center;
+		margin-top: 30px;
+	}
+	#AddProdotto {
+		padding: 30px;
+	}
 }
 
 /* Altri stili comuni per tutti i dispositivi */
 body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	font-family: Arial, sans-serif;
 }
 
 #buttonDiv {
-  text-align: center;
+	text-align: center;
 }
 
 #toggleButton {
-  cursor: pointer;
-  text-align: center;
-  font-size: 20px;
+	cursor: pointer;
+	text-align: center;
+	font-size: 20px;
 }
 
 .hidden {
-  display: none;
+	display: none;
 }
 
 .container-catalog {
-      display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-direction: column;
 }
 
 .filter-section {
-  margin-right: 20px;
+	margin-right: 20px;
 }
 
 .prodotto-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  border: 1px solid #ccc;
-  padding: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	border: 1px solid #ccc;
+	padding: 20px;
 }
 
 .prodotto-image {
-  width: 200px;
-  margin-right: 20px;
+	width: 200px;
+	margin-right: 20px;
 }
 
 .prodotto-details {
-  flex-grow: 1;
+	flex-grow: 1;
 }
 
 .error {
-  color: red;
+	color: red;
 }
 
 /* Altri stili per la form */
 form {
-  margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 
 label {
-  display: block;
-  margin-top: 10px;
-  font-weight: bold;
+	display: block;
+	margin-top: 10px;
+	font-weight: bold;
 }
 
-input[type="text"],
-input[type="number"],
-textarea {
-  width: 100%;
-  padding: 5px;
-  margin-top: 5px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
+input[type="text"], input[type="number"], textarea {
+	width: 100%;
+	padding: 5px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	text-align:center;
 }
 
 input[type="submit"] {
-  padding: 10px 20px;
-  background-color: #4CAF50;
-  color: #fff;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
+	padding: 10px 20px;
+	background-color: #4CAF50;
+	color: #fff;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
 }
-

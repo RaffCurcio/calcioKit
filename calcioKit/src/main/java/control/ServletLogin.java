@@ -19,7 +19,6 @@ import dao.DBConnection;
 
 import model.Cliente;
 import model.Composizione;
-import model.Pagamento;
 
 @WebServlet("/login")
 public class ServletLogin extends HttpServlet {
@@ -36,7 +35,6 @@ public class ServletLogin extends HttpServlet {
 		HttpSession session = request.getSession();
 		// Perform authentication logic here (e.g., checking against a database)
 		Cliente cliente = null;
-		Pagamento pagamentoMethod = null;
 		List<Composizione> carrelloItems = null;
 
 		try {
@@ -98,7 +96,6 @@ public class ServletLogin extends HttpServlet {
 			String sessionToken = UUID.randomUUID().toString();
 
 			session.setAttribute("cliente", cliente);
-			session.setAttribute("pagamentoMethod", pagamentoMethod);
 			session.setAttribute("sessionToken", sessionToken);
 
 			// Redirect to a protected resource or home page

@@ -94,6 +94,9 @@
 									value="<%=sessionToken%>"> <input type="hidden"
 									name="orderId" value="<%=ordine.getIdOrdine()%>"> <select
 									name="status">
+									
+																		<option value="in attesa di spedizione">in attesa di spedizione</option>
+									
 									<option value="Completato">Completato</option>
 									<option value="Cancellato">Cancellato</option>
 									<option value="In consegna">In consegna</option>
