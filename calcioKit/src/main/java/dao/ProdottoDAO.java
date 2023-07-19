@@ -194,8 +194,8 @@ public class ProdottoDAO {
 		}
 	}
 
-	// Altri metodi per CRUD (Create, Read, Update, Delete) dei prodotti
-	// ...
+
+
 	// Metodo per ottenere un prodotto per ID
 	public Prodotto getProdottoById(int id) throws SQLException {
 		String query = "SELECT * FROM prodotto WHERE ID_prodotto = ? AND cancellato = FALSE";

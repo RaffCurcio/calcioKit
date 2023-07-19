@@ -5,8 +5,8 @@
 <head>
 <meta charset="ISO-8859-1">
 
-<title>Login - CalcioKit</title>
-<link rel="stylesheet" type="text/css" href="styles/login.css?ts=<?=time()?>&quot"">
+<title>Login</title>
+<link rel="stylesheet" type="text/css" href="styles/registrazione.css?ts=<?=time()?>&quot"">
 
 
 </head>
@@ -14,7 +14,7 @@
 	<jsp:include page="fragments/Header.jsp"/>
 
 	<form class="login_form" action="login" method="post">
-	<h1>LOGIN</h1>
+	<h1>Login</h1>
 	<%
 	if (request.getAttribute("errorMessage") != null) {
 	%>

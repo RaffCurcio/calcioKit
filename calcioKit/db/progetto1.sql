@@ -80,40 +80,40 @@ CREATE TABLE composizione (
 
 
 INSERT INTO cliente (username, email, pwd, nome, cognome, indirizzo, citta, provincia, cap, ruolo_cliente)
-VALUES ('john.doe', 'john.doe@example.com', 'password', 'John', 'Doe', 'Via Roma 123', 'Milano', 'MI', '20100', 'admin');
+VALUES ('johndoe', 'john.doe@example.com', 'Password1@', 'John', 'Doe', 'Via Roma 123', 'Milano', 'MI', '20100', 'admin');
 
 INSERT INTO cliente (username, email, pwd, nome, cognome, indirizzo, citta, provincia, cap, ruolo_cliente)
-VALUES ('jane.smith', 'jane.smith@example.com', 'password', 'Jane', 'Smith', 'Via Verdi 456', 'Roma', 'RM', '00100' , 'cliente');
+VALUES ('janesmith', 'jane.smith@example.com', 'Password1@', 'Jane', 'Smith', 'Via Verdi 456', 'Roma', 'RM', '20100' , 'cliente');
 
 INSERT INTO cliente (username, email, pwd, nome, cognome, indirizzo, citta, provincia, cap, ruolo_cliente)
-VALUES ('mark.williams', 'mark.williams@example.com', 'password', 'Mark', 'Williams', 'Via Italia 789', 'Torino', 'TO', '10100', 'cliente');
+VALUES ('markwilliams', 'mark.williams@example.com', 'Password1@', 'Mark', 'Williams', 'Via Italia 789', 'Torino', 'TO', '10100', 'cliente');
 
 INSERT INTO cliente (username, email, pwd, nome, cognome, indirizzo, citta, provincia, cap, ruolo_cliente)
-VALUES ('amy.johnson', 'amy.johnson@example.com', 'password', 'Amy', 'Johnson', 'Via Europa 10', 'Firenze', 'FI', '50100','cliente' );
+VALUES ('amyjohnson', 'amy.johnson@example.com', 'Password1@', 'Amy', 'Johnson', 'Via Europa 10', 'Firenze', 'FI', '50100','cliente' );
 
 INSERT INTO cliente (username, email, pwd, nome, cognome, indirizzo, citta, provincia, cap, ruolo_cliente)
-VALUES ('peter.davis', 'peter.davis@example.com', 'password', 'Peter', 'Davis', 'Via Leonardo 23', 'Napoli', 'NA', '80100' ,'cliente');
+VALUES ('peterdavis', 'peter.davis@example.com', 'Password1@', 'Peter', 'Davis', 'Via Leonardo 23', 'Napoli', 'NA', '80100' ,'cliente');
 
 
 -- Inserimento di un numero di telefono per il cliente "john.doe"
 INSERT INTO Telefono (numero_tel, prefisso, username_cli, email_cli)
-VALUES ('1234567890', '+39', 'john.doe', 'john.doe@example.com');
+VALUES ('1234567890', '+39', 'johndoe', 'john.doe@example.com');
 
 -- Inserimento di un numero di telefono per il cliente "jane.smith"
 INSERT INTO Telefono (numero_tel, prefisso, username_cli, email_cli)
-VALUES ('9876543210', '+39', 'jane.smith', 'jane.smith@example.com');
+VALUES ('9876543210', '+39', 'janesmith', 'jane.smith@example.com');
 
 -- Inserimento di un numero di telefono per il cliente "mark.williams"
 INSERT INTO Telefono (numero_tel, prefisso, username_cli, email_cli)
-VALUES ('5555555555', '+39', 'mark.williams', 'mark.williams@example.com');
+VALUES ('5555555555', '+39', 'markwilliams', 'mark.williams@example.com');
 
 -- Inserimento di un numero di telefono per il cliente "amy.johnson"
 INSERT INTO Telefono (numero_tel, prefisso, username_cli, email_cli)
-VALUES ('1111111111', '+39', 'amy.johnson', 'amy.johnson@example.com');
+VALUES ('1111111111', '+39', 'amyjohnson', 'amy.johnson@example.com');
 
 -- Inserimento di un numero di telefono per il cliente "peter.davis"
 INSERT INTO Telefono (numero_tel, prefisso, username_cli, email_cli)
-VALUES ('9999999999', '+39', 'peter.davis', 'peter.davis@example.com');
+VALUES ('9999999999', '+39', 'peterdavis', 'peter.davis@example.com');
 
 
 -- Inserimento di un Prodotto

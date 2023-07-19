@@ -1,7 +1,7 @@
 <!DOCTYPE html >
 <html lang="en">
 <head>
-<title>Registration</title>
+<title>Registrazione</title>
 
 <link rel="stylesheet" type="text/css"
 	href="styles/registrazione.css">
@@ -25,7 +25,7 @@
 
 	<form id="register_form" action="registrazione" method="POST"
 		onsubmit="return validateForm(event)">
-	<h1>Registration</h1>
+	<h1>Registrazione</h1>
 
 		<label for="username">Username</label> <input type="text"
 			id="username" name="username" required><br>

@@ -88,8 +88,8 @@
 				%>
 				<div class="prodotto-item">
 					<div class="prodotto-image">
-						<form action="ProdottoPage" method="POST">
-							<input type="hidden" name="prodottoId"
+						<form action="ProductDetailsServlet" method="GET">
+							<input type="hidden" name="id"
 								value="<%=prodotto.getIdProdotto()%>">
 							<div onclick="submitForm(this.parentNode)">
 								<img src="<%=prodotto.getPath_immagine()%>"
