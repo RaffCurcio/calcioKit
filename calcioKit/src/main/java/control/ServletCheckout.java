@@ -118,14 +118,14 @@ public class ServletCheckout extends HttpServlet {
 			return;
 		}
 
-		List<Composizione> composiziones;
+		List<Composizione> composizioni;
 		if (((Cliente) session.getAttribute("cliente")) == null) {
-			composiziones = (List<Composizione>) session.getAttribute("guestCart");
+			composizioni = (List<Composizione>) session.getAttribute("guestCart");
 		} else {
-			composiziones = (List<Composizione>) session.getAttribute("carrello");
+			composizioni = (List<Composizione>) session.getAttribute("carrello");
 		}
 		try {
-			composizioneDAO.saveAllComposizioni(composiziones);
+			composizioneDAO.saveAllComposizioni(composizioni);
 		} catch (SQLException e) {
 			String errorMessage = "There was an error in saving your cart data to the database";
 			response.sendError(500, errorMessage);
@@ -150,7 +150,7 @@ public class ServletCheckout extends HttpServlet {
 			return;
 		}
 
-		for (Composizione composizione : composiziones) {
+		for (Composizione composizione : composizioni) {
 			try {
 
 				product = prodottoDAO.getProdottoById(composizione.getIdProdotto());

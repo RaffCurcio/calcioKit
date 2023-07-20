@@ -46,13 +46,13 @@ public class ServletRegistrazione extends HttpServlet {
 		} catch (SQLException e) {
 			if (e instanceof SQLIntegrityConstraintViolationException) {
 				// Handle duplicate entry error
-				String errorMessage = "usernomignolo o emailotta già esistono";
+				String errorMessage = "username o email già esistono";
 				request.setAttribute("errorMessage", errorMessage);
 				response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 				request.getRequestDispatcher("/Registrazione.jsp").forward(request, response);
 			} else {
 				// Redirect to an error page or display a generic error message
-				response.sendRedirect("error.jsp");
+				response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Problema durante la registrazione.");
 			}
 		}
 	}

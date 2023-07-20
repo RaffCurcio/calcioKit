@@ -56,7 +56,7 @@ public class ServletEliminaProdotto extends HttpServlet {
 
 						composizioneDAO.removeComposizione(cliente.getUsername(), cliente.getEmail(), idProdotto);
 					} catch (SQLException e) {
-						response.sendRedirect("error.jsp");
+						response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,"Errore nel rimuovere prodotti");
 						return;
 					}
 
@@ -68,7 +68,8 @@ public class ServletEliminaProdotto extends HttpServlet {
 			// Reindirizza alla pagina del carrello
 			response.sendRedirect("Cart");
 		} else {
-			response.sendRedirect("error.jsp");
+			response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,"ID prodotto non ricevuto");
+			
 		}
 	}
 

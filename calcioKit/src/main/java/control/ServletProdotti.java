@@ -9,9 +9,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.DBConnection;
 import dao.ProdottoDAO;
+import model.Cliente;
 import model.Prodotto;
 
 @WebServlet({ "/HomePage", "/Catalogo", "/AdminCatalogPage" })
@@ -27,10 +29,11 @@ public class ServletProdotti extends HttpServlet {
 			String servletPath = request.getServletPath();
 
 			if (servletPath.equals("/AdminCatalogPage")) {
+				
 				List<Prodotto> prodotti = prodottoDAO.getAllProdottiAdmin();
-
+				
 				request.setAttribute("prodotti", prodotti);
-
+				
 				request.getRequestDispatcher("admin/AdminCatalogPage.jsp").forward(request, response);
 
 			} else if (servletPath.equals("/HomePage")) {
@@ -54,7 +57,7 @@ public class ServletProdotti extends HttpServlet {
 			}
 
 		} catch (SQLException e) {
-			response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+			response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Non puoi accedere a questa pagina");
 						
 		}
 	}

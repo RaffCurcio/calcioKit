@@ -28,16 +28,16 @@ public class LogoutServlet extends HttpServlet {
 
 		if (servletPath.equals("/logout")) {
 			if (session != null) {
-				// Get the composiziones from the session
+				// Get the composizioni from the session
 				@SuppressWarnings("unchecked")
-				List<Composizione> composiziones = (List<Composizione>) session.getAttribute("carrello");
+				List<Composizione> composizioni = (List<Composizione>) session.getAttribute("carrello");
 
-				// Save the composiziones to the database
-				if (composiziones != null && !composiziones.isEmpty()) {
+				// Save the composizioni to the database
+				if (composizioni != null && !composizioni.isEmpty()) {
 					try {
 						// Assuming you have a method in ComposizioneDAO to save multiple cart items at
 						// once
-						composizioneDAO.saveAllComposizioni(composiziones);
+						composizioneDAO.saveAllComposizioni(composizioni);
 					} catch (SQLException e) {
 						String errorMessage = "There was an error during the logout, your items in the cart didn't make it to the database\n"
 								+ e;
