@@ -8,7 +8,7 @@ document.querySelector('.toggle-btn').addEventListener('click', function() {
 <nav>
   <div class="navbar">
     <div class="left-menu">
-      <a href="HomePage" class="login"><img src="img/house-svgrepo-com.svg" alt="Homepage" width="24" height="24">Homepage</a>
+      <a href="HomePage" class="login"><img src="img/house-svgrepo-com.svg" alt="Homepage" width="24" height="24">Home</a>
       <a href="Catalogo" class="login"><img src="img/football-jersey-svgrepo-com.svg" alt="Catalogo" width="24" height="24">Catalogo</a>
     </div>
 
@@ -38,8 +38,8 @@ document.querySelector('.toggle-btn').addEventListener('click', function() {
       if (cliente != null) {
         if (cliente.getRuolo_cliente().equals("admin")) {
       %>
-      <a href="AdminCatalogPage" class="Logout"><img src="img/admin-with-cogwheels-svgrepo-com.svg" alt="cart" width="24" height="24">Admin Catalog Page</a>
-      <a href="AdminOrdinePage" class="Logout"><img src="img/admin-with-cogwheels-svgrepo-com.svg" alt="cart" width="24" height="24">Admin Orders Page</a>
+      <a href="AdminCatalogPage" class="Logout"><img src="img/admin-with-cogwheels-svgrepo-com.svg" alt="cart" width="24" height="24">Pagina Catalogo Admin</a>
+      <a href="AdminOrdinePage" class="Logout"><img src="img/admin-with-cogwheels-svgrepo-com.svg" alt="cart" width="24" height="24">Pagina Ordini Admin</a>
       <%
       }
       } %>
