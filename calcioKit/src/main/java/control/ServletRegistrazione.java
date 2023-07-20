@@ -17,7 +17,7 @@ import model.Cliente;
 @WebServlet("/registrazione")
 public class ServletRegistrazione extends HttpServlet {
 	/**
-	 *
+	 **
 	 */
 	private static final long serialVersionUID = 1L;
 	private ClienteDAO clienteDAO;
